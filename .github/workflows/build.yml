@@ -60,6 +60,7 @@ jobs:
           ./mvnw \
             --show-version --batch-mode --errors --no-transfer-progress \
             -DtrimStackTrace=false \
+            -Dxml.skip=${{ runner.os == 'Windows' }} \
             clean install
 
       # `clean verify artifact:compare` is required to generate the build reproducibility report.
@@ -70,6 +71,7 @@ jobs:
           ./mvnw \
             --show-version --batch-mode --errors --no-transfer-progress \
             -DskipTests=true \
+            -Dxml.skip=${{ runner.os == 'Windows' }} \
             clean verify artifact:compare
 
       - name: Verify build reproducibility
