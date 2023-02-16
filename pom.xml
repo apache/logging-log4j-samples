@@ -37,6 +37,7 @@
 
   <modules>
     <module>log4j-samples-configuration</module>
+    <module>log4j-samples-loggerProperties</module>
   </modules>
 
   <properties>
