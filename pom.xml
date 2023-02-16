@@ -47,7 +47,6 @@
     <flume.version>1.11.0</flume.version>
     <jetty.version>10.0.0</jetty.version>
     <maven.compiler.release>8</maven.compiler.release>
-    <maven.deploy.skip>true</maven.deploy.skip>
     <!-- Using JDK 8 is incompatible with an increasing number of plugins -->
     <minimalJavaBuildVersion>11</minimalJavaBuildVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
