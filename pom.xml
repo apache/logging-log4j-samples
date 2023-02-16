@@ -45,7 +45,7 @@
   <properties>
     <flatten-maven-plugin.version>1.3.0</flatten-maven-plugin.version>
     <flume.version>1.11.0</flume.version>
-    <jetty.version>10.0.13</jetty.version>
+    <jetty.version>10.0.0</jetty.version>
     <maven.compiler.release>8</maven.compiler.release>
     <maven.deploy.skip>true</maven.deploy.skip>
     <!-- Using JDK 8 is incompatible with an increasing number of plugins -->
@@ -54,7 +54,7 @@
     <!-- project version -->
     <revision>2.19.1-SNAPSHOT</revision>
     <spotless-maven-plugin.version>2.33.0</spotless-maven-plugin.version>
-    <spring-boot.version>2.7.8</spring-boot.version>
+    <spring-boot.version>2.7.0</spring-boot.version>
     <xml-maven-plugin.version>1.0.2</xml-maven-plugin.version>
   </properties>
 
