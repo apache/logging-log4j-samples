@@ -55,7 +55,7 @@
     <jetty.version>10.0.13</jetty.version>
     <junit.version>5.9.0</junit.version>
     <kotlin.version>1.8.10</kotlin.version>
-    <kubernetes-client.version>5.12.4</kubernetes-client.version>
+    <kubernetes-client.version>6.4.1</kubernetes-client.version>
     <maven.compiler.release>8</maven.compiler.release>
     <!-- Using JDK 8 is incompatible with an increasing number of plugins -->
     <minimalJavaBuildVersion>11</minimalJavaBuildVersion>
