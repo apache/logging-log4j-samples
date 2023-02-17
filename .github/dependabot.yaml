@@ -24,6 +24,9 @@ updates:
       # Version 3.x uses Jakarta EE 9 and Java 17
       - dependency-name: "org.springframework.boot:spring-boot-starter-parent"
         update-types: ["version-update:semver-major"]
+      # Version 2022.x uses Jakarta EE 9 and Java 17
+      - dependency-name: "org.springframework.cloud:spring-cloud-dependencies"
+        update-types: ["version-update:semver-major"]
       # Version 11.x uses Jakarta EE 9
       - dependency-name: "org.eclipse.jetty:jetty-maven-plugin"
         update-types: ["version-update:semver-major"]
