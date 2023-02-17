@@ -1,4 +1,4 @@
-# Log4j Spring Cloud Sample Application
+# Log4j Samples: Spring Cloud Sample Application
 
 This application uses Spring Boot and reads the logging configuration from the companion Spring Cloud Config Server
 project. The log4j2.xml file is located in the config-repo directory in that project.

@@ -1,0 +1,62 @@
+////
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements. See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License. You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+////
+= Apache Log4j Sample
+
+This repository contains several examples to help the user with some of the more advanced Log4j2 features.
+
+xref:log4j-samples-configuration/README.adoc[`log4j-samples-configuration`]::
+Explains how to use a custom programmatic configuration,
+
+xref:log4j-samples-flume-embedded/README.adoc[`log4j-samples-flume-embedded`]::
+Explains how to use an embedded Flume agent to send logs to https://flume.apache.org[Apache Flume],
+
+xref:log4j-samples-flume-remote/README.adoc[`log4j-samples-flume-embedded`]::
+Explains how to send logs to https://flume.apache.org[Apache Flume],
+
+xref:log4j-samples-loggerProperties/README.adoc[`log4j-samples-loggerProperties`]::
+Explains how to write a custom property lookup,
+
+xref:log4j-spring-cloud-config-sample-application/README.md[`log4j-spring-cloud-config-sample-application`]::
+An example of Spring Boot application that reads its logging configuration from a Spring Cloud Configuration Server.
+
+== Build
+
+This project generates Java 8 bytecode, though requires Java 11 for compilation.
+You can build and test sources using `./mvnw verify` command.
+
+== Distribution
+
+The artifacts in this repository are available only in source form.
+
+== Support
+
+You can use GitHub Issues for feature requests and bug reports.
+
+To ask questions:
+
+* use the mailto:log4j-user@logging.apache.org[the Log4j user mailing list],
+* or post a question on https://stackoverflow.com/questions/tagged/log4j2[StackOverflow] and mark it with a `log4j2` tag.
+
+== License
+
+Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.
+See xref:NOTICE.txt[] distributed with this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
+You may obtain a copy of the License at https://www.apache.org/licenses/LICENSE-2.0[].
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and limitations under the License.
