@@ -14,18 +14,16 @@
  * See the license for the specific language governing permissions and
  * limitations under the license.
  */
-package org.apache.logging.log4j.samples.configuration;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+package org.apache.logging.log4j.spring.cloud.config.service;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-public class CustomConfigurationTest {
-    private final Logger logger = LogManager.getLogger(CustomConfiguration.class);
+@SpringBootTest
+public class ConfigServiceApplicationTest {
 
     @Test
-    public void testLogging() {
-        logger.error("This is a test");
+    public void contextLoads() {
     }
+
 }

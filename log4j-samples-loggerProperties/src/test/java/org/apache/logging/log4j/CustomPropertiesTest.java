@@ -22,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.apache.logging.log4j.lookup.CustomLookup;
 import org.apache.logging.log4j.lookup.CustomMapMessage;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Created by rgoers on 8/2/15.

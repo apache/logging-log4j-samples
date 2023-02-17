@@ -26,9 +26,9 @@ import org.apache.logging.log4j.message.MapMessage;
 import org.apache.logging.log4j.message.StringMapMessage;
 import org.apache.logging.log4j.message.StructuredDataMessage;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Tests {@link MapMessageLookup}
@@ -56,9 +56,9 @@ public class MapMessageLookupTest
         final String c = lookup.lookup(event, "C");
 
         // THEN: The looked up values are correct
-        assertEquals("a", a);
-        assertEquals("b", b);
-        assertEquals("c", c);
+        assertThat(a).isEqualTo("a");
+        assertThat(b).isEqualTo("b");
+        assertThat(c).isEqualTo("c");
     }
 
     @Test
@@ -82,8 +82,8 @@ public class MapMessageLookupTest
         final String c = lookup.lookup(event, "C");
 
         // THEN: The looked up values are correct
-        assertEquals("a", a);
-        assertEquals("b", b);
-        assertEquals("c", c);
+        assertThat(a).isEqualTo("a");
+        assertThat(b).isEqualTo("b");
+        assertThat(c).isEqualTo("c");
     }
 }

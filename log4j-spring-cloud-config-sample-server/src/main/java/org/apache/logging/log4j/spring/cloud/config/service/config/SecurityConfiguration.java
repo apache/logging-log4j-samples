@@ -14,18 +14,23 @@
  * See the license for the specific language governing permissions and
  * limitations under the license.
  */
-package org.apache.logging.log4j.samples.configuration;
+package org.apache.logging.log4j.spring.cloud.config.service.config;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import org.junit.jupiter.api.Test;
-
-public class CustomConfigurationTest {
-    private final Logger logger = LogManager.getLogger(CustomConfiguration.class);
-
-    @Test
-    public void testLogging() {
-        logger.error("This is a test");
+/**
+ *
+ */
+@Configuration
+@EnableWebSecurity
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/health")
+            .antMatchers("/metrics")
+            .antMatchers("/info");
     }
 }
