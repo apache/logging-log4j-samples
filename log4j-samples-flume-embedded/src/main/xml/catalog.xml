@@ -1,0 +1,13 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <system systemId="https://www.springframework.org/schema/beans/spring-beans.xsd" uri="./spring-beans.xsd"/>
+  <system systemId="https://www.springframework.org/schema/context/spring-context.xsd" uri="./spring-context.xsd"/>
+  <system systemId="https://www.springframework.org/schema/tool/spring-tool-4.3.xsd" uri="./spring-tool-4.3.xsd"/>
+  <system systemId="http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" uri="./web-app_4_0.xsd"/>
+  <system systemId="http://xmlns.jcp.org/xml/ns/javaee/web-common_4_0.xsd" uri="./web-common_4_0.xsd"/>
+  <system systemId="http://xmlns.jcp.org/xml/ns/javaee/javaee_7.xsd" uri="./javaee_7.xsd"/>
+  <system systemId="http://www.w3.org/2001/xml.xsd" uri="./xml.xsd"/>
+  <system systemId="http://xmlns.jcp.org/xml/ns/javaee/javaee_web_services_client_1_4.xsd" uri="./javaee_web_services_client_1_4.xsd"/>
+  <system systemId="http://xmlns.jcp.org/xml/ns/javaee/jsp_2_3.xsd" uri="./jsp_2_3.xsd"/>
+  <system systemId="http://xmlns.jcp.org/xml/ns/javaee/javaee_7.xsd" uri="./javaee_7.xsd"/>
+</catalog>

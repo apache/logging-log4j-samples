@@ -23,9 +23,9 @@
     <artifactId>log4j-samples</artifactId>
     <version>${revision}</version>
   </parent>
-  <artifactId>log4j-samples-flume-remote</artifactId>
+  <artifactId>log4j-samples-flume-embedded</artifactId>
   <packaging>war</packaging>
-  <name>Apache Log4j Samples: Flume - Remote</name>
+  <name>Apache Log4j Samples: Flume - Embedded</name>
   <properties>
     <revision>2.19.1-SNAPSHOT</revision>
   </properties>
@@ -46,6 +46,16 @@
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.flume.flume-ng-channels</groupId>
+      <artifactId>flume-file-channel</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.flume</groupId>
+      <artifactId>flume-ng-embedded-agent</artifactId>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
