@@ -19,6 +19,7 @@ limitations under the License.
 This project shows how to write a custom lookup.
 
 In order to use it:
+
 . install the artifact and its parent locally with `mvn install`,
 . add it to your Maven project:
 +

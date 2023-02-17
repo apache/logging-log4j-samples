@@ -19,6 +19,7 @@ limitations under the License.
 This sample uses the classes in the sample link:../log4j-samples-flume-common[log4j-samples-flume-common] project. It will randomly pick from the events defined there and send them to Flume. At the same time it will intermix some random non-audit events.
 
 To run this sample:
+
 . Run `mvn install` on the `log4j-samples-flume-common` project.
 . Download and install https://flume.apache.org/download.html[Apache Flume].
 . Copy the link:src/main/resources/flume/conf/flume-conf.properties[flume-conf.properties] to the `conf` directory of where Flume was installed.
@@ -35,6 +36,7 @@ bin/flume-ng agent -n agent -c conf -f conf/flume-conf.properties
 Starting FlumeAvroManager FlumeAvro[localhost:8800]
 ----
 in the Jetty log and that there are no exceptions and also by seeing something like
++
 ----
 /127.0.0.1:53351 => /127.0.0.1:8800] OPEN
 ----
