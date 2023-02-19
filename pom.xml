@@ -36,6 +36,7 @@
   <url>http://logging.apache.org/log4j/2.x</url>
 
   <modules>
+    <module>log4j-samples-asynclogger</module>
     <module>log4j-samples-configuration</module>
     <module>log4j-samples-flume-common</module>
     <module>log4j-samples-flume-embedded</module>
