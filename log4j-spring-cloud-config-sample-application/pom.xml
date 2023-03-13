@@ -29,9 +29,6 @@
   <packaging>jar</packaging>
 
   <name>Apache Log4j Samples: Spring Cloud Config App</name>
-  <properties>
-    <revision>2.19.1-SNAPSHOT</revision>
-  </properties>
 
   <dependencies>
 

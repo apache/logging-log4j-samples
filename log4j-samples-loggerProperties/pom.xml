@@ -26,9 +26,7 @@
   <artifactId>log4j-samples-loggerProperties</artifactId>
   <packaging>jar</packaging>
   <name>Apache Log4j Samples: LoggerProperties</name>
-  <properties>
-    <revision>2.19.1-SNAPSHOT</revision>
-  </properties>
+
   <dependencies>
 
     <dependency>

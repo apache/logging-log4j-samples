@@ -26,9 +26,6 @@
   <artifactId>log4j-samples-flume-remote</artifactId>
   <packaging>war</packaging>
   <name>Apache Log4j Samples: Flume - Remote</name>
-  <properties>
-    <revision>2.19.1-SNAPSHOT</revision>
-  </properties>
   <dependencies>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>

@@ -31,10 +31,6 @@
   <name>Apache Log4j Samples: Spring Cloud Config Server</name>
   <description>Sample Spring Cloud Config Server</description>
 
-  <properties>
-    <revision>2.19.1-SNAPSHOT</revision>
-  </properties>
-
   <dependencies>
 
     <dependency>
