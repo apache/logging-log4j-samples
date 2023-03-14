@@ -65,7 +65,7 @@
     <!-- project version -->
     <revision>2.20.1-SNAPSHOT</revision>
     <snakeyaml.version>1.33</snakeyaml.version>
-    <spotless-maven-plugin.version>2.34.0</spotless-maven-plugin.version>
+    <spotless-maven-plugin.version>2.35.0</spotless-maven-plugin.version>
     <spring-boot.version>2.7.9</spring-boot.version>
     <spring-cloud.version>2021.0.6</spring-cloud.version>
     <!-- Used in parent POM -->
