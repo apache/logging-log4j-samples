@@ -53,7 +53,7 @@
     <flume.version>1.11.0</flume.version>
     <guava.version>31.1-jre</guava.version>
     <jackson.version>2.14.2</jackson.version>
-    <jetty.version>10.0.14</jetty.version>
+    <jetty.version>10.0.15</jetty.version>
     <junit.version>5.9.0</junit.version>
     <kotlin.version>1.8.20</kotlin.version>
     <kubernetes-client.version>6.5.1</kubernetes-client.version>
