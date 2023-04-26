@@ -55,7 +55,7 @@
     <jackson.version>2.15.0</jackson.version>
     <jetty.version>10.0.15</jetty.version>
     <junit.version>5.9.0</junit.version>
-    <kotlin.version>1.8.20</kotlin.version>
+    <kotlin.version>1.8.21</kotlin.version>
     <kubernetes-client.version>6.5.1</kubernetes-client.version>
     <log4j2.version>2.20.0</log4j2.version>
     <maven.compiler.release>8</maven.compiler.release>
