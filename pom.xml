@@ -51,7 +51,7 @@
     <disruptor.version>3.4.4</disruptor.version>
     <flatten-maven-plugin.version>1.5.0</flatten-maven-plugin.version>
     <flume.version>1.11.0</flume.version>
-    <guava.version>32.0.1-jre</guava.version>
+    <guava.version>32.1.0-jre</guava.version>
     <jackson.version>2.15.2</jackson.version>
     <jetty.version>10.0.15</jetty.version>
     <junit.version>5.9.0</junit.version>
