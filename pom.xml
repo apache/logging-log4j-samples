@@ -67,7 +67,7 @@
     <snakeyaml.version>2.0</snakeyaml.version>
     <spotless-maven-plugin.version>2.37.0</spotless-maven-plugin.version>
     <spring-boot.version>2.7.13</spring-boot.version>
-    <spring-cloud.version>2021.0.7</spring-cloud.version>
+    <spring-cloud.version>2021.0.8</spring-cloud.version>
     <!-- Used in parent POM -->
     <surefire.version>3.0.0-M9</surefire.version>
     <xml-maven-plugin.version>1.1.0</xml-maven-plugin.version>
