@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Licensed to the Apache Software Foundation (ASF) under one or more
- contributor license agreements.  See the NOTICE file distributed with
- this work for additional information regarding copyright ownership.
- The ASF licenses this file to You under the Apache License, Version 2.0
- (the "License"); you may not use this file except in compliance with
- the License.  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  ~ Licensed to the Apache Software Foundation (ASF) under one or more
+  ~ contributor license agreements.  See the NOTICE file distributed with
+  ~ this work for additional information regarding copyright ownership.
+  ~ The ASF licenses this file to you under the Apache License, Version 2.0
+  ~ (the "License"); you may not use this file except in compliance with
+  ~ the License.  You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>org.apache.logging</groupId>
     <artifactId>logging-parent</artifactId>
-    <version>8</version>
-    <relativePath/>
+    <version>10.0.0</version>
+    <relativePath />
   </parent>
 
   <groupId>org.apache.logging.log4j.samples</groupId>
@@ -33,7 +32,6 @@
   <packaging>pom</packaging>
 
   <name>Apache Log4j Samples</name>
-  <url>http://logging.apache.org/log4j/2.x</url>
 
   <modules>
     <module>log4j-samples-asynclogger</module>
@@ -47,6 +45,10 @@
   </modules>
 
   <properties>
+    <!-- project version -->
+    <revision>2.20.1-SNAPSHOT</revision>
+
+    <!-- dependency versions -->
     <assertj.version>3.24.2</assertj.version>
     <disruptor.version>3.4.4</disruptor.version>
     <flatten-maven-plugin.version>1.5.0</flatten-maven-plugin.version>
@@ -58,19 +60,11 @@
     <kotlin.version>1.9.10</kotlin.version>
     <kubernetes-client.version>6.8.1</kubernetes-client.version>
     <log4j2.version>2.20.0</log4j2.version>
-    <maven.compiler.release>8</maven.compiler.release>
-    <!-- Using JDK 8 is incompatible with an increasing number of plugins -->
-    <minimalJavaBuildVersion>11</minimalJavaBuildVersion>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <!-- project version -->
-    <revision>2.20.1-SNAPSHOT</revision>
     <snakeyaml.version>2.2</snakeyaml.version>
-    <spotless-maven-plugin.version>2.39.0</spotless-maven-plugin.version>
+    <spotbugs-annotations.version>4.7.3</spotbugs-annotations.version>
     <spring-boot.version>2.7.15</spring-boot.version>
     <spring-cloud.version>2021.0.8</spring-cloud.version>
-    <!-- Used in parent POM -->
-    <surefire.version>3.0.0-M9</surefire.version>
-    <xml-maven-plugin.version>1.1.0</xml-maven-plugin.version>
+
   </properties>
 
   <dependencyManagement>
@@ -210,6 +204,12 @@
         <version>${snakeyaml.version}</version>
       </dependency>
 
+      <dependency>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-annotations</artifactId>
+        <version>${spotbugs-annotations.version}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
@@ -225,108 +225,13 @@
         </plugin>
 
         <plugin>
-          <groupId>com.diffplug.spotless</groupId>
-          <artifactId>spotless-maven-plugin</artifactId>
-          <version>${spotless-maven-plugin.version}</version>
-        </plugin>
-
-        <plugin>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
           <version>${spring-boot.version}</version>
         </plugin>
 
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>xml-maven-plugin</artifactId>
-          <version>${xml-maven-plugin.version}</version>
-        </plugin>
-
       </plugins>
     </pluginManagement>
-
-    <plugins>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>flatten-maven-plugin</artifactId>
-        <version>${flatten-maven-plugin.version}</version>
-        <configuration>
-          <updatePomFile>true</updatePomFile>
-          <flattenMode>resolveCiFriendliesOnly</flattenMode>
-        </configuration>
-        <executions>
-          <execution>
-            <id>flatten-revision</id>
-            <goals>
-              <goal>flatten</goal>
-            </goals>
-            <phase>process-resources</phase>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>enforce-upper-bound-deps</id>
-            <goals>
-              <goal>enforce</goal>
-            </goals>
-            <configuration>
-              <rules>
-                <requireUpperBoundDeps/>
-              </rules>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>com.diffplug.spotless</groupId>
-        <artifactId>spotless-maven-plugin</artifactId>
-        <configuration>
-          <java>
-            <licenseHeader>
-              <file>${maven.multiModuleProjectDirectory}/spotless-license-header.txt</file>
-            </licenseHeader>
-            <trimTrailingWhitespace/>
-            <endWithNewline/>
-            <removeUnusedImports/>
-            <indent>
-              <spaces>true</spaces>
-              <spacesPerTab>4</spacesPerTab>
-            </indent>
-            <importOrder>
-              <order>java,javax,org.apache.logging,,\#java,\#javax,\#org.apache.logging,\#</order>
-            </importOrder>
-          </java>
-          <pom>
-            <sortPom>
-              <expandEmptyElements>false</expandEmptyElements>
-              <keepBlankLines>true</keepBlankLines>
-              <indentSchemaLocation>true</indentSchemaLocation>
-              <sortDependencies>scope,artifactId,groupId</sortDependencies>
-              <sortDependencyExclusions>artifactId,groupId</sortDependencyExclusions>
-              <sortModules>true</sortModules>
-              <sortProperties>true</sortProperties>
-              <sortPlugins>artifactId,groupId</sortPlugins>
-            </sortPom>
-          </pom>
-        </configuration>
-        <executions>
-          <execution>
-            <id>default-spotless</id>
-            <goals>
-              <goal>check</goal>
-            </goals>
-            <phase>verify</phase>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
 
   </build>
 

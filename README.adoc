@@ -16,7 +16,7 @@ limitations under the License.
 ////
 = Apache Log4j Sample
 
-This repository contains several examples to help the user with some of the more advanced Log4j2 features.
+This repository contains several examples to help the user with some of the more advanced Log4j features.
 
 xref:log4j-samples-configuration/README.adoc[`log4j-samples-configuration`]::
 Explains how to use a custom programmatic configuration,
@@ -38,18 +38,11 @@ An example of Spring Boot application that reads its logging configuration from 
 This project generates Java 8 bytecode, though requires Java 11 for compilation.
 You can build and test sources using `./mvnw verify` command.
 
-== Distribution
-
-The artifacts in this repository are available only in source form.
-
 == Support
 
-You can use GitHub Issues for feature requests and bug reports.
-
-To ask questions:
-
-* use the mailto:log4j-user@logging.apache.org[the Log4j user mailing list],
-* or post a question on https://stackoverflow.com/questions/tagged/log4j2[StackOverflow] and mark it with a `log4j2` tag.
+Please keep in mind that this project is intended for internal usage only.
+You can use GitHub Issues for feature requests and bug reports – not questions!
+See https://logging.apache.org/log4j/2.x/support.html[the Log4j support policy] for details.
 
 == License
 

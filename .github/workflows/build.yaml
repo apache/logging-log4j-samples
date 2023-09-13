@@ -15,20 +15,31 @@
 # limitations under the License.
 #
 
-# `.asf.yaml` documentation: https://cwiki.apache.org/confluence/display/INFRA/Git+-+.asf.yaml+features
+name: build
 
-github:
+on:
+  push:
+    # Avoid workflow run for _merged_ `dependabot` PRs.
+    # They were (hopefully!) already tested in PR-triggered workflow.
+    branches-ignore:
+    - "dependabot/**"
+    paths-ignore:
+      - "**.adoc"
+      - "**.md"
+      - "**.txt"
+  pull_request:
+    paths-ignore:
+      - "**.adoc"
+      - "**.md"
+      - "**.txt"
 
-  description: "Use case examples of the Apache Log4j project"
-  homepage: https://logging.apache.org/log4j/2.x/
-  labels:
-    - apache
-    - java
-    - log4j
-    - log4j2
-    - logging
+permissions: read-all
 
-  # Prevent force pushes to primary branches
-  protected_branches:
-    main:
-      required_signatures: true
+jobs:
+
+  build:
+    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@main
+    # Write permissions to allow merge of `dependabot` PRs
+    permissions:
+      contents: write
+      pull-requests: write

@@ -13,16 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Maven
 target/
-# IntelliJ IDEA
-.idea
+.flattened-pom.xml
+/.mvn/wrapper/maven-wrapper.jar
+# IDEA
+.idea/
 *.iml
 *.iws
 # Eclipse
-.classpath
-.flattened-pom.xml
 .project
+.classpath
 .settings/
-# Maven wrapper
-/.mvn/wrapper/maven-wrapper.jar
-
