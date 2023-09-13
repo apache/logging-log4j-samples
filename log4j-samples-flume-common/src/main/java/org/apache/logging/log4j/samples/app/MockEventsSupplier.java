@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.logging.log4j.samples.dto.AuditEvent;
 import org.apache.logging.log4j.samples.events.Alert;
 import org.apache.logging.log4j.samples.events.ChangePassword;
@@ -27,6 +28,7 @@ import org.apache.logging.log4j.samples.events.Login;
 import org.apache.logging.log4j.samples.events.ScheduledTransaction;
 import org.apache.logging.log4j.samples.events.Transfer;
 
+@SuppressFBWarnings("PREDICTABLE_RANDOM")
 public class MockEventsSupplier {
 
     /* This provides random generation */

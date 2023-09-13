@@ -21,6 +21,7 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
@@ -39,6 +40,7 @@ import org.springframework.web.servlet.ModelAndView;
  * The Class LoggingController.
  */
 @Controller
+@SuppressFBWarnings("PREDICTABLE_RANDOM")
 public class LoggingController {
 
     /**
@@ -47,6 +49,7 @@ public class LoggingController {
     private static Logger logger = LogManager.getLogger(LoggingController.class);
 
     private volatile boolean generateLog;
+
     private final Random ran = new Random();
 
     private List<AuditEvent> events;
@@ -108,7 +111,7 @@ public class LoggingController {
 
                         // Write rand number of logs
                         for (int i = 0; i < rand; i++) {
-                            final int eventIndex = (Math.abs(ran.nextInt())) % events.size();
+                            final int eventIndex = ran.nextInt(events.size());
                             final AuditEvent event = events.get(eventIndex);
                             RequestContext.setUserId(member);
                             event.logEvent();

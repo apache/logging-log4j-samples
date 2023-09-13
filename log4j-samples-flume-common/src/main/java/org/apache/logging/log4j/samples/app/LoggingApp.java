@@ -19,6 +19,7 @@ package org.apache.logging.log4j.samples.app;
 import java.util.List;
 import java.util.Random;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
@@ -29,6 +30,7 @@ import org.apache.logging.log4j.samples.dto.RequestContext;
 /**
  * The Class LoggingApp.
  */
+@SuppressFBWarnings("PREDICTABLE_RANDOM")
 public class LoggingApp {
 
     /**
@@ -111,7 +113,7 @@ public class LoggingApp {
 
                 // Write rand number of logs
                 for (int i = 0; i < rand; i++) {
-                    final int eventIndex = (Math.abs(ran.nextInt())) % events.size();
+                    final int eventIndex = ran.nextInt(events.size());
                     final AuditEvent event = events.get(eventIndex);
                     RequestContext.setUserId(member);
                     event.logEvent();

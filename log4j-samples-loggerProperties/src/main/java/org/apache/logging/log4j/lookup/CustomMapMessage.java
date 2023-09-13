@@ -17,6 +17,7 @@
 package org.apache.logging.log4j.lookup;
 
 import java.util.Map;
+import java.util.Objects;
 
 import org.apache.logging.log4j.message.AsynchronouslyFormattable;
 import org.apache.logging.log4j.message.StringMapMessage;
@@ -49,6 +50,26 @@ public class CustomMapMessage extends StringMapMessage {
             return message;
         }
         return super.getFormattedMessage();
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        if (!super.equals(object)) {
+            return false;
+        }
+        CustomMapMessage that = (CustomMapMessage) object;
+        return Objects.equals(message, that.message);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), message);
     }
 
 }

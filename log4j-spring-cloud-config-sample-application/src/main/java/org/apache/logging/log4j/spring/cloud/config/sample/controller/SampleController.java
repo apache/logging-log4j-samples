@@ -23,6 +23,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.util.Timer;
@@ -32,6 +33,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@SuppressFBWarnings({"DM_DEFAULT_ENCODING", "INFORMATION_EXPOSURE_THROUGH_AN_ERROR_MESSAGE"})
 public class SampleController {
 
     private static final Logger LOGGER = LogManager.getLogger(SampleController.class);

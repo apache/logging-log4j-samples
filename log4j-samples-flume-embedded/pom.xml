@@ -109,9 +109,6 @@
               <validating>true</validating>
             </validationSet>
           </validationSets>
-          <catalogs>
-            <catalog>src/main/xml/catalog.xml</catalog>
-          </catalogs>
         </configuration>
         <executions>
           <execution>

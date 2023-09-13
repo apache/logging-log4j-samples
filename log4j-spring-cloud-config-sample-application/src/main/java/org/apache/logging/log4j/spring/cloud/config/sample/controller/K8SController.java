@@ -19,6 +19,7 @@ package org.apache.logging.log4j.spring.cloud.config.sample.controller;
 import java.nio.file.Paths;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.fabric8.kubernetes.api.model.Pod;
 import io.fabric8.kubernetes.client.Config;
 import io.fabric8.kubernetes.client.KubernetesClient;
@@ -36,6 +37,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Test class
  */
 @RestController
+@SuppressFBWarnings("DMI_HARDCODED_ABSOLUTE_FILENAME")
 public class K8SController {
 
     private static final Logger LOGGER = LogManager.getLogger(K8SController.class);
