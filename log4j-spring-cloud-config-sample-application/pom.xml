@@ -184,4 +184,23 @@
     </plugins>
   </build>
 
+  <profiles>
+
+    <!-- Disable `spring-boot:repackage` in CI, since it doesn't produce reproducible artifacts.
+         This issue was reported earlier and (claimed to be) fixed in 2.7.10: https://github.com/spring-projects/spring-boot/issues/34424
+         Yet the fix doesn't help in our case. -->
+    <profile>
+      <id>spring-boot-repackage-toggle</id>
+      <activation>
+        <property>
+          <name>CI</name>
+        </property>
+      </activation>
+      <properties>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+      </properties>
+    </profile>
+
+  </profiles>
+
 </project>
