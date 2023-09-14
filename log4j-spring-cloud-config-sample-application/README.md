@@ -24,7 +24,8 @@ project. The log4j2.xml file is located in the config-repo directory in that pro
 This sample packages the application in a docker container that is packaged with rabbit-mq (to allow dynamic updates
 from Spring Cloud Config), fluent-bit (to test as a log forwarder), Apache Flume (to test as a log forwarder), and
 Apache Kafka also as a log forwarder. It also installs Socat, a proxy to allow access to the Docker REST API.
-###Prerequisites
+
+### Prerequisites
 Note: This guide assumes you already have docker installed. If you do not you may either use homebrew to install
 it or follow the instructions at https://docs.docker.com/docker-for-mac/install/.
 
