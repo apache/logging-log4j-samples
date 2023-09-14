@@ -190,10 +190,10 @@
          This issue was reported earlier and (claimed to be) fixed in 2.7.10: https://github.com/spring-projects/spring-boot/issues/34424
          Yet the fix doesn't help in our case. -->
     <profile>
-      <id>spring-boot-repackage-toggle</id>
+      <id>spring-boot-repackage-disabler</id>
       <activation>
         <property>
-          <name>CI</name>
+          <name>env.CI</name>
         </property>
       </activation>
       <properties>
