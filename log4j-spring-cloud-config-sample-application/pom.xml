@@ -29,6 +29,16 @@
 
   <name>Apache Log4j Samples: Spring Cloud Config App</name>
 
+  <properties>
+
+    <!-- `spring-boot:repackage` doesn't generate reproducible artifacts when `project.build.outputTimestamp` is set to `0`, which is inherited.
+         Hence, we are switching to a non-zero value.
+         There was an earlier reproducibility issue reported: https://github.com/spring-projects/spring-boot/issues/34424
+         Though apparently the fix isn't complete. -->
+    <project.build.outputTimestamp>2023-09-14T15:03:45Z</project.build.outputTimestamp>
+
+  </properties>
+
   <dependencies>
 
     <!-- Required for Async Loggers -->
@@ -183,24 +193,5 @@
 
     </plugins>
   </build>
-
-  <profiles>
-
-    <!-- Disable `spring-boot:repackage` in CI, since it doesn't produce reproducible artifacts.
-         This issue was reported earlier and (claimed to be) fixed in 2.7.10: https://github.com/spring-projects/spring-boot/issues/34424
-         Yet the fix doesn't help in our case. -->
-    <profile>
-      <id>spring-boot-repackage-disabler</id>
-      <activation>
-        <property>
-          <name>env.CI</name>
-        </property>
-      </activation>
-      <properties>
-        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-      </properties>
-    </profile>
-
-  </profiles>
 
 </project>
