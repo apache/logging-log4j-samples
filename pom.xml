@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.apache.logging</groupId>
     <artifactId>logging-parent</artifactId>
-    <version>10.0.0</version>
+    <version>10.1.1</version>
     <relativePath />
   </parent>
 
@@ -45,6 +45,7 @@
   </modules>
 
   <properties>
+
     <!-- project version -->
     <revision>2.20.1-SNAPSHOT</revision>
 
