@@ -61,6 +61,7 @@
     <kotlin.version>1.9.10</kotlin.version>
     <kubernetes-client.version>6.9.0</kubernetes-client.version>
     <log4j2.version>2.20.0</log4j2.version>
+    <slf4j.version>1.7.36</slf4j.version>
     <snakeyaml.version>2.2</snakeyaml.version>
     <spotbugs-annotations.version>4.7.3</spotbugs-annotations.version>
     <spring-boot.version>2.7.16</spring-boot.version>
@@ -209,6 +210,12 @@
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-annotations</artifactId>
         <version>${spotbugs-annotations.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
       </dependency>
 
     </dependencies>
