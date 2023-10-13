@@ -63,7 +63,7 @@
     <log4j2.version>2.20.0</log4j2.version>
     <slf4j.version>2.0.9</slf4j.version>
     <snakeyaml.version>2.2</snakeyaml.version>
-    <spotbugs-annotations.version>4.7.3</spotbugs-annotations.version>
+    <spotbugs-annotations.version>4.8.0</spotbugs-annotations.version>
     <spring-boot.version>2.7.16</spring-boot.version>
     <spring-cloud.version>2021.0.8</spring-cloud.version>
 
