@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://logging.apache.org/log4j/changelog"
-       xsi:schemaLocation="http://logging.apache.org/log4j/changelog https://logging.apache.org/log4j/changelog-0.1.1.xsd"
+       xsi:schemaLocation="http://logging.apache.org/log4j/changelog https://logging.apache.org/log4j/changelog-0.1.2.xsd"
        type="changed">
-<author id="github:dependabot"/>
-  <description format="asciidoc">Update `org.springframework.boot:spring-boot-starter-parent` to version `2.7.16`</description>
+  <issue id="78" link="https://github.com/apache/logging-log4j-samples/pull/78"/>
+  <author id="github:dependabot"/>
+  <description format="asciidoc">Update `org.springframework.boot:spring-boot-starter-parent` to version `2.7.17`</description>
 </entry>
