@@ -39,6 +39,7 @@
     <module>log4j-samples-flume-common</module>
     <module>log4j-samples-flume-embedded</module>
     <module>log4j-samples-flume-remote</module>
+    <module>log4j-samples-jlink</module>
     <module>log4j-samples-loggerProperties</module>
     <module>log4j-spring-cloud-config-sample-application</module>
     <module>log4j-spring-cloud-config-sample-server</module>
