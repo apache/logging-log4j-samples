@@ -27,7 +27,7 @@ Explains how to use an embedded Flume agent to send logs to https://flume.apache
 xref:log4j-samples-flume-remote/README.adoc[`log4j-samples-flume-remote`]::
 Explains how to send logs to https://flume.apache.org[Apache Flume],
 
-xref:log4j-samples-jlink/README.md[`log4j-samples-jlink`]::
+xref:log4j-samples-jlink/README.adoc[`log4j-samples-jlink`]::
 An example of JLink custom JRE.
 
 xref:log4j-samples-loggerProperties/README.adoc[`log4j-samples-loggerProperties`]::
