@@ -24,7 +24,7 @@ public class Main {
 
     private static final Logger logger = LogManager.getLogger();
 
-    public void main(final String[] args) {
+    public static void main(final String[] args) {
         logger.info("Starting Log4j JLink Sample...");
         if (args.length == 0) {
             logger.warn("Please add your name as command line parameter.");
