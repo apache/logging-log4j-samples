@@ -48,7 +48,7 @@
   <properties>
 
     <!-- project version -->
-    <revision>2.20.1-SNAPSHOT</revision>
+    <revision>2.22.0-SNAPSHOT</revision>
 
     <!-- dependency versions -->
     <assertj.version>3.24.2</assertj.version>
@@ -61,7 +61,7 @@
     <junit.version>5.9.0</junit.version>
     <kotlin.version>1.9.10</kotlin.version>
     <kubernetes-client.version>6.9.0</kubernetes-client.version>
-    <log4j2.version>2.20.0</log4j2.version>
+    <log4j2.version>2.22.0-SNAPSHOT</log4j2.version>
     <slf4j.version>2.0.9</slf4j.version>
     <snakeyaml.version>2.2</snakeyaml.version>
     <spring-boot.version>2.7.17</spring-boot.version>
