@@ -59,7 +59,7 @@
     <jackson.version>2.15.3</jackson.version>
     <jetty.version>10.0.17</jetty.version>
     <junit.version>5.9.0</junit.version>
-    <kotlin.version>1.9.10</kotlin.version>
+    <kotlin.version>1.9.20</kotlin.version>
     <kubernetes-client.version>6.9.0</kubernetes-client.version>
     <log4j2.version>2.22.0-SNAPSHOT</log4j2.version>
     <slf4j.version>2.0.9</slf4j.version>
