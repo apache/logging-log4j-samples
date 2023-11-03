@@ -50,6 +50,12 @@
     <!-- project version -->
     <revision>2.22.0-SNAPSHOT</revision>
 
+    <!-- Some samples require JDK 9+ -->
+    <minimalJavaBuildVersion>11</minimalJavaBuildVersion>
+    <maven.compiler.release>11</maven.compiler.release>
+    <maven.compiler.source />
+    <maven.compiler.target />
+
     <!-- dependency versions -->
     <assertj.version>3.24.2</assertj.version>
     <disruptor.version>3.4.4</disruptor.version>

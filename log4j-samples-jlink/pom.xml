@@ -28,7 +28,6 @@
   <name>Apache Log4j Samples: JLink custom JRE</name>
 
   <properties>
-    <maven.compiler.release>17</maven.compiler.release>
     <!--
       ~ Disables reproducibility check until this is closed:
       ~

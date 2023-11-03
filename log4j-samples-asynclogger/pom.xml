@@ -27,10 +27,6 @@
   <packaging>jar</packaging>
   <name>Apache Log4j Samples: Async Logger</name>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
