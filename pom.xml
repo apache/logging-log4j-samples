@@ -236,6 +236,21 @@
         </plugin>
 
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-artifact-plugin</artifactId>
+          <configuration>
+            <!--
+              ~ Disables reproducibility check until this is closed:
+              ~
+              ~   https://issues.apache.org/jira/browse/MJLINK-75
+              -->
+            <skipModules>
+              <skipModule>org.apache.logging.log4j.samples/log4j-samples-jlink*</skipModule>
+            </skipModules>
+          </configuration>
+        </plugin>
+
+        <plugin>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
           <version>${spring-boot.version}</version>
