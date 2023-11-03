@@ -73,6 +73,9 @@
     <spring-boot.version>2.7.17</spring-boot.version>
     <spring-cloud.version>2021.0.8</spring-cloud.version>
 
+    <!-- plugin version -->
+    <!-- TODO: remove when we upgrade to `logging-parent` 10.3.0 -->
+    <maven-artifact-plugin.version>3.5.0</maven-artifact-plugin.version>
   </properties>
 
   <dependencyManagement>
