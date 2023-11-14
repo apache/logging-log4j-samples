@@ -24,28 +24,26 @@ import java.nio.charset.Charset;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
-
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
-
 import org.apache.logging.log4j.LoggingException;
 import org.apache.logging.log4j.core.AbstractLifeCycle;
-import org.apache.logging.log4j.core.LifeCycle2;
+import org.apache.logging.log4j.core.LifeCycle;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.LogEventListener;
-import org.apache.logging.log4j.core.net.JndiManager;
 import org.apache.logging.log4j.jms.appender.JmsAppender;
 import org.apache.logging.log4j.jms.appender.JmsManager;
+import org.apache.logging.log4j.jndi.JndiManager;
 
 /**
  * LogEventListener server that receives LogEvents over a JMS {@link javax.jms.Destination}.
  *
  * @since 2.1
  */
-public class JmsServer extends LogEventListener implements MessageListener, LifeCycle2 {
+public class JmsServer extends LogEventListener implements MessageListener, LifeCycle {
 
     private final AtomicReference<State> state = new AtomicReference<>(State.INITIALIZED);
     private final JmsManager jmsManager;
