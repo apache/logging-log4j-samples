@@ -29,6 +29,7 @@ import java.util.List;
 import org.apache.logging.log4j.core.config.ConfigurationFactory;
 import org.apache.logging.log4j.core.parser.ParseException;
 import org.apache.logging.log4j.core.tools.picocli.CommandLine;
+import org.apache.logging.log4j.plugins.SingletonFactory;
 
 /**
  * Listens for Log4j events on a datagram socket and passes them on to Log4j.
@@ -48,8 +49,8 @@ public class UdpSocketServer<T extends InputStream> extends AbstractSocketServer
      * @throws IOException
      *             if an I/O error occurs when opening the socket.
      */
-    public static UdpSocketServer<InputStream> createJsonSocketServer(final int port) throws IOException {
-        return new UdpSocketServer<>(port, new JsonInputStreamLogEventBridge());
+    public static UdpSocketServer<InputStream> createJsonSocketServer(final int port, final String configLocation) throws IOException {
+        return new UdpSocketServer<>(port, configLocation, new JsonInputStreamLogEventBridge());
     }
 
     /**
@@ -61,8 +62,8 @@ public class UdpSocketServer<T extends InputStream> extends AbstractSocketServer
      * @throws IOException
      *             if an I/O error occurs when opening the socket.
      */
-    public static UdpSocketServer<InputStream> createXmlSocketServer(final int port) throws IOException {
-        return new UdpSocketServer<>(port, new XmlInputStreamLogEventBridge());
+    public static UdpSocketServer<InputStream> createXmlSocketServer(final int port, final String configLocation) throws IOException {
+        return new UdpSocketServer<>(port, configLocation, new XmlInputStreamLogEventBridge());
     }
 
     /**
@@ -79,18 +80,22 @@ public class UdpSocketServer<T extends InputStream> extends AbstractSocketServer
             CommandLine.usage(cla, System.err);
             return;
         }
-        if (cla.getConfigLocation() != null) {
-            ConfigurationFactory.setConfigurationFactory(new ServerConfigurationFactory(cla.getConfigLocation()));
-        }
-        final UdpSocketServer<InputStream> socketServer = UdpSocketServer
-                .createJsonSocketServer(cla.getPort());
+        final UdpSocketServer<InputStream> socketServer =
+                UdpSocketServer.createJsonSocketServer(cla.getPort(), cla.getConfigLocation());
         final Thread serverThread = socketServer.startNewThread();
         if (cla.isInteractive()) {
             socketServer.awaitTermination(serverThread);
         }
     }
 
+    @SingletonFactory
+    public ConfigurationFactory configurationFactory() {
+        return new ServerConfigurationFactory(configLocation);
+    }
+
     private final DatagramSocket datagramSocket;
+
+    private final String configLocation;
 
     // max size so we only have to deal with one packet
     private final int maxBufferSize = 1024 * 65 + 1024;
@@ -104,9 +109,10 @@ public class UdpSocketServer<T extends InputStream> extends AbstractSocketServer
      * @throws IOException
      *             If an error occurs.
      */
-    public UdpSocketServer(final int port, final LogEventBridge<T> logEventInput) throws IOException {
+    public UdpSocketServer(final int port, final String configLocation, final LogEventBridge<T> logEventInput) throws IOException {
         super(port, logEventInput);
         this.datagramSocket = new DatagramSocket(port);
+        this.configLocation = configLocation;
     }
 
     /**

@@ -30,12 +30,12 @@ import org.apache.logging.log4j.core.net.ssl.SslConfiguration;
 public class SecureTcpSocketServer<T extends InputStream> extends TcpSocketServer<T> {
 
     public static SecureTcpSocketServer<InputStream> createJsonServer(final int port, final SslConfiguration sslConfiguration) throws IOException {
-        return new SecureTcpSocketServer<>(port, new JsonInputStreamLogEventBridge(), sslConfiguration);
+        return new SecureTcpSocketServer<>(port, null, new JsonInputStreamLogEventBridge(), sslConfiguration);
     }
 
-    public SecureTcpSocketServer(final int port, final LogEventBridge<T> logEventInput,
+    public SecureTcpSocketServer(final int port, final String configLocation, final LogEventBridge<T> logEventInput,
             final SslConfiguration sslConfig) throws IOException {
-        super(port, logEventInput, sslConfig.getSslServerSocketFactory().createServerSocket(port));
+        super(port, configLocation, logEventInput, sslConfig.getSslServerSocketFactory().createServerSocket(port));
     }
 
 }
