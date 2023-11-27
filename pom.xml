@@ -75,7 +75,7 @@
     <snakeyaml.version>2.2</snakeyaml.version>
     <spring-boot.version>2.7.18</spring-boot.version>
     <spring-cloud.version>2021.0.8</spring-cloud.version>
-    <spring-framework.version>5.3.31</spring-framework.version>
+    <spring-framework.version>6.1.1</spring-framework.version>
 
     <!-- plugin version -->
     <!-- TODO: remove when we upgrade to `logging-parent` 10.3.0 -->
