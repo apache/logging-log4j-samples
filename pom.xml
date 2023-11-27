@@ -48,8 +48,9 @@
 
   <properties>
 
-    <!-- project version -->
-    <revision>2.22.0-SNAPSHOT</revision>
+    <!-- This project contains only samples and aims no releases.
+         Hence, we use a fake version and DO NOT CHANGE IT! -->
+    <revision>0.0.0-SNAPSHOT</revision>
 
     <!-- Some samples require JDK 9+ -->
     <minimalJavaBuildVersion>11</minimalJavaBuildVersion>
@@ -70,7 +71,7 @@
     <junit.version>5.9.0</junit.version>
     <kotlin.version>1.9.10</kotlin.version>
     <kubernetes-client.version>6.9.0</kubernetes-client.version>
-    <log4j2.version>2.22.0-SNAPSHOT</log4j2.version>
+    <log4j2.version>2.22.0</log4j2.version>
     <slf4j.version>2.0.9</slf4j.version>
     <snakeyaml.version>2.2</snakeyaml.version>
     <spring-boot.version>2.7.18</spring-boot.version>
