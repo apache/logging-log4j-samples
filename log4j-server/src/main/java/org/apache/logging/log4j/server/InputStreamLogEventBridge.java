@@ -19,7 +19,6 @@ package org.apache.logging.log4j.server;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
-
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.LogEventListener;
 import org.apache.logging.log4j.core.parser.ParseException;
@@ -39,14 +38,15 @@ public abstract class InputStreamLogEventBridge extends AbstractLogEventBridge<I
 
     private final TextLogEventParser parser;
 
-    public InputStreamLogEventBridge(final TextLogEventParser parser, final int bufferSize, final Charset charset, final String eventEndMarker) {
+    public InputStreamLogEventBridge(
+            final TextLogEventParser parser, final int bufferSize, final Charset charset, final String eventEndMarker) {
         this.bufferSize = bufferSize;
         this.charset = charset;
         this.eventEndMarker = eventEndMarker;
         this.parser = parser;
     }
 
-    abstract protected int[] getEventIndices(final String text, int beginIndex);
+    protected abstract int[] getEventIndices(final String text, int beginIndex);
 
     @Override
     public void logEvents(final InputStream inputStream, final LogEventListener logEventListener)
@@ -104,5 +104,4 @@ public abstract class InputStreamLogEventBridge extends AbstractLogEventBridge<I
         return "InputStreamLogEventBridge [bufferSize=" + bufferSize + ", charset=" + charset + ", eventEndMarker="
                 + eventEndMarker + ", parser=" + parser + "]";
     }
-
 }

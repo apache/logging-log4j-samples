@@ -39,7 +39,8 @@ public class JmsQueueReceiver extends AbstractJmsReceiver {
     @Override
     protected void usage() {
         System.err.println("Wrong number of arguments.");
-        System.err.println("Usage: java " + JmsQueueReceiver.class.getName()
-            + " QueueConnectionFactoryBindingName QueueBindingName username password [jndiPropertyKey jndiPropertyValue]*");
+        System.err.println(
+                "Usage: java " + JmsQueueReceiver.class.getName()
+                        + " QueueConnectionFactoryBindingName QueueBindingName username password [jndiPropertyKey jndiPropertyValue]*");
     }
 }

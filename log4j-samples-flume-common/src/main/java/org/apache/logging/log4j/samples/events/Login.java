@@ -21,7 +21,6 @@ import org.apache.logging.log4j.samples.dto.AuditEvent;
 /**
  * Member logged in successfully.
  */
-
 public interface Login extends AuditEvent {
 
     /**
@@ -44,5 +43,4 @@ public interface Login extends AuditEvent {
      * @param startPageOption Chosen start page destination for IB login.
      */
     void setStartPageOption(String startPageOption);
-
 }

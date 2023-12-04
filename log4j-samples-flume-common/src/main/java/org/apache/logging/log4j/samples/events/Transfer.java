@@ -22,7 +22,6 @@ import org.apache.logging.log4j.samples.dto.Constraint;
 /**
  * Member requested transfer.
  */
-
 public interface Transfer extends AuditEvent {
 
     /**
@@ -168,6 +167,4 @@ public interface Transfer extends AuditEvent {
      * @param type Type of event, bill payment, balance, application, or attribute. For bill pay, type of payment (check, electronic)
      */
     void setType(String type);
-
-
 }

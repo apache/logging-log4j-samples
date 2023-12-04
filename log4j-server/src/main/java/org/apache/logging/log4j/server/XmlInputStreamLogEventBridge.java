@@ -18,7 +18,6 @@ package org.apache.logging.log4j.server;
 
 import java.io.InputStream;
 import java.nio.charset.Charset;
-
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.jackson.xml.parser.XmlLogEventParser;
 
@@ -48,7 +47,6 @@ public class XmlInputStreamLogEventBridge extends InputStreamLogEventBridge {
             startLen = EVENT_START_NS_N.length();
         }
         final int end = start < 0 ? -1 : text.indexOf(EVENT_END, start + startLen);
-        return new int[] { start, end };
+        return new int[] {start, end};
     }
-
 }

@@ -23,7 +23,6 @@ import java.io.InputStream;
 import java.io.OptionalDataException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-
 import org.apache.logging.log4j.core.config.ConfigurationFactory;
 import org.apache.logging.log4j.core.parser.ParseException;
 import org.apache.logging.log4j.core.tools.picocli.CommandLine;
@@ -47,7 +46,8 @@ public class UdpSocketServer<T extends InputStream> extends AbstractSocketServer
      * @throws IOException
      *             if an I/O error occurs when opening the socket.
      */
-    public static UdpSocketServer<InputStream> createJsonSocketServer(final int port, final String configLocation) throws IOException {
+    public static UdpSocketServer<InputStream> createJsonSocketServer(final int port, final String configLocation)
+            throws IOException {
         return new UdpSocketServer<>(port, configLocation, new JsonInputStreamLogEventBridge());
     }
 
@@ -60,7 +60,8 @@ public class UdpSocketServer<T extends InputStream> extends AbstractSocketServer
      * @throws IOException
      *             if an I/O error occurs when opening the socket.
      */
-    public static UdpSocketServer<InputStream> createXmlSocketServer(final int port, final String configLocation) throws IOException {
+    public static UdpSocketServer<InputStream> createXmlSocketServer(final int port, final String configLocation)
+            throws IOException {
         return new UdpSocketServer<>(port, configLocation, new XmlInputStreamLogEventBridge());
     }
 
@@ -107,7 +108,8 @@ public class UdpSocketServer<T extends InputStream> extends AbstractSocketServer
      * @throws IOException
      *             If an error occurs.
      */
-    public UdpSocketServer(final int port, final String configLocation, final LogEventBridge<T> logEventInput) throws IOException {
+    public UdpSocketServer(final int port, final String configLocation, final LogEventBridge<T> logEventInput)
+            throws IOException {
         super(port, logEventInput);
         this.datagramSocket = new DatagramSocket(port);
         this.configLocation = configLocation;
@@ -127,7 +129,8 @@ public class UdpSocketServer<T extends InputStream> extends AbstractSocketServer
                 final byte[] buf = new byte[maxBufferSize];
                 final DatagramPacket packet = new DatagramPacket(buf, buf.length);
                 datagramSocket.receive(packet);
-                final ByteArrayInputStream bais = new ByteArrayInputStream(packet.getData(), packet.getOffset(), packet.getLength());
+                final ByteArrayInputStream bais =
+                        new ByteArrayInputStream(packet.getData(), packet.getOffset(), packet.getLength());
                 logEventInput.logEvents(logEventInput.wrapStream(bais), this);
             } catch (final OptionalDataException e) {
                 if (datagramSocket.isClosed()) {
@@ -159,7 +162,7 @@ public class UdpSocketServer<T extends InputStream> extends AbstractSocketServer
     @Override
     public void shutdown() {
         this.setActive(false);
-        //Thread.currentThread().interrupt();
+        // Thread.currentThread().interrupt();
         datagramSocket.close();
     }
 

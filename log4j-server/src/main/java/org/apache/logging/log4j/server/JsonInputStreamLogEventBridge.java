@@ -18,7 +18,6 @@ package org.apache.logging.log4j.server;
 
 import java.io.InputStream;
 import java.nio.charset.Charset;
-
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.jackson.json.parser.JsonLogEventParser;
 import org.apache.logging.log4j.util.Chars;
@@ -28,7 +27,7 @@ import org.apache.logging.log4j.util.Chars;
  */
 public class JsonInputStreamLogEventBridge extends InputStreamLogEventBridge {
 
-    private static final int[] END_PAIR = new int[] { END, END };
+    private static final int[] END_PAIR = new int[] {END, END};
     private static final char EVENT_END_MARKER = '}';
     private static final char EVENT_START_MARKER = '{';
     private static final char JSON_ESC = '\\';
@@ -39,8 +38,7 @@ public class JsonInputStreamLogEventBridge extends InputStreamLogEventBridge {
     }
 
     public JsonInputStreamLogEventBridge(final int bufferSize, final Charset charset) {
-        super(new JsonLogEventParser(), bufferSize, charset,
-                String.valueOf(EVENT_END_MARKER));
+        super(new JsonLogEventParser(), bufferSize, charset, String.valueOf(EVENT_END_MARKER));
     }
 
     @Override
@@ -61,29 +59,28 @@ public class JsonInputStreamLogEventBridge extends InputStreamLogEventBridge {
                 inEsc = false;
             } else {
                 switch (c) {
-                case EVENT_START_MARKER:
-                    if (!inStr) {
-                        stack++;
-                    }
-                    break;
-                case EVENT_END_MARKER:
-                    if (!inStr) {
-                        stack--;
-                    }
-                    break;
-                case JSON_STR_DELIM:
-                    inStr = !inStr;
-                    break;
-                case JSON_ESC:
-                    inEsc = true;
-                    break;
+                    case EVENT_START_MARKER:
+                        if (!inStr) {
+                            stack++;
+                        }
+                        break;
+                    case EVENT_END_MARKER:
+                        if (!inStr) {
+                            stack--;
+                        }
+                        break;
+                    case JSON_STR_DELIM:
+                        inStr = !inStr;
+                        break;
+                    case JSON_ESC:
+                        inEsc = true;
+                        break;
                 }
                 if (stack == 0) {
-                    return new int[] { start, i };
+                    return new int[] {start, i};
                 }
             }
         }
         return END_PAIR;
     }
-
 }

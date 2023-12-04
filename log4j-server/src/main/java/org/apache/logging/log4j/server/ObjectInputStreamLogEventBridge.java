@@ -21,7 +21,6 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.Collections;
 import java.util.List;
-
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.LogEventListener;
 import org.apache.logging.log4j.util.FilteredObjectInputStream;
@@ -53,7 +52,7 @@ public class ObjectInputStreamLogEventBridge extends AbstractLogEventBridge<Obje
 
     @Override
     public void logEvents(final ObjectInputStream inputStream, final LogEventListener logEventListener)
-        throws IOException {
+            throws IOException {
         try {
             logEventListener.log((LogEvent) inputStream.readObject());
         } catch (final ClassNotFoundException e) {

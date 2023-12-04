@@ -23,7 +23,5 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ConfigServiceApplicationTest {
 
     @Test
-    public void contextLoads() {
-    }
-
+    public void contextLoads() {}
 }

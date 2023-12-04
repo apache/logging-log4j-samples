@@ -18,7 +18,6 @@ package org.apache.logging.log4j.server;
 
 import java.io.IOException;
 import java.io.InputStream;
-
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.status.StatusLogger;
 
@@ -40,5 +39,4 @@ public abstract class AbstractLogEventBridge<T extends InputStream> implements L
     public T wrapStream(final InputStream inputStream) throws IOException {
         return (T) inputStream;
     }
-
 }

@@ -26,7 +26,6 @@ import java.net.Socket;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-
 import org.apache.logging.log4j.core.config.ConfigurationFactory;
 import org.apache.logging.log4j.core.parser.ParseException;
 import org.apache.logging.log4j.core.tools.picocli.CommandLine;
@@ -49,7 +48,9 @@ public class TcpSocketServer<T extends InputStream> extends AbstractSocketServer
     @Command(name = "TcpSocketServer")
     protected static class CommandLineArguments extends AbstractSocketServer.CommandLineArguments {
 
-        @Option(names = { "--backlog", "-b" }, description = "Server socket backlog. Must be a positive integer.")
+        @Option(
+                names = {"--backlog", "-b"},
+                description = "Server socket backlog. Must be a positive integer.")
         // Same default as ServerSocket
         private int backlog = 50;
 
@@ -124,8 +125,8 @@ public class TcpSocketServer<T extends InputStream> extends AbstractSocketServer
      */
     public static TcpSocketServer<InputStream> createJsonSocketServer(final int port) throws IOException {
         LOGGER.traceEntry(null, port);
-        final TcpSocketServer<InputStream> socketServer = new TcpSocketServer<>(port,
-                null, new JsonInputStreamLogEventBridge());
+        final TcpSocketServer<InputStream> socketServer =
+                new TcpSocketServer<>(port, null, new JsonInputStreamLogEventBridge());
         return LOGGER.traceExit(socketServer);
     }
 
@@ -143,11 +144,12 @@ public class TcpSocketServer<T extends InputStream> extends AbstractSocketServer
      *         if an I/O error occurs when opening the socket.
      * @since 2.9
      */
-    public static TcpSocketServer<InputStream> createJsonSocketServer(final int port, final int backlog,
-            final InetAddress localBindAddress, final String configLocation) throws IOException {
+    public static TcpSocketServer<InputStream> createJsonSocketServer(
+            final int port, final int backlog, final InetAddress localBindAddress, final String configLocation)
+            throws IOException {
         LOGGER.traceEntry(null, port, backlog, localBindAddress);
-        final TcpSocketServer<InputStream> socketServer = new TcpSocketServer<>(port, backlog, localBindAddress,
-                configLocation, new JsonInputStreamLogEventBridge());
+        final TcpSocketServer<InputStream> socketServer = new TcpSocketServer<>(
+                port, backlog, localBindAddress, configLocation, new JsonInputStreamLogEventBridge());
         return LOGGER.traceExit(socketServer);
     }
 
@@ -162,8 +164,8 @@ public class TcpSocketServer<T extends InputStream> extends AbstractSocketServer
      */
     public static TcpSocketServer<InputStream> createXmlSocketServer(final int port) throws IOException {
         LOGGER.traceEntry(null, port);
-        final TcpSocketServer<InputStream> socketServer = new TcpSocketServer<>(port,
-                null, new XmlInputStreamLogEventBridge());
+        final TcpSocketServer<InputStream> socketServer =
+                new TcpSocketServer<>(port, null, new XmlInputStreamLogEventBridge());
         return LOGGER.traceExit(socketServer);
     }
 
@@ -181,12 +183,11 @@ public class TcpSocketServer<T extends InputStream> extends AbstractSocketServer
      *         if an I/O error occurs when opening the socket.
      * @since 2.9
      */
-    public static TcpSocketServer<InputStream> createXmlSocketServer(final int port,
-        final int backlog, final InetAddress localBindAddress
-    ) throws IOException {
+    public static TcpSocketServer<InputStream> createXmlSocketServer(
+            final int port, final int backlog, final InetAddress localBindAddress) throws IOException {
         LOGGER.traceEntry(null, port);
-        final TcpSocketServer<InputStream> socketServer = new TcpSocketServer<>(port, backlog, localBindAddress, null,
-                new XmlInputStreamLogEventBridge());
+        final TcpSocketServer<InputStream> socketServer =
+                new TcpSocketServer<>(port, backlog, localBindAddress, null, new XmlInputStreamLogEventBridge());
         return LOGGER.traceExit(socketServer);
     }
 
@@ -239,7 +240,13 @@ public class TcpSocketServer<T extends InputStream> extends AbstractSocketServer
      * @since 2.7
      */
     @SuppressWarnings("resource")
-    public TcpSocketServer(final int port, final int backlog, final InetAddress localBindAddress, final String configLocation, final LogEventBridge<T> logEventInput) throws IOException {
+    public TcpSocketServer(
+            final int port,
+            final int backlog,
+            final InetAddress localBindAddress,
+            final String configLocation,
+            final LogEventBridge<T> logEventInput)
+            throws IOException {
         this(port, configLocation, logEventInput, new ServerSocket(port, backlog, localBindAddress));
     }
 
@@ -254,7 +261,8 @@ public class TcpSocketServer<T extends InputStream> extends AbstractSocketServer
      *         if an I/O error occurs when opening the socket.
      */
     @SuppressWarnings("resource")
-    public TcpSocketServer(final int port, final String configLocation, final LogEventBridge<T> logEventInput) throws IOException {
+    public TcpSocketServer(final int port, final String configLocation, final LogEventBridge<T> logEventInput)
+            throws IOException {
         this(port, configLocation, logEventInput, new ServerSocket(port));
     }
 
@@ -270,8 +278,11 @@ public class TcpSocketServer<T extends InputStream> extends AbstractSocketServer
      * @throws IOException
      *         if an I/O error occurs when opening the socket.
      */
-    public TcpSocketServer(final int port, final String configLocation, final LogEventBridge<T> logEventInput,
-                           final ServerSocket serverSocket)
+    public TcpSocketServer(
+            final int port,
+            final String configLocation,
+            final LogEventBridge<T> logEventInput,
+            final ServerSocket serverSocket)
             throws IOException {
         super(port, logEventInput);
         this.serverSocket = serverSocket;
@@ -334,7 +345,7 @@ public class TcpSocketServer<T extends InputStream> extends AbstractSocketServer
     public void shutdown() throws IOException {
         final EntryMessage entry = logger.traceEntry();
         setActive(false);
-        //Thread.currentThread().interrupt();
+        // Thread.currentThread().interrupt();
         serverSocket.close();
         logger.traceExit(entry);
     }

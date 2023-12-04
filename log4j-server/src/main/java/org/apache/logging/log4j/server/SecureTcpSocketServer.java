@@ -18,7 +18,6 @@ package org.apache.logging.log4j.server;
 
 import java.io.IOException;
 import java.io.InputStream;
-
 import org.apache.logging.log4j.core.net.ssl.SslConfiguration;
 
 /**
@@ -29,13 +28,21 @@ import org.apache.logging.log4j.core.net.ssl.SslConfiguration;
  */
 public class SecureTcpSocketServer<T extends InputStream> extends TcpSocketServer<T> {
 
-    public static SecureTcpSocketServer<InputStream> createJsonServer(final int port, final SslConfiguration sslConfiguration) throws IOException {
+    public static SecureTcpSocketServer<InputStream> createJsonServer(
+            final int port, final SslConfiguration sslConfiguration) throws IOException {
         return new SecureTcpSocketServer<>(port, null, new JsonInputStreamLogEventBridge(), sslConfiguration);
     }
 
-    public SecureTcpSocketServer(final int port, final String configLocation, final LogEventBridge<T> logEventInput,
-            final SslConfiguration sslConfig) throws IOException {
-        super(port, configLocation, logEventInput, sslConfig.getSslServerSocketFactory().createServerSocket(port));
+    public SecureTcpSocketServer(
+            final int port,
+            final String configLocation,
+            final LogEventBridge<T> logEventInput,
+            final SslConfiguration sslConfig)
+            throws IOException {
+        super(
+                port,
+                configLocation,
+                logEventInput,
+                sslConfig.getSslServerSocketFactory().createServerSocket(port));
     }
-
 }

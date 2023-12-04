@@ -16,12 +16,15 @@
  */
 package org.apache.logging.log4j.server;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.Filter;
@@ -41,10 +44,6 @@ import org.apache.logging.log4j.test.appender.ListAppender;
 import org.junit.After;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 /**
  *
@@ -82,17 +81,17 @@ public abstract class AbstractSocketServerTest {
     protected Layout<String> createJsonLayout() {
         // @formatter: off
         return JsonLayout.newBuilder()
-            .setLocationInfo(true)
-            .setProperties(true)
-            .setPropertiesAsList(false)
-            .setComplete(false)
-            .setCompact(false)
-            .setEventEol(false)
-            .setIncludeStacktrace(true)
-            .build();
+                .setLocationInfo(true)
+                .setProperties(true)
+                .setPropertiesAsList(false)
+                .setComplete(false)
+                .setCompact(false)
+                .setEventEol(false)
+                .setIncludeStacktrace(true)
+                .build();
         // @formatter: on
 
-        //return JsonLayout.createLayout(null, true, true, false, false, false, false, null, null, null, true);
+        // return JsonLayout.createLayout(null, true, true, false, false, false, false, null, null, null, true);
     }
 
     protected abstract Layout<? extends Serializable> createLayout();
@@ -162,12 +161,10 @@ public abstract class AbstractSocketServerTest {
         }
     }
 
-
     @Test
     public void testMessagesWithSpecialChars() throws Exception {
         testServer(MESSAGE_WITH_SPECIAL_CHARS);
     }
-
 
     private void testServer(final int size) throws Exception {
         final String[] messages = new String[size];
@@ -185,7 +182,8 @@ public abstract class AbstractSocketServerTest {
         socketAppender.start();
         final ListAppender listAppender = new ListAppender("Events", serverFilter, null, false, false);
         listAppender.start();
-        final PatternLayout layout = PatternLayout.newBuilder().setPattern("%m %ex%n").build();
+        final PatternLayout layout =
+                PatternLayout.newBuilder().setPattern("%m %ex%n").build();
         final ConsoleAppender console = ConsoleAppender.createDefaultAppenderForLayout(layout);
         final Logger serverLogger = ctx.getLogger(this.getClass().getName());
         serverLogger.addAppender(console);
@@ -216,25 +214,27 @@ public abstract class AbstractSocketServerTest {
         assertNotNull("No event retrieved", events);
         assertEquals("Incorrect number of events received", messages.length, events.size());
         for (int i = 0; i < messages.length; i++) {
-            assertTrue("Incorrect event", events.get(i).getMessage().getFormattedMessage().equals(messages[i]));
+            assertTrue(
+                    "Incorrect event",
+                    events.get(i).getMessage().getFormattedMessage().equals(messages[i]));
         }
     }
 
-    protected SocketAppender createSocketAppender(final Filter socketFilter,
-            final Layout<? extends Serializable> socketLayout) {
+    protected SocketAppender createSocketAppender(
+            final Filter socketFilter, final Layout<? extends Serializable> socketLayout) {
         // @formatter:off
         return SocketAppender.newBuilder()
-        .setProtocol(this.protocol)
-        .setHost("localhost")
-        .setPort(this.port)
-        .setReconnectDelayMillis(-1)
-        .setName("test")
-        .setImmediateFlush(true)
-        .setImmediateFail(false)
-        .setIgnoreExceptions(false)
-        .setLayout(socketLayout).setFilter(socketFilter)
+                .setProtocol(this.protocol)
+                .setHost("localhost")
+                .setPort(this.port)
+                .setReconnectDelayMillis(-1)
+                .setName("test")
+                .setImmediateFlush(true)
+                .setImmediateFail(false)
+                .setIgnoreExceptions(false)
+                .setLayout(socketLayout)
+                .setFilter(socketFilter)
                 .build();
         // @formatter:on
     }
-
 }

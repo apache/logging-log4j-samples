@@ -27,25 +27,24 @@ public class Log4J2AsyncLogger {
 
         Log4J2AsyncLogger myLog = new Log4J2AsyncLogger();
         myLog.getLog("Log4j2 Log");
-
     }
 
-    private void getLog(String param){
+    private void getLog(String param) {
 
         logger.info("This is a info log");
 
         // Previously, need to check the log level log to increase performance
-        if(logger.isDebugEnabled()){
+        if (logger.isDebugEnabled()) {
             logger.debug("This is debug log with param : " + param);
         }
 
-        if(logger.isWarnEnabled()){
+        if (logger.isWarnEnabled()) {
             logger.info("This is warn log with param : " + param);
         }
 
         // In Java 8, No need to check the log level, we can do this
-        while (true) //for test rolling file
-            logger.debug("Hello print {}", () -> getValue());
+        while (true) // for test rolling file
+        logger.debug("Hello print {}", () -> getValue());
     }
 
     static String getValue() {

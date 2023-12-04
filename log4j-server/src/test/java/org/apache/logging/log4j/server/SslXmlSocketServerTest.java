@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.nio.charset.Charset;
-
 import org.apache.logging.log4j.core.Filter;
 import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.LoggerContext;
@@ -41,27 +40,28 @@ public class SslXmlSocketServerTest extends AbstractSocketServerTest {
     private static SslConfiguration sslConfiguration;
 
     private static void initServerSocketFactory() throws StoreConfigurationException {
-        final KeyStoreConfiguration ksc = new KeyStoreConfiguration(TestConstants.KEYSTORE_FILE,
-                TestConstants.KEYSTORE_PWD(), TestConstants.KEYSTORE_TYPE, null);
-        final TrustStoreConfiguration tsc = new TrustStoreConfiguration(TestConstants.TRUSTSTORE_FILE,
-                TestConstants.TRUSTSTORE_PWD(), null, null);
+        final KeyStoreConfiguration ksc = new KeyStoreConfiguration(
+                TestConstants.KEYSTORE_FILE, TestConstants.KEYSTORE_PWD(), TestConstants.KEYSTORE_TYPE, null);
+        final TrustStoreConfiguration tsc =
+                new TrustStoreConfiguration(TestConstants.TRUSTSTORE_FILE, TestConstants.TRUSTSTORE_PWD(), null, null);
         sslConfiguration = SslConfiguration.createSSLConfiguration(null, ksc, tsc);
     }
 
     @Override
-    protected SocketAppender createSocketAppender(final Filter socketFilter,
-            final Layout<? extends Serializable> socketLayout) {
+    protected SocketAppender createSocketAppender(
+            final Filter socketFilter, final Layout<? extends Serializable> socketLayout) {
         // @formatter:off
         return SocketAppender.newBuilder()
-        .setProtocol(this.protocol)
-        .setHost("localhost")
-        .setPort(this.port)
-        .setReconnectDelayMillis(-1)
-        .setName("test")
-        .setImmediateFlush(true)
-        .setImmediateFail(false)
-        .setIgnoreExceptions(false)
-        .setLayout(socketLayout).setFilter(socketFilter)
+                .setProtocol(this.protocol)
+                .setHost("localhost")
+                .setPort(this.port)
+                .setReconnectDelayMillis(-1)
+                .setName("test")
+                .setImmediateFlush(true)
+                .setImmediateFail(false)
+                .setIgnoreExceptions(false)
+                .setLayout(socketLayout)
+                .setFilter(socketFilter)
                 .setSslConfiguration(sslConfiguration)
                 .build();
         // @formatter:on
@@ -72,8 +72,8 @@ public class SslXmlSocketServerTest extends AbstractSocketServerTest {
         LoggerContext.getContext(false).reconfigure();
         initServerSocketFactory();
         // Use a large buffer just to test the code, the UDP test uses a tiny buffer
-        server = new SecureTcpSocketServer<>(PORT_NUM, new XmlInputStreamLogEventBridge(1024 * 100,
-                Charset.defaultCharset()), sslConfiguration);
+        server = new SecureTcpSocketServer<>(
+                PORT_NUM, new XmlInputStreamLogEventBridge(1024 * 100, Charset.defaultCharset()), sslConfiguration);
         thread = server.startNewThread();
     }
 
@@ -99,5 +99,4 @@ public class SslXmlSocketServerTest extends AbstractSocketServerTest {
     protected Layout<String> createLayout() {
         return super.createXmlLayout();
     }
-
 }

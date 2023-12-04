@@ -39,7 +39,8 @@ public class JmsTopicReceiver extends AbstractJmsReceiver {
     @Override
     protected void usage() {
         System.err.println("Wrong number of arguments.");
-        System.err.println("Usage: java " + JmsTopicReceiver.class.getName()
-            + " TopicConnectionFactoryBindingName TopicBindingName username password [jndiPropertyKey jndiPropertyValue]*");
+        System.err.println(
+                "Usage: java " + JmsTopicReceiver.class.getName()
+                        + " TopicConnectionFactoryBindingName TopicBindingName username password [jndiPropertyKey jndiPropertyValue]*");
     }
 }

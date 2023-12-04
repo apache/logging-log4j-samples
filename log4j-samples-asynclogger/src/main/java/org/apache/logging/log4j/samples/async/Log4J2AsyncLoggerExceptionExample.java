@@ -35,5 +35,4 @@ public class Log4J2AsyncLoggerExceptionExample {
     static int getException() throws IllegalArgumentException {
         throw new IllegalArgumentException("Hello, Something Went Wrong. Exception Occured!!");
     }
-
 }

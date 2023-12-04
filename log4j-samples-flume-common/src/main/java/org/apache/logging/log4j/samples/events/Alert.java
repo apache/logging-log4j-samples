@@ -22,7 +22,6 @@ import org.apache.logging.log4j.samples.dto.Constraint;
 /**
  * The user sets up account balance alerts.
  */
-
 public interface Alert extends AuditEvent {
 
     /**

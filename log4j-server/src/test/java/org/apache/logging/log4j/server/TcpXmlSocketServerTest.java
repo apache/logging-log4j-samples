@@ -19,7 +19,6 @@ package org.apache.logging.log4j.server;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
-
 import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.net.Protocol;
@@ -34,8 +33,8 @@ public class TcpXmlSocketServerTest extends AbstractSocketServerTest {
     public static void setupClass() throws Exception {
         LoggerContext.getContext(false).reconfigure();
         // Use a large buffer just to test the code, the UDP test uses a tiny buffer
-        server = new TcpSocketServer<>(PORT_NUM, new XmlInputStreamLogEventBridge(1024 * 100,
-                Charset.defaultCharset()));
+        server =
+                new TcpSocketServer<>(PORT_NUM, new XmlInputStreamLogEventBridge(1024 * 100, Charset.defaultCharset()));
         thread = server.startNewThread();
     }
 
@@ -61,5 +60,4 @@ public class TcpXmlSocketServerTest extends AbstractSocketServerTest {
     protected Layout<String> createLayout() {
         return super.createXmlLayout();
     }
-
 }

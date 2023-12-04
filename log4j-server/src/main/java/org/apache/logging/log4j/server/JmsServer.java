@@ -23,13 +23,11 @@ import java.nio.charset.Charset;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
-
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
-
 import org.apache.logging.log4j.LoggingException;
 import org.apache.logging.log4j.core.AbstractLifeCycle;
 import org.apache.logging.log4j.core.LifeCycle;
@@ -50,14 +48,26 @@ public class JmsServer extends LogEventListener implements MessageListener, Life
     private final JmsManager jmsManager;
     private MessageConsumer messageConsumer;
 
-    public JmsServer(final String connectionFactoryBindingName, final String connectionFactoryName,
-            final String providerURL, final String destinationBindingName, final String username, final char[] password,
+    public JmsServer(
+            final String connectionFactoryBindingName,
+            final String connectionFactoryName,
+            final String providerURL,
+            final String destinationBindingName,
+            final String username,
+            final char[] password,
             final Properties jndiProperties) {
         final String managerName = JmsServer.class.getName() + '@' + JmsServer.class.hashCode();
-        final Properties jndiManager = JndiManager.createProperties(connectionFactoryBindingName, providerURL, null,
-                null, null, jndiProperties);
-        jmsManager = JmsManager.getJmsManager(managerName, jndiManager, connectionFactoryName, destinationBindingName,
-                username, password, false, JmsAppender.Builder.DEFAULT_RECONNECT_INTERVAL_MILLIS);
+        final Properties jndiManager = JndiManager.createProperties(
+                connectionFactoryBindingName, providerURL, null, null, null, jndiProperties);
+        jmsManager = JmsManager.getJmsManager(
+                managerName,
+                jndiManager,
+                connectionFactoryName,
+                destinationBindingName,
+                username,
+                password,
+                false,
+                JmsAppender.Builder.DEFAULT_RECONNECT_INTERVAL_MILLIS);
     }
 
     @Override
@@ -76,7 +86,9 @@ public class JmsServer extends LogEventListener implements MessageListener, Life
                     LOGGER.warn("Expected ObjectMessage to contain LogEvent. Got type {} instead.", body.getClass());
                 }
             } else {
-                LOGGER.warn("Received message of type {} and JMSType {} which cannot be handled.", message.getClass(),
+                LOGGER.warn(
+                        "Received message of type {} and JMSType {} which cannot be handled.",
+                        message.getClass(),
                         message.getJMSType());
             }
         } catch (final JMSException e) {
@@ -85,8 +97,7 @@ public class JmsServer extends LogEventListener implements MessageListener, Life
     }
 
     @Override
-    public void initialize() {
-    }
+    public void initialize() {}
 
     @Override
     public void start() {
@@ -144,5 +155,4 @@ public class JmsServer extends LogEventListener implements MessageListener, Life
             }
         }
     }
-
 }

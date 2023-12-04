@@ -17,7 +17,6 @@
 package org.apache.logging.log4j.server.mom.jms;
 
 import java.util.Properties;
-
 import org.apache.logging.log4j.server.JmsServer;
 
 /**
@@ -27,9 +26,7 @@ import org.apache.logging.log4j.server.JmsServer;
  */
 public abstract class AbstractJmsReceiver {
 
-    class CommandLineArgs {
-
-    }
+    class CommandLineArgs {}
 
     /**
      * Prints out usage information to {@linkplain System#err standard error}.
@@ -58,8 +55,8 @@ public abstract class AbstractJmsReceiver {
         for (int index = 5; index < args.length; index += 2) {
             properties.put(args[index], args[index + 1]);
         }
-        final JmsServer server = new JmsServer(args[0], "ConnectionFactory", args[1], args[2], args[3],
-                args[4].toCharArray(), properties);
+        final JmsServer server = new JmsServer(
+                args[0], "ConnectionFactory", args[1], args[2], args[3], args[4].toCharArray(), properties);
         server.start();
         if (interactive) {
             server.commandLineLoop();

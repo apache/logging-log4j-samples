@@ -16,11 +16,10 @@
  */
 package org.apache.logging.log4j.samples.app;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.logging.log4j.samples.dto.AuditEvent;
 import org.apache.logging.log4j.samples.events.Alert;
 import org.apache.logging.log4j.samples.events.ChangePassword;
@@ -37,7 +36,6 @@ public class MockEventsSupplier {
     public static List<AuditEvent> getAllEvents(final String member) {
 
         final List<AuditEvent> events = new ArrayList<>();
-
 
         final Login login = LogEventFactory.getEvent(Login.class);
         login.setStartPageOption("account summary");
@@ -74,12 +72,11 @@ public class MockEventsSupplier {
         alert.setMember(member);
         events.add(alert);
 
-        final ScheduledTransaction scheduledTransaction = LogEventFactory
-                .getEvent(ScheduledTransaction.class);
+        final ScheduledTransaction scheduledTransaction = LogEventFactory.getEvent(ScheduledTransaction.class);
 
         scheduledTransaction.setAction("add");
         scheduledTransaction.setFromAccount("REPLACE"); // getAccount(mbr,
-                                                        // accounts));
+        // accounts));
         scheduledTransaction.setToAccount("REPLACE"); // "9200000214");
         scheduledTransaction.setAmount("2541");
         scheduledTransaction.setStartDate("20110105");

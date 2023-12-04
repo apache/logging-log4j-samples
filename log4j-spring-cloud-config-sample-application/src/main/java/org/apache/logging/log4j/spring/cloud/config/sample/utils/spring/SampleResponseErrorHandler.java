@@ -17,7 +17,6 @@
 package org.apache.logging.log4j.spring.cloud.config.sample.utils.spring;
 
 import java.io.IOException;
-
 import org.springframework.http.client.ClientHttpResponse;
 
 /**
@@ -30,7 +29,5 @@ public class SampleResponseErrorHandler implements org.springframework.web.clien
     }
 
     @Override
-    public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
-
-    }
+    public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {}
 }

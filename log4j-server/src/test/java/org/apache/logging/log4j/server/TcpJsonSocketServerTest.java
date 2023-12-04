@@ -18,7 +18,6 @@ package org.apache.logging.log4j.server;
 
 import java.io.IOException;
 import java.io.InputStream;
-
 import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.net.Protocol;
@@ -58,5 +57,4 @@ public class TcpJsonSocketServerTest extends AbstractSocketServerTest {
     protected Layout<String> createLayout() {
         return super.createJsonLayout();
     }
-
 }

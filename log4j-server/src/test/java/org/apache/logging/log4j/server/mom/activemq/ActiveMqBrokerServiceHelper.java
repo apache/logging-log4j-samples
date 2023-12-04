@@ -17,7 +17,6 @@
 package org.apache.logging.log4j.server.mom.activemq;
 
 import java.io.IOException;
-
 import org.apache.activemq.broker.BrokerService;
 
 /**
@@ -46,5 +45,4 @@ public class ActiveMqBrokerServiceHelper {
             brokerService.waitUntilStopped();
         }
     }
-
 }

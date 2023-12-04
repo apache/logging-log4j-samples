@@ -25,18 +25,25 @@ import org.junit.rules.RuleChain;
 
 public class JmsQueueReceiverTest {
 
-    private static final AvailablePortSystemPropertyTestRule portRule = AvailablePortSystemPropertyTestRule
-            .create(ActiveMqBrokerServiceRule.PORT_PROPERTY_NAME);
+    private static final AvailablePortSystemPropertyTestRule portRule =
+            AvailablePortSystemPropertyTestRule.create(ActiveMqBrokerServiceRule.PORT_PROPERTY_NAME);
 
-    private static final ActiveMqBrokerServiceRule activeMqBrokerServiceRule = new ActiveMqBrokerServiceRule(
-            JmsQueueReceiverTest.class.getName(), portRule.getName());
+    private static final ActiveMqBrokerServiceRule activeMqBrokerServiceRule =
+            new ActiveMqBrokerServiceRule(JmsQueueReceiverTest.class.getName(), portRule.getName());
 
     @ClassRule
     public static RuleChain ruleChain = RuleChainFactory.create(portRule, activeMqBrokerServiceRule);
 
     @Test
     public void testMain() throws Exception {
-        new JmsQueueReceiver().doMain(false, new String[] { "org.apache.activemq.jndi.ActiveMQInitialContextFactory",
-                "tcp://localhost:" + portRule.getPort(), "testq", "admin", "admin", "queue.testq", "testq" });
+        new JmsQueueReceiver().doMain(false, new String[] {
+            "org.apache.activemq.jndi.ActiveMQInitialContextFactory",
+            "tcp://localhost:" + portRule.getPort(),
+            "testq",
+            "admin",
+            "admin",
+            "queue.testq",
+            "testq"
+        });
     }
 }

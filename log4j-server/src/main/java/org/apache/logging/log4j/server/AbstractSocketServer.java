@@ -29,7 +29,6 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LogEventListener;
@@ -55,19 +54,29 @@ public abstract class AbstractSocketServer<T extends InputStream> extends LogEve
 
     protected static class CommandLineArguments extends BasicCommandLineArguments {
 
-        @Option(names = { "--config", "-c" }, description = "Log4j configuration file location (path or URL).")
+        @Option(
+                names = {"--config", "-c"},
+                description = "Log4j configuration file location (path or URL).")
         private String configLocation;
 
-        @Option(names = { "--interactive", "-i" }, description = "Accepts commands on standard input (\"exit\" is the only command).")
+        @Option(
+                names = {"--interactive", "-i"},
+                description = "Accepts commands on standard input (\"exit\" is the only command).")
         private boolean interactive;
 
-        @Option(names = { "--port", "-p" }, description = "The server port number, or 0 to automatically allocate a port number.")
+        @Option(
+                names = {"--port", "-p"},
+                description = "The server port number, or 0 to automatically allocate a port number.")
         private int port;
 
-        @Option(names = { "--localbindaddress", "-a" }, description = "Server socket local bind address.")
+        @Option(
+                names = {"--localbindaddress", "-a"},
+                description = "Server socket local bind address.")
         private InetAddress localBindAddress;
 
-        @Option(names = {"--classes", "-C"}, description = "Additional classes to allow deserialization")
+        @Option(
+                names = {"--classes", "-C"},
+                description = "Additional classes to allow deserialization")
         private List<String> allowedClasses;
 
         String getConfigLocation() {
@@ -123,8 +132,8 @@ public abstract class AbstractSocketServer<T extends InputStream> extends LogEve
         }
 
         @Override
-        public Configuration getConfiguration(final LoggerContext loggerContext, final String name,
-                final URI configLocation) {
+        public Configuration getConfiguration(
+                final LoggerContext loggerContext, final String name, final URI configLocation) {
             if (Strings.isNotEmpty(path)) {
                 File file = null;
                 ConfigurationSource source = null;
@@ -204,14 +213,13 @@ public abstract class AbstractSocketServer<T extends InputStream> extends LogEve
         while (true) {
             final String line = reader.readLine();
             if (line == null
-                || line.equalsIgnoreCase("quit")
-                || line.equalsIgnoreCase("stop")
-                || line.equalsIgnoreCase("exit")) {
+                    || line.equalsIgnoreCase("quit")
+                    || line.equalsIgnoreCase("stop")
+                    || line.equalsIgnoreCase("exit")) {
                 this.shutdown();
                 serverThread.join();
                 break;
             }
         }
     }
-
 }

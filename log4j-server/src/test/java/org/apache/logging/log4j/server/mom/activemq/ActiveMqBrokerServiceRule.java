@@ -55,19 +55,24 @@ public class ActiveMqBrokerServiceRule implements TestRule {
 
             @Override
             public void evaluate() throws Throwable {
-                final BrokerService broker = ActiveMqBrokerServiceHelper.startBrokerService(brokerName, brokerUrlString,
-                        Integer.parseInt(System.getProperty(portPropertyName)));
-                logger.debug(TestMarkers.TEST_RULE_LIFE_CYCLE, "{} started Apache Active MQ {}",
-                        this.getClass().getSimpleName(), this);
+                final BrokerService broker = ActiveMqBrokerServiceHelper.startBrokerService(
+                        brokerName, brokerUrlString, Integer.parseInt(System.getProperty(portPropertyName)));
+                logger.debug(
+                        TestMarkers.TEST_RULE_LIFE_CYCLE,
+                        "{} started Apache Active MQ {}",
+                        this.getClass().getSimpleName(),
+                        this);
                 try {
                     base.evaluate();
                 } finally {
                     ActiveMqBrokerServiceHelper.stopBrokerService(broker);
-                    logger.debug(TestMarkers.TEST_RULE_LIFE_CYCLE, "{} stopped Apache Active MQ {}",
-                            this.getClass().getSimpleName(), this);
+                    logger.debug(
+                            TestMarkers.TEST_RULE_LIFE_CYCLE,
+                            "{} stopped Apache Active MQ {}",
+                            this.getClass().getSimpleName(),
+                            this);
                 }
             }
-
         };
     }
 
@@ -89,5 +94,4 @@ public class ActiveMqBrokerServiceRule implements TestRule {
         builder.append("]");
         return builder.toString();
     }
-
 }
