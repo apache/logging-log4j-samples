@@ -17,6 +17,7 @@
 package org.apache.logging.log4j.server.mom.jms;
 
 import java.util.Properties;
+
 import org.apache.logging.log4j.server.JmsServer;
 
 /**

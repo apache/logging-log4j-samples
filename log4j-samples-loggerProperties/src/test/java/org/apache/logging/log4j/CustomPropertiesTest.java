@@ -18,6 +18,7 @@ package org.apache.logging.log4j;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
 import org.apache.logging.log4j.lookup.CustomLookup;
 import org.apache.logging.log4j.lookup.CustomMapMessage;
 import org.junit.jupiter.api.Test;

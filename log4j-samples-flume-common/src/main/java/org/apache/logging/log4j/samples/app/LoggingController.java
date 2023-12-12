@@ -16,10 +16,12 @@
  */
 package org.apache.logging.log4j.samples.app;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.List;
 import java.util.Random;
+
 import javax.servlet.http.HttpServletRequest;
+
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;

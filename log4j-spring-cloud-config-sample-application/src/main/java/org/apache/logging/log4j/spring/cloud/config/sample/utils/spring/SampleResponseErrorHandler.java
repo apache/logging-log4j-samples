@@ -17,6 +17,7 @@
 package org.apache.logging.log4j.spring.cloud.config.sample.utils.spring;
 
 import java.io.IOException;
+
 import org.springframework.http.client.ClientHttpResponse;
 
 /**

@@ -19,6 +19,7 @@ package org.apache.logging.log4j.server;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.nio.charset.Charset;
+
 import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.net.Protocol;
