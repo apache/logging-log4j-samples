@@ -72,7 +72,7 @@
     <jetty.version>10.0.17</jetty.version>
     <javax-jms.version>2.0.1</javax-jms.version>
     <junit.version>5.9.0</junit.version>
-    <kotlin.version>1.9.10</kotlin.version>
+    <kotlin.version>1.9.21</kotlin.version>
     <kubernetes-client.version>6.9.0</kubernetes-client.version>
     <log4j2.version>2.22.0</log4j2.version>
     <slf4j.version>2.0.9</slf4j.version>
