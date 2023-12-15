@@ -58,6 +58,9 @@
     <maven.compiler.source />
     <maven.compiler.target />
 
+    <!-- Skip `bnd-baseline-maven-plugin` since this is not deployed -->
+    <bnd.baseline.skip>true</bnd.baseline.skip>
+
     <!-- dependency versions -->
     <assertj.version>3.24.2</assertj.version>
     <disruptor.version>3.4.4</disruptor.version>
