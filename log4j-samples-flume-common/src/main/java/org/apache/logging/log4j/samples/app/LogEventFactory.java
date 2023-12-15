@@ -20,7 +20,6 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-
 import org.apache.logging.log4j.EventLogger;
 import org.apache.logging.log4j.message.StructuredDataMessage;
 import org.apache.logging.log4j.samples.dto.AuditEvent;

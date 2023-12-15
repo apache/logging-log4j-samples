@@ -18,7 +18,6 @@ package org.apache.logging.log4j.server;
 
 import java.io.IOException;
 import java.io.InputStream;
-
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.status.StatusLogger;
 

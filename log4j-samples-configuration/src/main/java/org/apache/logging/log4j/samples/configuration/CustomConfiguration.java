@@ -17,7 +17,6 @@
 package org.apache.logging.log4j.samples.configuration;
 
 import java.io.Serializable;
-
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.Layout;
