@@ -62,7 +62,7 @@
     <bnd.baseline.skip>true</bnd.baseline.skip>
 
     <!-- dependency versions -->
-    <assertj.version>3.25.0</assertj.version>
+    <assertj.version>3.25.1</assertj.version>
     <disruptor.version>3.4.4</disruptor.version>
     <flatten-maven-plugin.version>1.5.0</flatten-maven-plugin.version>
     <flume.version>1.11.0</flume.version>
