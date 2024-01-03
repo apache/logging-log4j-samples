@@ -14,17 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j.core.parser;
+package org.apache.logging.log4j.samples.parser;
 
 import org.apache.logging.log4j.core.LogEvent;
-import org.apache.logging.log4j.core.jackson.Log4jXmlObjectMapper;
 
 /**
- * Parses the output from XmlLayout layout into instances of {@link LogEvent}.
+ * Parses the output from a text based layout into instances of {@link LogEvent}.
  */
-public class XmlLogEventParser extends AbstractJacksonLogEventParser {
+public interface TextLogEventParser extends LogEventParser {
 
-    public XmlLogEventParser() {
-        super(new Log4jXmlObjectMapper());
-    }
+    /**
+     * Parses a String, which is expected to contain exactly one log event.
+     *
+     * @param input  the string
+     *
+     * @return the parsed LogEvent, never {@code null}.
+     * @throws ParseException if the input is malformed and cannot be parsed as a LogEvent
+     */
+    LogEvent parseFrom(String input) throws ParseException;
 }

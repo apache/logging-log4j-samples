@@ -14,17 +14,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j.core.parser;
+package org.apache.logging.log4j.samples.parser;
 
 import org.apache.logging.log4j.core.LogEvent;
-import org.apache.logging.log4j.core.jackson.Log4jYamlObjectMapper;
+import org.apache.logging.log4j.core.jackson.Log4jJsonObjectMapper;
 
 /**
- * Parses the output from YamlLayout layout into instances of {@link LogEvent}.
+ * Parses the output from JsonLayout layout into instances of {@link LogEvent}.
  */
-public class YamlLogEventParser extends AbstractJacksonLogEventParser {
+public class JsonLogEventParser extends AbstractJacksonLogEventParser {
 
-    public YamlLogEventParser() {
-        super(new Log4jYamlObjectMapper());
+    public JsonLogEventParser() {
+        super(new Log4jJsonObjectMapper());
     }
 }
