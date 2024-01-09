@@ -76,7 +76,7 @@
     <kotlin.version>1.9.22</kotlin.version>
     <kubernetes-client.version>6.9.2</kubernetes-client.version>
     <log4j2.version>2.22.0</log4j2.version>
-    <slf4j.version>2.0.10</slf4j.version>
+    <slf4j.version>2.0.11</slf4j.version>
     <snakeyaml.version>2.2</snakeyaml.version>
     <spring-boot.version>2.7.18</spring-boot.version>
     <spring-cloud.version>2021.0.9</spring-cloud.version>
