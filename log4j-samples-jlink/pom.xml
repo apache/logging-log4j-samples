@@ -35,7 +35,7 @@
       -->
     <compare.fail>false</compare.fail>
     <!-- Plugin version -->
-    <maven-jlink-plugin.version>3.1.0</maven-jlink-plugin.version>
+    <maven-jlink-plugin.version>3.2.0</maven-jlink-plugin.version>
   </properties>
   <dependencies>
     <dependency>
