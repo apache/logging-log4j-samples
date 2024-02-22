@@ -28,7 +28,7 @@
 
   <groupId>org.apache.logging.log4j.samples</groupId>
   <artifactId>log4j-samples</artifactId>
-  <version>${revision}</version>
+  <version>3.0.0-beta2</version>
   <packaging>pom</packaging>
 
   <name>Apache Log4j Samples</name>
@@ -75,7 +75,7 @@
     <junit.version>5.10.1</junit.version>
     <kotlin.version>1.9.22</kotlin.version>
     <kubernetes-client.version>6.9.2</kubernetes-client.version>
-    <log4j2.version>2.22.0</log4j2.version>
+    <log4j2.version>3.0.0-beta2</log4j2.version>
     <slf4j.version>2.0.10</slf4j.version>
     <snakeyaml.version>2.2</snakeyaml.version>
     <spring-boot.version>2.7.18</spring-boot.version>
