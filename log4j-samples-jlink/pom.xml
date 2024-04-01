@@ -28,12 +28,6 @@
   <name>Apache Log4j Samples: JLink custom JRE</name>
 
   <properties>
-    <!--
-      ~ Disables reproducibility check until this is closed:
-      ~
-      ~   https://issues.apache.org/jira/browse/MJLINK-75
-      -->
-    <compare.fail>false</compare.fail>
     <!-- Plugin version -->
     <maven-jlink-plugin.version>3.2.0</maven-jlink-plugin.version>
   </properties>
