@@ -83,6 +83,9 @@
     <spring-cloud.version>2021.0.9</spring-cloud.version>
     <spring-framework.version>5.3.33</spring-framework.version>
 
+    <!-- Pinned transitive dependencies -->
+    <byte-buddy.version>1.14.9</byte-buddy.version>
+
     <!-- plugin version -->
     <!-- TODO: remove when we upgrade to `logging-parent` 10.3.0 -->
     <maven-artifact-plugin.version>3.5.0</maven-artifact-plugin.version>
@@ -157,6 +160,12 @@
         <version>${spring-cloud.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>net.bytebuddy</groupId>
+        <artifactId>byte-buddy</artifactId>
+        <version>${byte-buddy.version}</version>
       </dependency>
 
       <dependency>
