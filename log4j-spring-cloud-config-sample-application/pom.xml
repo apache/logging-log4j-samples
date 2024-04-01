@@ -37,7 +37,23 @@
          Though apparently the fix isn't complete. -->
     <project.build.outputTimestamp>2023-09-14T15:03:45Z</project.build.outputTimestamp>
 
+    <!-- Dependency versions -->
+    <kubernetes-client.version>6.11.0</kubernetes-client.version>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>io.fabric8</groupId>
+        <artifactId>kubernetes-client-bom</artifactId>
+        <version>${kubernetes-client.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
 
@@ -109,14 +125,8 @@
     </dependency>
 
     <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-kubernetes</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-api</artifactId>
-        </exclusion>
-      </exclusions>
+      <groupId>io.fabric8</groupId>
+      <artifactId>kubernetes-log4j</artifactId>
     </dependency>
 
     <dependency>

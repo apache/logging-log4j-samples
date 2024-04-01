@@ -76,7 +76,6 @@
     <javax-jms.version>2.0.1</javax-jms.version>
     <junit.version>5.10.2</junit.version>
     <kotlin.version>1.9.23</kotlin.version>
-    <kubernetes-client.version>6.9.2</kubernetes-client.version>
     <log4j2.version>2.22.0</log4j2.version>
     <slf4j.version>2.0.12</slf4j.version>
     <snakeyaml.version>2.2</snakeyaml.version>
@@ -122,14 +121,6 @@
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-bom</artifactId>
         <version>${kotlin.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>io.fabric8</groupId>
-        <artifactId>kubernetes-client-bom</artifactId>
-        <version>${kubernetes-client.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
