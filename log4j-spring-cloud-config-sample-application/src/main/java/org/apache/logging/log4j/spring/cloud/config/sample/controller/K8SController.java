@@ -21,10 +21,10 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.fabric8.kubernetes.api.model.Pod;
 import io.fabric8.kubernetes.client.Config;
 import io.fabric8.kubernetes.client.KubernetesClient;
+import io.fabric8.kubernetes.client.KubernetesClientBuilder;
 import java.nio.file.Paths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.kubernetes.KubernetesClientBuilder;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,7 +48,7 @@ public class K8SController {
     @GetMapping("/k8s/pod")
     public ResponseEntity<Pod> getPod() {
         try {
-            KubernetesClient client = new KubernetesClientBuilder().createClient();
+            KubernetesClient client = new KubernetesClientBuilder().build();
             if (client != null) {
                 Pod pod = getCurrentPod(client);
                 if (pod != null) {
