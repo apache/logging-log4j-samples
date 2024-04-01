@@ -3,6 +3,6 @@
        xmlns="http://logging.apache.org/log4j/changelog"
        xsi:schemaLocation="http://logging.apache.org/log4j/changelog https://logging.apache.org/log4j/changelog-0.1.3.xsd"
        type="updated">
-  <issue id="99" link="https://github.com/apache/logging-log4j-samples/pull/99"/>
-  <description format="asciidoc">Update `org.jetbrains.kotlin:kotlin-bom` to version `1.9.22`</description>
+  <issue id="123" link="https://github.com/apache/logging-log4j-samples/pull/123"/>
+  <description format="asciidoc">Update `org.jetbrains.kotlin:kotlin-bom` to version `1.9.23`</description>
 </entry>
