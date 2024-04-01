@@ -42,7 +42,9 @@
     <module>log4j-samples-jlink</module>
     <module>log4j-samples-loggerProperties</module>
     <module>log4j-samples-parser</module>
+    <!-- Disabled, since compilation fails
     <module>log4j-server</module>
+    -->
     <module>log4j-spring-cloud-config-sample-application</module>
     <module>log4j-spring-cloud-config-sample-server</module>
   </modules>
