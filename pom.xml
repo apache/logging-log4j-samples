@@ -71,7 +71,7 @@
     <flume.version>1.11.0</flume.version>
     <guava.version>33.0.0-jre</guava.version>
     <hamcrest.version>2.2</hamcrest.version>
-    <jackson.version>2.16.1</jackson.version>
+    <jackson.version>2.17.0</jackson.version>
     <jetty.version>10.0.19</jetty.version>
     <javax-jms.version>2.0.1</javax-jms.version>
     <junit.version>5.10.1</junit.version>
