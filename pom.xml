@@ -84,7 +84,7 @@
     <spring-framework.version>5.3.33</spring-framework.version>
 
     <!-- Pinned transitive dependencies -->
-    <byte-buddy.version>1.14.9</byte-buddy.version>
+    <byte-buddy.version>1.14.13</byte-buddy.version>
 
     <!-- plugin version -->
     <!-- TODO: remove when we upgrade to `logging-parent` 10.3.0 -->
