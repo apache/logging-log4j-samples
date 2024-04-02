@@ -4,7 +4,7 @@
       "Console": {
         "name": "CONSOLE",
         "PatternLayout": {
-          "pattern": "%d %-5p [%t] %c{1.} %m%n"
+          "pattern": "JSON: %d %-5p [%t] %c{1.} %m%n"
         }
       }
     },
