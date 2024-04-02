@@ -86,9 +86,6 @@
     <!-- Pinned transitive dependencies -->
     <byte-buddy.version>1.14.13</byte-buddy.version>
 
-    <!-- plugin version -->
-    <!-- TODO: remove when we upgrade to `logging-parent` 10.3.0 -->
-    <maven-artifact-plugin.version>3.5.0</maven-artifact-plugin.version>
   </properties>
 
   <dependencyManagement>
@@ -268,21 +265,6 @@
           <groupId>org.eclipse.jetty</groupId>
           <artifactId>jetty-maven-plugin</artifactId>
           <version>${jetty.version}</version>
-        </plugin>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-artifact-plugin</artifactId>
-          <configuration>
-            <!--
-              ~ Disables reproducibility check until this is closed:
-              ~
-              ~   https://issues.apache.org/jira/browse/MJLINK-75
-              -->
-            <skipModules>
-              <skipModule>org.apache.logging.log4j.samples/log4j-samples-jlink*</skipModule>
-            </skipModules>
-          </configuration>
         </plugin>
 
         <plugin>
