@@ -27,6 +27,20 @@
   <name>Apache Log4j Samples: Configuration</name>
   <dependencies>
 
+    <!-- Annotations -->
+    <dependency>
+      <groupId>com.github.spotbugs</groupId>
+      <artifactId>spotbugs-annotations</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.annotation.bundle</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Compile dependencies -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
@@ -37,10 +51,11 @@
       <artifactId>log4j-core</artifactId>
     </dependency>
 
+    <!-- Test dependencies -->
     <dependency>
-      <groupId>com.github.spotbugs</groupId>
-      <artifactId>spotbugs-annotations</artifactId>
-      <scope>provided</scope>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api-test</artifactId>
+      <scope>test</scope>
     </dependency>
 
     <dependency>

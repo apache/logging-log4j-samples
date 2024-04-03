@@ -35,7 +35,7 @@ public class CustomConfigurationFactory extends ConfigurationFactory {
     /**
      * Valid file extensions for XML files.
      */
-    private static final String[] SUFFIXES = new String[] {"*"};
+    private static final String[] SUFFIXES = new String[] {".custom"};
 
     /**
      * Returns the Configuration.

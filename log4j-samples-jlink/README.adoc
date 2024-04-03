@@ -25,5 +25,5 @@ In order to use it:
 +
 [sh]
 ----
-target/maven-jlink/default/bin/java -m org.apache.logging.log4j.samples.jlink/org.apache.logging.log4j.samples.jlink.Main
+target/maven-jlink/default/bin/log4j-samples-jlink
 ----

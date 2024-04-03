@@ -91,6 +91,14 @@
   <dependencyManagement>
     <dependencies>
 
+      <!-- Internal dependencies -->
+      <dependency>
+        <groupId>org.apache.logging.log4j.samples</groupId>
+        <artifactId>log4j-samples-configuration</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <!-- External dependencies -->
       <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-bom</artifactId>
@@ -275,6 +283,25 @@
 
       </plugins>
     </pluginManagement>
+
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <annotationProcessorPaths combine.children="append">
+            <!-- `org.apache.logging.log4j.core.config.plugins.processor.PluginProcessor` for generating `META-INF/org/apache/.../Log4j2Plugins.dat`: -->
+            <path>
+              <groupId>org.apache.logging.log4j</groupId>
+              <artifactId>log4j-core</artifactId>
+              <version>${log4j2.version}</version>
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
+      </plugin>
+
+    </plugins>
 
   </build>
 

@@ -26,7 +26,6 @@ import org.apache.logging.log4j.core.config.AbstractConfiguration;
 import org.apache.logging.log4j.core.config.ConfigurationSource;
 import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.apache.logging.log4j.core.layout.PatternLayout;
-import org.apache.logging.log4j.util.PropertiesUtil;
 
 /**
  * This Configuration is the same as the DefaultConfiguration but shows how a custom configuration can be built
@@ -48,7 +47,7 @@ public class CustomConfiguration extends AbstractConfiguration {
     /**
      * The default Pattern used for the default Layout.
      */
-    public static final String DEFAULT_PATTERN = "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n";
+    public static final String DEFAULT_PATTERN = "Custom: %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n";
 
     public CustomConfiguration(final LoggerContext loggerContext) {
         this(loggerContext, ConfigurationSource.NULL_SOURCE);
@@ -59,24 +58,32 @@ public class CustomConfiguration extends AbstractConfiguration {
      */
     public CustomConfiguration(final LoggerContext loggerContext, final ConfigurationSource source) {
         super(loggerContext, source);
-
         setName(CONFIG_NAME);
-        final Layout<? extends Serializable> layout = PatternLayout.newBuilder()
-                .withPattern(DEFAULT_PATTERN)
-                .withConfiguration(this)
-                .build();
-        final Appender appender = ConsoleAppender.createDefaultAppenderForLayout(layout);
-        appender.start();
-        addAppender(appender);
-        final LoggerConfig root = getRootLogger();
-        root.addAppender(appender, null, null);
-
-        final String levelName = PropertiesUtil.getProperties().getStringProperty(DEFAULT_LEVEL);
-        final Level level =
-                levelName != null && Level.valueOf(levelName) != null ? Level.valueOf(levelName) : Level.ERROR;
-        root.setLevel(level);
     }
 
     @Override
-    protected void doConfigure() {}
+    protected void doConfigure() {
+        // 1. Create appenders
+        final Layout<? extends Serializable> layout = PatternLayout.newBuilder()
+                .withConfiguration(this)
+                .withPattern(DEFAULT_PATTERN)
+                .build();
+        final Appender appender = ConsoleAppender.newBuilder()
+                .setConfiguration(this)
+                .setName("Console")
+                .setLayout(layout)
+                .build();
+        addAppender(appender);
+        final LoggerConfig root = getRootLogger();
+        // 2. Configure loggers
+        final LoggerConfig logger = LoggerConfig.newBuilder()
+                .withLoggerName("MyCustomLogger")
+                .withConfig(this)
+                .withLevel(Level.DEBUG)
+                .build();
+        addLogger(logger.getName(), logger);
+        // 3. Configure root logger
+        root.addAppender(appender, null, null);
+        root.setLevel(Level.INFO);
+    }
 }

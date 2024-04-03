@@ -14,19 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@Export
 package org.apache.logging.log4j.samples.configuration;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.test.junit.SetTestProperty;
-import org.junit.jupiter.api.Test;
-
-@SetTestProperty(key = "log4j2.configurationFile", value = "classpath:log4j2.custom")
-class CustomConfigurationTest {
-    private final Logger logger = LogManager.getLogger(CustomConfiguration.class);
-
-    @Test
-    void testLogging() {
-        logger.error("This is a test");
-    }
-}
+import org.osgi.annotation.bundle.Export;
