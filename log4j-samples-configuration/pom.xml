@@ -25,6 +25,11 @@
   <artifactId>log4j-samples-configuration</artifactId>
   <packaging>jar</packaging>
   <name>Apache Log4j Samples: Configuration</name>
+
+  <properties>
+    <bnd-module-name>org.apache.logging.log4j.samples.configuration</bnd-module-name>
+  </properties>
+
   <dependencies>
 
     <!-- Annotations -->
