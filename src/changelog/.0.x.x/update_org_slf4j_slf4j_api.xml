@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<entry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns="http://logging.apache.org/log4j/changelog"
-       xsi:schemaLocation="http://logging.apache.org/log4j/changelog https://logging.apache.org/log4j/changelog-0.1.3.xsd"
-       type="updated">
-  <issue id="128" link="https://github.com/apache/logging-log4j-samples/pull/128"/>
-  <description format="asciidoc">Update `org.slf4j:slf4j-api` to version `2.0.13`</description>
-</entry>
