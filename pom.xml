@@ -66,7 +66,7 @@
 
     <!-- dependency versions -->
     <assertj.version>3.25.3</assertj.version>
-    <disruptor.version>3.4.4</disruptor.version>
+    <disruptor.version>4.0.0</disruptor.version>
     <flatten-maven-plugin.version>1.5.0</flatten-maven-plugin.version>
     <flume.version>1.11.0</flume.version>
     <guava.version>33.2.0-jre</guava.version>
@@ -84,7 +84,7 @@
     <spring-framework.version>5.3.34</spring-framework.version>
 
     <!-- Pinned transitive dependencies -->
-    <byte-buddy.version>1.14.14</byte-buddy.version>
+    <byte-buddy.version>1.14.15</byte-buddy.version>
 
   </properties>
 
