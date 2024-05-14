@@ -1,0 +1,11 @@
+[
+  {
+    "latest": true,
+    "metadata-version": "2.24.0",
+    "default-for": "2\\.24\\..*",
+    "module": "org.apache.logging.log4j:log4j-core",
+    "tested-versions": [
+      "2.24.0-SNAPSHOT"
+    ]
+  }
+]

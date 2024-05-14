@@ -1,0 +1,100 @@
+////
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements. See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License. You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+////
+= Apache Log4j Samples: GraalVM native image
+:log4j-version: 2.24.0-SNAPSHOT
+
+This project shows how to generate a native image using GraalVM.
+
+In order to use it:
+
+. set the `JAVA_HOME` environment variable to the path of a GraalVM installation,
+. set the current working directory to the parent folder of this file,
+. generate the artifact locally with:
++
+[source,shell]
+----
+./mvnw -Pgraalvm -pl log4j-samples-graalvm -am \
+clean verify
+----
+. run the application with
++
+[source,shell]
+----
+log4j-samples-graalvm/target/log4j-samples-graalvm
+----
+
+== Reachability metadata
+
+Log4j as many other Java libraries, relies heavily on reflection to convert the configuration file into an instance of a
+https://logging.apache.org/log4j/2.x/javadoc/log4j-core/org/apache/logging/log4j/core/config/Configuration.html[Configuration]
+object.
+
+The classes that are accessed through reflection are called Log4j plugins and GraalVM must be aware of their existence through the usage of reachability metadata.
+
+See
+https://logging.apache.org/log4j/2.x/manual/plugins.html[Log4j plugins]
+and
+https://www.graalvm.org/latest/reference-manual/native-image/metadata/[GraalVM reachability metadata]
+for more details.
+
+The reachability metadata in this project was:
+
+* generated using the
+https://www.graalvm.org/latest/reference-manual/native-image/metadata/AutomaticMetadataCollection/#tracing-agent[GraalVM tracing agent]:
++
+[source,shell,subs=+attributes]
+----
+# Build application classpath
+export CLASSPATH=$(\
+./mvnw -q -Pgraalvm -pl log4j-samples-graalvm \
+dependency:build-classpath -DincludeScope=runtime -Dmdep.outputProperty=classpath \
+help:evaluate -Dexpression=classpath -DforceStdout \
+)
+CLASSPATH="log4j-samples-graalvm/target/log4j-samples-graalvm-0.0.0-SNAPSHOT.jar:$CLASSPATH"
+# Run application using the GraalVM agent
+$JAVA_HOME/bin/java \
+-agentlib:native-image-agent=config-output-dir=log4j-samples-graalvm/src/reachability-metadata/minimal/log4j-core/2.24.0 \
+org.apache.logging.log4j.samples.graalvm.Main
+----
+
+* the generated `reflect-config.json` file was further trimmed down manually, by removing all the Log4j plugins that are not used by this configuration.
+These plugins are easy to spot, because they only have a `name` key.
+
+== Native binary size
+
+Using GraalVM 17.0.10 on Linux x64, the native binaries have the following size:
+
+[CAUTION]
+====
+Since this is a trivial Java application, the difference between the binary size without and with Log4j is large: when Log4j is added GraalVM must compile many additional `java.base` classes.
+
+In a typical application those classes are already required, so the difference should be smaller.
+====
+
+[cols="1,1"]
+|===
+| Configuration | Size
+
+| Without Log4j
+| 6.59 MiB
+
+| With minimal reachability metadata
+| 36.96 MiB
+
+| With full reachability metadata
+| Unknown (≥ 38.5 MiB)
+|===

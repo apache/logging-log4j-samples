@@ -76,7 +76,7 @@
     <javax-jms.version>2.0.1</javax-jms.version>
     <junit.version>5.10.2</junit.version>
     <kotlin.version>1.9.24</kotlin.version>
-    <log4j2.version>2.23.1</log4j2.version>
+    <log4j.version>2.23.1</log4j.version>
     <slf4j.version>2.0.13</slf4j.version>
     <snakeyaml.version>2.2</snakeyaml.version>
     <spring-boot.version>2.7.18</spring-boot.version>
@@ -136,7 +136,7 @@
       <dependency>
         <groupId>org.apache.logging.log4j</groupId>
         <artifactId>log4j-bom</artifactId>
-        <version>${log4j2.version}</version>
+        <version>${log4j.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -295,7 +295,7 @@
             <path>
               <groupId>org.apache.logging.log4j</groupId>
               <artifactId>log4j-core</artifactId>
-              <version>${log4j2.version}</version>
+              <version>${log4j.version}</version>
             </path>
           </annotationProcessorPaths>
         </configuration>
@@ -304,5 +304,16 @@
     </plugins>
 
   </build>
+
+  <profiles>
+
+    <profile>
+      <id>graalvm</id>
+
+      <modules>
+        <module>log4j-samples-graalvm</module>
+      </modules>
+    </profile>
+  </profiles>
 
 </project>
