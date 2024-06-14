@@ -37,6 +37,8 @@ public class LoggingAspect {
     private static final Logger LOGGER = LogManager.getLogger();
     private static final FlowMessageFactory FLOW_MESSAGE_FACTORY = new DefaultFlowMessageFactory();
 
+    public LoggingAspect() {}
+
     private static StackTraceElement getLocation(final JoinPoint joinPoint) {
         final SourceLocation location = joinPoint.getSourceLocation();
         final String methodName = joinPoint.getSignature().getName();
@@ -55,7 +57,7 @@ public class LoggingAspect {
         return new StackTraceElement(location.getWithinType().getName(), methodName, fileName, lineNumber);
     }
 
-    @Pointcut("within(org.apache.logging.log4j2.samples.aspectj.*)")
+    @Pointcut("execution(public * org.apache.logging..*(..))")
     public void traceLogging() {}
 
     @Before("traceLogging()")

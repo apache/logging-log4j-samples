@@ -30,6 +30,9 @@
   <properties>
     <!-- Used by Spring Boot starters -->
     <log4j2.version>${log4j.version}</log4j2.version>
+
+    <!-- Dependency versions -->
+    <aspectj.version>1.9.22.1</aspectj.version>
   </properties>
 
   <dependencies>
@@ -56,10 +59,97 @@
     </dependency>
 
     <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>${aspectj.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>${aspectj.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-log4j2</artifactId>
       <scope>runtime</scope>
     </dependency>
 
   </dependencies>
+
+  <build>
+    <plugins>
+
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>make-executable-jar</id>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <mainClass>org.apache.logging.log4j2.samples.aspectj.Main</mainClass>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>compile-time</id>
+
+      <dependencies />
+      <build>
+        <plugins>
+
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>aspectj-maven-plugin</artifactId>
+            <version>1.15.0</version>
+            <dependencies>
+              <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjtools</artifactId>
+                <version>${aspectj.version}</version>
+              </dependency>
+            </dependencies>
+            <executions>
+              <execution>
+                <id>apply-trace-logging</id>
+                <goals>
+                  <goal>compile</goal>
+                </goals>
+                <configuration>
+                  <complianceLevel>11</complianceLevel>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>make-executable-jar</id>
+                <configuration>
+                  <profiles>compile-time</profiles>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+        </plugins>
+      </build>
+    </profile>
+
+  </profiles>
 </project>
