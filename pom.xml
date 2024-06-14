@@ -81,7 +81,7 @@
     <snakeyaml.version>2.2</snakeyaml.version>
     <spring-boot.version>2.7.18</spring-boot.version>
     <spring-cloud.version>2021.0.9</spring-cloud.version>
-    <spring-framework.version>5.3.35</spring-framework.version>
+    <spring-framework.version>5.3.37</spring-framework.version>
 
     <!-- Pinned transitive dependencies -->
     <byte-buddy.version>1.14.17</byte-buddy.version>
