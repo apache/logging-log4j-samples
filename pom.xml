@@ -34,6 +34,7 @@
   <name>Apache Log4j Samples</name>
 
   <modules>
+    <module>log4j-samples-aspectj</module>
     <module>log4j-samples-asynclogger</module>
     <module>log4j-samples-configuration</module>
     <module>log4j-samples-flume-common</module>
