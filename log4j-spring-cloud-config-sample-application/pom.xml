@@ -38,7 +38,7 @@
     <project.build.outputTimestamp>2023-09-14T15:03:45Z</project.build.outputTimestamp>
 
     <!-- Dependency versions -->
-    <kubernetes-client.version>6.13.1</kubernetes-client.version>
+    <kubernetes-client.version>6.13.2</kubernetes-client.version>
   </properties>
 
   <dependencyManagement>
