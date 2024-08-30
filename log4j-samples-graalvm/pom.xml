@@ -18,23 +18,100 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.apache.logging.log4j.samples</groupId>
-    <artifactId>log4j-samples</artifactId>
-    <version>${revision}</version>
+    <groupId>org.apache.logging</groupId>
+    <artifactId>logging-parent</artifactId>
+    <version>11.2.0</version>
+    <relativePath />
   </parent>
 
   <artifactId>log4j-samples-graalvm</artifactId>
+  <version>${revision}</version>
   <name>Apache Log4j Samples: GraalVM native image</name>
 
   <properties>
+    <!-- Some samples require JDK 9+ -->
+    <minimalJavaBuildVersion>17</minimalJavaBuildVersion>
+    <maven.compiler.release>17</maven.compiler.release>
+    <maven.compiler.source />
+    <maven.compiler.target />
+
+    <!-- Skip `bnd-baseline-maven-plugin` since this is not deployed -->
+    <bnd.baseline.skip>true</bnd.baseline.skip>
+
+    <revision>0.0.0-SNAPSHOT</revision>
+
+    <!-- Dependencies (alphabetical) -->
+    <assertj.version>3.26.0</assertj.version>
+    <junit.version>5.11.0</junit.version>
     <log4j.version>2.24.0-SNAPSHOT</log4j.version>
+    <logback.version>1.5.7</logback.version>
+    <slf4j.version>2.0.16</slf4j.version>
+
+    <!-- IT to run for each profile -->
+    <integration-tests-include>none</integration-tests-include>
   </properties>
 
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-bom</artifactId>
+        <version>${assertj.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${junit.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-bom</artifactId>
+        <version>${log4j.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${logback.version}</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
+
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -57,11 +134,20 @@
         </executions>
       </plugin>
 
+      <!--
+        ~ Creates a native executable
+        -->
       <plugin>
         <groupId>org.graalvm.buildtools</groupId>
         <artifactId>native-maven-plugin</artifactId>
         <version>0.10.2</version>
         <extensions>true</extensions>
+        <configuration>
+          <mainClass>org.apache.logging.log4j.samples.graalvm.Main</mainClass>
+          <metadataRepository>
+            <enabled>false</enabled>
+          </metadataRepository>
+        </configuration>
         <executions>
           <execution>
             <id>build-native</id>
@@ -69,26 +155,129 @@
               <goal>compile-no-fork</goal>
             </goals>
             <phase>package</phase>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!--
+        ~ Cleans the logs directory before running the executable
+        -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>remove-stale-log-files</id>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+            <phase>pre-integration-test</phase>
             <configuration>
-              <mainClass>org.apache.logging.log4j.samples.graalvm.Main</mainClass>
-              <metadataRepository>
-                <enabled>true</enabled>
-                <localPath>${project.basedir}/src/reachability-metadata/minimal</localPath>
-              </metadataRepository>
+              <filesets>
+                <fileset>
+                  <directory>target/logs</directory>
+                  <includes>
+                    <include>*.log</include>
+                  </includes>
+                </fileset>
+              </filesets>
+              <excludeDefaultDirectories>true</excludeDefaultDirectories>
             </configuration>
           </execution>
         </executions>
       </plugin>
 
+      <!--
+        ~ Runs the native executable
+        -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.4.1</version>
+        <executions>
+          <execution>
+            <id>run-executable</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>integration-test</phase>
+            <configuration>
+              <executable>target/log4j-samples-graalvm</executable>
+              <outputFile>target/logs/out.log</outputFile>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!--
+        ~ Verifies the content of the log file
+        -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>integration-test</id>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+            <configuration>
+              <includes>${integration-tests-include}</includes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
   <profiles>
+
+    <!--
+      ~ Enable this profile to use JUL as logging implementation.
+      -->
+    <profile>
+      <id>use-jul</id>
+
+      <properties>
+        <integration-tests-include>**/JulIT.class</integration-tests-include>
+      </properties>
+
+      <dependencies>
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-to-jul</artifactId>
+          <scope>runtime</scope>
+        </dependency>
+      </dependencies>
+
+      <build>
+        <plugins>
+          <!--
+            ~ JUL requires reflection metadata for FileHandler
+            -->
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <configuration>
+              <buildArgs>
+                <arg>-H:ConfigurationFileDirectories=${basedir}/src/reachability-metadata/jul</arg>
+              </buildArgs>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!--
+      ~ Enable this profile to use Log4j Core as logging implementation.
+      -->
     <profile>
       <id>use-log4j-core</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
+
+      <properties>
+        <integration-tests-include>**/StandardIT.class</integration-tests-include>
+      </properties>
 
       <dependencies>
         <dependency>
@@ -98,6 +287,116 @@
         </dependency>
       </dependencies>
 
+      <build>
+        <plugins>
+          <!--
+            ~ Log4j Core needs additional metadata
+            -->
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <configuration>
+              <metadataRepository>
+                <enabled>true</enabled>
+                <localPath>${project.basedir}/src/reachability-metadata/minimal</localPath>
+              </metadataRepository>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!--
+      ~ Enable this profile to use Logback as logging implementation.
+      -->
+    <profile>
+      <id>use-logback</id>
+
+      <properties>
+        <integration-tests-include>**/StandardIT.class</integration-tests-include>
+      </properties>
+
+      <dependencies>
+
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-to-slf4j</artifactId>
+          <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+          <scope>runtime</scope>
+        </dependency>
+
+      </dependencies>
+
+      <build>
+        <plugins>
+          <!--
+            ~ Logback needs additional metadata
+            -->
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <configuration>
+              <metadataRepository>
+                <enabled>true</enabled>
+              </metadataRepository>
+              <buildArgs>
+                <arg>-H:IncludeResources=logback.xml</arg>
+              </buildArgs>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>use-simple</id>
+
+      <properties>
+        <integration-tests-include>**/SimpleIT.class</integration-tests-include>
+      </properties>
+
+      <build>
+        <plugins>
+          <!--
+            ~ SimpleLog needs a configuration file
+            -->
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <configuration>
+              <metadataRepository>
+                <enabled>true</enabled>
+              </metadataRepository>
+              <buildArgs>
+                <arg>-H:IncludeResources=log4j2.simplelog.properties</arg>
+              </buildArgs>
+            </configuration>
+          </plugin>
+          <!--
+            ~ SimpleLogger needs some system properties
+            -->
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.4.1</version>
+            <executions>
+              <execution>
+                <id>run-executable</id>
+                <configuration>
+                  <arguments>
+                    <argument>-Dlog4j.provider=org.apache.logging.log4j.simple.SimpleProvider</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
   </profiles>
 </project>

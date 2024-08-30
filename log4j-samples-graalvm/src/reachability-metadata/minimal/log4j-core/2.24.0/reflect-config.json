@@ -8,7 +8,7 @@
     "allDeclaredFields": true
   },
   {
-    "name": "org.apache.logging.log4j.core.appender.ConsoleAppender",
+    "name": "org.apache.logging.log4j.core.appender.FileAppender",
     "queryAllDeclaredMethods": true,
     "methods": [
       {
@@ -18,7 +18,7 @@
     ]
   },
   {
-    "name": "org.apache.logging.log4j.core.appender.ConsoleAppender$Builder",
+    "name": "org.apache.logging.log4j.core.appender.FileAppender$Builder",
     "allDeclaredFields": true
   },
   {

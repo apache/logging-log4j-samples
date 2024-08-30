@@ -1,0 +1,10 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "\\Qlogging.properties\\E"
+      }
+    ]
+  },
+  "bundles": []
+}

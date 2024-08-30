@@ -22,19 +22,32 @@ This project shows how to generate a native image using GraalVM.
 In order to use it:
 
 . set the `JAVA_HOME` environment variable to the path of a GraalVM installation,
-. set the current working directory to the parent folder of this file,
+. set the current working directory to the folder containing this file,
 . generate the artifact locally with:
 +
 [source,shell]
 ----
-./mvnw -Pgraalvm -pl log4j-samples-graalvm -am \
-clean verify
+../mvnw clean verify -Puse-<backend>
 ----
++
+where `<backend>` can be:
+
+`log4j-core`::
+This profile uses Log4j Core as logging backend.
+
+`logback`::
+This profile uses Logback as logging backend.
+
+`jul`::
+This profile uses `java.util.logging` as logging backend.
+
+`simple`::
+This profile uses `SimpleLogger` as logging backend.
 . run the application with
 +
 [source,shell]
 ----
-log4j-samples-graalvm/target/log4j-samples-graalvm
+target/log4j-samples-graalvm
 ----
 
 == Reachability metadata
@@ -60,14 +73,14 @@ https://www.graalvm.org/latest/reference-manual/native-image/metadata/AutomaticM
 ----
 # Build application classpath
 export CLASSPATH=$(\
-./mvnw -q -Pgraalvm -pl log4j-samples-graalvm \
+../mvnw -q \
 dependency:build-classpath -DincludeScope=runtime -Dmdep.outputProperty=classpath \
 help:evaluate -Dexpression=classpath -DforceStdout \
 )
-CLASSPATH="log4j-samples-graalvm/target/log4j-samples-graalvm-0.0.0-SNAPSHOT.jar:$CLASSPATH"
+CLASSPATH="target/log4j-samples-graalvm-0.0.0-SNAPSHOT.jar:$CLASSPATH"
 # Run application using the GraalVM agent
 $JAVA_HOME/bin/java \
--agentlib:native-image-agent=config-output-dir=log4j-samples-graalvm/src/reachability-metadata/minimal/log4j-core/2.24.0 \
+-agentlib:native-image-agent=config-output-dir=src/reachability-metadata/minimal/log4j-core/2.24.0 \
 org.apache.logging.log4j.samples.graalvm.Main
 ----
 
@@ -76,7 +89,7 @@ These plugins are easy to spot, because they only have a `name` key.
 
 == Native binary size
 
-Using GraalVM 17.0.10 on Linux x64, the native binaries have the following size:
+Using GraalVM 21.0.4 on Linux x64, the native binaries have the following size:
 
 [CAUTION]
 ====
@@ -89,12 +102,18 @@ In a typical application those classes are already required, so the difference s
 |===
 | Configuration | Size
 
-| Without Log4j
-| 6.59 MiB
+| With Log4j Core (minimal reachability metadata)
+| 36.13 MiB
 
-| With minimal reachability metadata
-| 36.96 MiB
-
-| With full reachability metadata
+| With Log4j Core (full reachability metadata)
 | Unknown (≥ 38.5 MiB)
+
+| With Logback
+| 30.59 MiB
+
+| With `java.util.logging`
+| 14.03 MiB
+
+| With `SimpleLogger`
+| 13.84 MiB
 |===

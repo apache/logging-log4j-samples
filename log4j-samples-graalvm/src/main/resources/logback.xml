@@ -15,18 +15,16 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<Configuration xmlns="https://logging.apache.org/xml/ns"
-               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-               xsi:schemaLocation="https://logging.apache.org/xml/ns https://logging.apache.org/xml/ns/log4j-config-2.xsd">
-  <Appenders>
-    <File name="FILE"
-          fileName="target/logs/file.log">
-      <PatternLayout pattern="[%t] %p %c - %m%n"/>
-    </File>
-  </Appenders>
-  <Loggers>
-    <Root level="TRACE">
-      <AppenderRef ref="FILE"/>
-    </Root>
-  </Loggers>
-</Configuration>
+<!DOCTYPE configuration>
+<configuration>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>target/logs/file.log</file>
+        <encoder>
+            <pattern>[%t] %p %c - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="TRACE">
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>

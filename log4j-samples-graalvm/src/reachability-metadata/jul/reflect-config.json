@@ -1,0 +1,11 @@
+[
+  {
+    "name": "java.util.logging.FileHandler",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  }
+]
