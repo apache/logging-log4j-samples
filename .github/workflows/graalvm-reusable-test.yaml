@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-name: graalvm-test
+name: graalvm-reusable-test
 
 on:
   workflow_call:
