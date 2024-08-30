@@ -61,5 +61,5 @@ jobs:
           ./mvnw -f log4j-samples-graalvm \
             --show-version --batch-mode --errors --no-transfer-progress \
             -Dlog4j.version=$LOG4J_VERSION \
-            -P$MAVEN_PROFILE
+            -P$MAVEN_PROFILE \
             clean verify
