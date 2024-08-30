@@ -23,12 +23,7 @@ on:
       backend:
         description: 'Logging backend'
         required: true
-        type: choice
-        options:
-          - jul
-          - log4j-core
-          - logback
-          - simple
+        type: string
       log4j-version:
         description: 'Log4j version'
         required: true
