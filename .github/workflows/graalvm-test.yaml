@@ -19,47 +19,18 @@ name: graalvm-test
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "29 17 * * *"
 
 permissions: read-all
 
 jobs:
 
-  build:
-
-    runs-on: ${{ matrix.os }}
-
+  graalvm-test:
     strategy:
-      fail-fast: false
       matrix:
-        backend: [ jul, log4j-core, logback, simple ]
-        os: [ macos-latest, ubuntu-latest, windows-latest ]
-        version: [ "2.24.0-SNAPSHOT" ]
-
-    steps:
-
-      - name: Checkout repository
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332   # 4.1.7
-        with:
-          # When running on `pull_request` use the PR branch, not the target branch
-          ref: ${{ github.event_name == 'pull_request_target' && github.head_ref || github.ref }}
-
-      - name: Setup GraalVM
-        uses: graalvm/setup-graalvm@22cc13fe88ef133134b3798e128fb208df55e1f5   # 1.2.3
-        with:
-          java-version: '21'
-
-
-      # We could have used `verify`, but `clean install` is required while generating the build reproducibility report, which is performed in the next step.
-      # For details, see: https://maven.apache.org/guides/mini/guide-reproducible-builds.html#how-to-test-my-maven-build-reproducibility
-      - name: Build
-        id: build
-        shell: bash
-        env:
-          LOG4J_VERSION: ${{ matrix.version }}
-          MAVEN_PROFILE: use-${{ matrix.backend }}
-        run: |
-          ./mvnw -f log4j-samples-graalvm \
-            --show-version --batch-mode --errors --no-transfer-progress \
-            -Dlog4j.version=$LOG4J_VERSION \
-            -P$MAVEN_PROFILE \
-            clean verify
+        backend: [ jul, log4j-core, logback, simple]
+    uses: apache/logging-log4j-samples/.github/workflows/graalvm-reusable-test.yaml@main
+    with:
+      backend: ${{ matrix.backend }}
+      log4j-version: "2.24.0-SNAPSHOT"
