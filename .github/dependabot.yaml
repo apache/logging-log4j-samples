@@ -46,6 +46,14 @@ updates:
       - dependency-name: "org.eclipse.jetty:jetty-maven-plugin"
         update-types: ["version-update:semver-major"]
 
+  - package-ecosystem: maven
+    directory: "log4j-samples-graalvm"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    registries:
+      - maven-central
+
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
