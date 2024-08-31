@@ -389,7 +389,7 @@
                 <id>run-executable</id>
                 <configuration>
                   <arguments>
-                    <argument>-Dlog4j.provider=org.apache.logging.log4j.simple.SimpleProvider</argument>
+                    <argument>-Dlog4j.provider=org.apache.logging.log4j.simple.internal.SimpleProvider</argument>
                   </arguments>
                 </configuration>
               </execution>
