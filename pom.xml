@@ -306,15 +306,4 @@
 
   </build>
 
-  <profiles>
-
-    <profile>
-      <id>graalvm</id>
-
-      <modules>
-        <module>log4j-samples-graalvm</module>
-      </modules>
-    </profile>
-  </profiles>
-
 </project>
