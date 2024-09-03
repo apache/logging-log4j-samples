@@ -121,7 +121,7 @@
       </releases>
       <id>apache-staging</id>
       <name>Apache Staging Repository</name>
-      <url>https://repository.apache.org/content/repositories/orgapachelogging-1293</url>
+      <url>https://repository.apache.org/content/repositories/orgapachelogging-1294</url>
     </repository>
   </repositories>
 
