@@ -117,11 +117,11 @@
   <repositories>
     <repository>
       <releases>
-        <enabled>true</enabled>
+        <enabled>false</enabled>
       </releases>
-      <id>apache-staging</id>
-      <name>Apache Staging Repository</name>
-      <url>https://repository.apache.org/content/repositories/orgapachelogging-1294</url>
+      <id>apache.snapshots</id>
+      <name>Apache Snapshot Repository</name>
+      <url>https://repository.apache.org/snapshots</url>
     </repository>
   </repositories>
 
