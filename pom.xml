@@ -77,7 +77,7 @@
     <javax-jms.version>2.0.1</javax-jms.version>
     <junit.version>5.11.0</junit.version>
     <kotlin.version>2.0.20</kotlin.version>
-    <log4j.version>2.23.1</log4j.version>
+    <log4j.version>2.24.1</log4j.version>
     <slf4j.version>2.0.16</slf4j.version>
     <snakeyaml.version>2.3</snakeyaml.version>
     <spring-boot.version>2.7.18</spring-boot.version>
@@ -264,6 +264,18 @@
 
     </dependencies>
   </dependencyManagement>
+
+  <repositories>
+
+    <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>apache.staging</id>
+      <url>https://repository.apache.org/content/repositories/orgapachelogging-1303</url>
+    </repository>
+
+  </repositories>
 
   <build>
 
