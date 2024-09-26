@@ -41,7 +41,7 @@
     <revision>0.0.0-SNAPSHOT</revision>
 
     <!-- Dependencies (alphabetical) -->
-    <assertj.version>3.26.0</assertj.version>
+    <assertj.version>3.26.3</assertj.version>
     <junit.version>5.11.1</junit.version>
     <log4j.version>2.24.0</log4j.version>
     <logback.version>1.5.8</logback.version>
