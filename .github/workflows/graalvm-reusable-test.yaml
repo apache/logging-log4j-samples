@@ -45,7 +45,7 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332   # 4.1.7
+        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938   # 4.2.0
 
       - name: Setup GraalVM
         uses: graalvm/setup-graalvm@22cc13fe88ef133134b3798e128fb208df55e1f5   # 1.2.3
