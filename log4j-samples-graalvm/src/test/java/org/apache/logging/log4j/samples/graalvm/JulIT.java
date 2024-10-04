@@ -32,7 +32,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Integration test for JUL.
  */
-public class JulIT {
+class JulIT {
 
     private static final String[] JUL_LEVELS = {"SEVERE", "WARNING", "INFO", "FINE", "FINER"};
 

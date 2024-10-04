@@ -30,7 +30,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Integration test to run for configurable implementations that can include the thread's name.
  */
-public class StandardIT {
+class StandardIT {
 
     static final String[] STANDARD_LEVELS = {"ERROR", "WARN", "INFO", "DEBUG", "TRACE"};
 

@@ -42,6 +42,8 @@
 
     <!-- Dependencies (alphabetical) -->
     <assertj.version>3.26.3</assertj.version>
+    <json-org.version>20240303</json-org.version>
+    <json-unit.version>3.4.1</json-unit.version>
     <junit.version>5.11.1</junit.version>
     <log4j.version>2.25.0-SNAPSHOT</log4j.version>
     <logback.version>1.5.8</logback.version>
@@ -80,8 +82,10 @@
 
       <dependency>
         <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-api</artifactId>
+        <artifactId>slf4j-bom</artifactId>
         <version>${slf4j.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
 
       <dependency>
@@ -103,6 +107,19 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>${json-org.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>net.javacrumbs.json-unit</groupId>
+      <artifactId>json-unit-assertj</artifactId>
+      <version>${json-unit.version}</version>
       <scope>test</scope>
     </dependency>
 
@@ -349,6 +366,62 @@
           <scope>runtime</scope>
         </dependency>
       </dependencies>
+    </profile>
+
+    <!--
+  ~ Enable this profile to use Log4j Core + JSON Template Layout
+  -->
+    <profile>
+      <id>use-log4j-core-jtl</id>
+
+      <properties>
+        <integration-tests-include>**/JsonTemplateLayoutIT.class</integration-tests-include>
+      </properties>
+
+      <dependencies>
+
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-core</artifactId>
+          <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-layout-template-json</artifactId>
+          <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-nop</artifactId>
+          <scope>test</scope>
+        </dependency>
+
+      </dependencies>
+
+      <build>
+        <plugins>
+          <!--
+            ~ The JSON Template Layout configuration is in `log4j2-jtl`.
+            -->
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.4.1</version>
+            <executions>
+              <execution>
+                <id>run-executable</id>
+                <configuration>
+                  <arguments>
+                    <argument>-Dlog4j2.configurationFile=log4j2-jtl.xml</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
 
     <!--

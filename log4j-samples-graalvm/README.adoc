@@ -35,6 +35,9 @@ where `<backend>` can be:
 `log4j-core`::
 This profile uses Log4j Core as logging backend with its out-of-the-box reachability metadata.
 
+`log4j-core-jtl`::
+This profile uses Log4j Core as logging backend with the addition of JSON Template Layout.
+
 `log4j-core-minimal`::
 This profile uses Log4j Core a logging backend with an external reachability metadata source optimized for size.
 
@@ -110,6 +113,9 @@ In a typical application, those classes are already required, so the difference 
 
 | With Log4j Core (embedded full reachability metadata)
 | 46.80 MiB
+
+| With Log4j Core + JSON Template Layout (embedded full reachability metadata)
+| 47.37 MiB
 
 | With Logback
 | 30.62 MiB

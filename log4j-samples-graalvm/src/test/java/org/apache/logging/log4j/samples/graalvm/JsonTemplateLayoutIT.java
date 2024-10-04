@@ -16,6 +16,7 @@
  */
 package org.apache.logging.log4j.samples.graalvm;
 
+import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
@@ -23,30 +24,52 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
 /**
- * Integration test to run for the SimpleLogger implementation.
+ * Integration test to run for a JSON Template Layout output.
  */
-class SimpleIT {
+class JsonTemplateLayoutIT {
 
     static final String[] STANDARD_LEVELS = {"ERROR", "WARN", "INFO", "DEBUG", "TRACE"};
 
     @Test
-    void verifyStdOut() throws IOException {
+    void verifyStdOut() {
         final Path basePath = Paths.get(System.getProperty("basedir"), "target", "logs");
         final Path logFile = basePath.resolve("out.log");
 
+        assertThat(logFile).exists().isEmptyFile();
+    }
+
+    @Test
+    void verifyLogFile() throws IOException {
+        final Path basePath = Paths.get(System.getProperty("basedir"), "target", "logs");
+        final Path logFile = basePath.resolve("file.log");
+
         assertThat(logFile).exists().isNotEmptyFile();
 
-        final List<String> expected = Stream.of(STANDARD_LEVELS)
-                .map(l -> String.format("%s %s Hello %s!", l, Main.class.getName(), l))
-                .toList();
-
         try (final Stream<String> stream = Files.lines(logFile, StandardCharsets.UTF_8)) {
-            assertThat(stream).containsExactlyElementsOf(expected);
+            String[] lines = stream.toArray(String[]::new);
+            assertThat(lines).hasSize(STANDARD_LEVELS.length);
+            for (int i = 0; i < STANDARD_LEVELS.length; i++) {
+                String expectedLevel = STANDARD_LEVELS[i];
+                assertThatJson(lines[i])
+                        .as("Message nr %d", i + 1)
+                        .whenIgnoringPaths("$['@timestamp']")
+                        .isEqualTo(Map.of(
+                                "ecs.version",
+                                "1.2.0",
+                                "log.level",
+                                expectedLevel,
+                                "message",
+                                String.format("Hello %s!", expectedLevel),
+                                "process.thread.name",
+                                "main",
+                                "log.logger",
+                                Main.class.getName()));
+            }
         }
     }
 }
