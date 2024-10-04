@@ -30,8 +30,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        backend: [ jul, log4j-core, logback, simple]
-        log4j-version: [ "2.24.1" ]
+        backend: [ jul, log4j-core-minimal, log4j-core, logback, simple]
+        log4j-version: [ "2.25.0-SNAPSHOT" ]
     uses: apache/logging-log4j-samples/.github/workflows/graalvm-reusable-test.yaml@main
     with:
       backend: ${{ matrix.backend }}

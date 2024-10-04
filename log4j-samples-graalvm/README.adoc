@@ -33,7 +33,10 @@ In order to use it:
 where `<backend>` can be:
 
 `log4j-core`::
-This profile uses Log4j Core as logging backend.
+This profile uses Log4j Core as logging backend with its out-of-the-box reachability metadata.
+
+`log4j-core-minimal`::
+This profile uses Log4j Core a logging backend with an external reachability metadata source optimized for size.
 
 `logback`::
 This profile uses Logback as logging backend.
@@ -95,25 +98,25 @@ Using GraalVM 21.0.4 on Linux x64, the native binaries have the following size:
 ====
 Since this is a trivial Java application, the difference between the binary size without and with Log4j is large: when Log4j is added GraalVM must compile many additional `java.base` classes.
 
-In a typical application those classes are already required, so the difference should be smaller.
+In a typical application, those classes are already required, so the difference should be smaller.
 ====
 
 [cols="1,1"]
 |===
 | Configuration | Size
 
-| With Log4j Core (minimal reachability metadata)
-| 36.13 MiB
+| With Log4j Core (manually optimized reachability metadata)
+| 36.19 MiB
 
-| With Log4j Core (full reachability metadata)
-| Unknown (≥ 38.5 MiB)
+| With Log4j Core (embedded full reachability metadata)
+| 46.80 MiB
 
 | With Logback
-| 30.59 MiB
+| 30.62 MiB
 
 | With `java.util.logging`
-| 14.03 MiB
+| 14.10 MiB
 
 | With `SimpleLogger`
-| 13.84 MiB
+| 13.90 MiB
 |===

@@ -43,7 +43,7 @@
     <!-- Dependencies (alphabetical) -->
     <assertj.version>3.26.3</assertj.version>
     <junit.version>5.11.1</junit.version>
-    <log4j.version>2.24.1</log4j.version>
+    <log4j.version>2.25.0-SNAPSHOT</log4j.version>
     <logback.version>1.5.8</logback.version>
     <slf4j.version>2.0.16</slf4j.version>
 
@@ -291,10 +291,10 @@
     </profile>
 
     <!--
-      ~ Enable this profile to use Log4j Core as logging implementation.
+      ~ Enable this profile to use Log4j Core as logging implementation with a manually crafted metadata file.
       -->
     <profile>
-      <id>use-log4j-core</id>
+      <id>use-log4j-core-minimal</id>
 
       <properties>
         <integration-tests-include>**/StandardIT.class</integration-tests-include>
@@ -311,12 +311,17 @@
       <build>
         <plugins>
           <!--
-            ~ Log4j Core needs additional metadata
+            ~ Use a different source of Log4j Core metadata.
             -->
           <plugin>
             <groupId>org.graalvm.buildtools</groupId>
             <artifactId>native-maven-plugin</artifactId>
             <configuration>
+              <buildArgs>
+                <arg>--exclude-config</arg>
+                <arg>log4j-core.*jar</arg>
+                <arg>META-INF/native-image/org\.apache\.logging\.log4j/log4j-core/reflect-config\.json</arg>
+              </buildArgs>
               <metadataRepository>
                 <enabled>true</enabled>
                 <localPath>${project.basedir}/src/reachability-metadata/minimal</localPath>
@@ -325,6 +330,25 @@
           </plugin>
         </plugins>
       </build>
+    </profile>
+
+    <!--
+      ~ Enable this profile to use Log4j Core as logging implementation with a full metadata file.
+      -->
+    <profile>
+      <id>use-log4j-core</id>
+
+      <properties>
+        <integration-tests-include>**/StandardIT.class</integration-tests-include>
+      </properties>
+
+      <dependencies>
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-core</artifactId>
+          <scope>runtime</scope>
+        </dependency>
+      </dependencies>
     </profile>
 
     <!--
@@ -383,21 +407,6 @@
 
       <build>
         <plugins>
-          <!--
-            ~ SimpleLog needs a configuration file
-            -->
-          <plugin>
-            <groupId>org.graalvm.buildtools</groupId>
-            <artifactId>native-maven-plugin</artifactId>
-            <configuration>
-              <metadataRepository>
-                <enabled>true</enabled>
-              </metadataRepository>
-              <buildArgs>
-                <arg>-H:IncludeResources=log4j2.simplelog.properties</arg>
-              </buildArgs>
-            </configuration>
-          </plugin>
           <!--
             ~ SimpleLogger needs some system properties
             -->
