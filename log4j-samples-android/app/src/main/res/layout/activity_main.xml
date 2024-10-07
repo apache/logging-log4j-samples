@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Log level display -->
+    <TextView
+        android:id="@+id/logLevelLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current log level:"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/logLevelTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logLevelLbl" />
+
+    <!-- Change log level -->
+    <Button
+        android:id="@+id/setLogLevelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Log Level"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logLevelTxt" />
+
+    <!-- Log message buttons label -->
+    <TextView
+        android:id="@+id/logBtnLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log messages"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setLogLevelBtn" />
+
+    <!-- Log message buttons -->
+    <Button
+        android:id="@+id/fatalLogBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FATAL"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/errorLogBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logBtnLabel" />
+
+    <Button
+        android:id="@+id/errorLogBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ERROR"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/warnLogBtn"
+        app:layout_constraintStart_toEndOf="@+id/fatalLogBtn"
+        app:layout_constraintTop_toBottomOf="@+id/logBtnLabel" />
+
+    <Button
+        android:id="@+id/warnLogBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WARN"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/errorLogBtn"
+        app:layout_constraintTop_toBottomOf="@+id/logBtnLabel" />
+
+    <Button
+        android:id="@+id/infoLogBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INFO"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/debugLogBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fatalLogBtn" />
+
+    <Button
+        android:id="@+id/debugLogBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DEBUG"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/traceLogBtn"
+        app:layout_constraintStart_toEndOf="@+id/infoLogBtn"
+        app:layout_constraintTop_toBottomOf="@+id/fatalLogBtn" />
+
+    <Button
+        android:id="@+id/traceLogBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TRACE"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/debugLogBtn"
+        app:layout_constraintTop_toBottomOf="@+id/fatalLogBtn" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
