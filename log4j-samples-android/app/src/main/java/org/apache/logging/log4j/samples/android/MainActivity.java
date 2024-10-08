@@ -1,4 +1,4 @@
-package com.example.log4japi;
+package org.apache.logging.log4j.samples.android;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,14 +10,8 @@ import android.widget.TextView;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.LoggerContext;
-import org.apache.logging.log4j.core.config.ConfigurationFactory;
-import org.apache.logging.log4j.core.config.ConfigurationSource;
 import org.apache.logging.log4j.core.config.Configurator;
-import org.apache.logging.log4j.core.config.LoggerConfig;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {

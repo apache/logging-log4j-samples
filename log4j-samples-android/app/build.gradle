@@ -6,7 +6,7 @@ android {
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.log4japi"
+        applicationId "org.apache.logging.log4j.samples.android"
         minSdk 26
         targetSdk 34
         versionCode 1
