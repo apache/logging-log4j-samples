@@ -20,6 +20,7 @@ plugins {
 
 android {
     compileSdk 34
+    namespace "org.apache.logging.log4j.samples.android"
 
     defaultConfig {
         applicationId "org.apache.logging.log4j.samples.android"
@@ -48,17 +49,31 @@ android {
     }
 }
 
+properties {
+    log4jVersion = "2.24.1"
+}
+
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    androidTestImplementation 'org.assertj:assertj-core:3.26.3'
 
-    //Log4j
-    implementation 'org.apache.logging.log4j:log4j-api:2.24.1'
-    implementation 'org.apache.logging.log4j:log4j-core:2.24.1'
+    // Log4j
+    implementation "org.apache.logging.log4j:log4j-api:${log4jVersion}"
+    implementation "org.apache.logging.log4j:log4j-core:${log4jVersion}"
+    androidTestImplementation("org.apache.logging.log4j:log4j-core-test:${log4jVersion}") {
+        exclude group: 'com.google.code.java-allocation-instrumenter'
+        exclude group: 'org.apache.logging.log4j', module: 'log4j-api-test'
+        exclude group: 'org.hamcrest'
+        exclude group: 'org.junit.jupiter'
+        exclude group: 'org.junit.platform'
+        exclude group: 'org.springframework'
+    }
+
 }

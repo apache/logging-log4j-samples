@@ -14,25 +14,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-##
-# Root logger configuration
-status = error
-name = PropertiesConfig
 
-# Appenders
-appender.console.type = Console
-appender.console.name = Console
-appender.console.target = SYSTEM_OUT
-appender.console.layout.type = PatternLayout
-appender.console.layout.pattern = [%d{yyyy-MM-dd HH:mm:ss.SSS}] %-5p- %m%n
+name: graalvm-test
 
-# Root logger level and appenders
-rootLogger.level = INFO
-rootLogger.appenderRefs = stdout
-rootLogger.appenderRef.stdout.ref = Console
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "29 17 * * *"
 
-logger.com.example.log4japi.MainActivity.name = com.example.log4japi.MainActivity
-logger.com.example.log4japi.MainActivity.level = DEBUG
-logger.com.example.log4japi.MainActivity.additivity = false
-logger.com.example.log4japi.MainActivity.appenderRefs = stdout
-logger.com.example.log4japi.MainActivity.appenderRef.stdout.ref = Console
+permissions: read-all
+
+jobs:
+
+  graalvm-test:
+    strategy:
+      fail-fast: false
+      matrix:
+        log4j-version: [ "2.25.0-SNAPSHOT" ]
+    uses: apache/logging-log4j-samples/.github/workflows/android-reusable-test.yaml@feature/android-tests
+    with:
+      log4j-version: ${{ matrix.log4j-version }}
