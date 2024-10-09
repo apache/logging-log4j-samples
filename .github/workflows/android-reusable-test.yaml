@@ -51,6 +51,8 @@ jobs:
         id: avd
         shell: bash
         run: |
+          # List installed and available packages
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list
           # Download images
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
           --install "system-images;android-31;google_apis_playstore;x86_64"
