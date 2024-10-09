@@ -63,7 +63,7 @@ jobs:
           --device "5.4in FWVGA" \
           --package "system-images;android-31;google_apis_playstore;x86_64"
           # Run emulator
-          $ANDROID_HOME/emulator/emulator @generic-api-31-device &
+          $ANDROID_HOME/emulator/emulator -no-audio -no-window -avd generic-api-31-device &
 
       - name: Build
         id: build
