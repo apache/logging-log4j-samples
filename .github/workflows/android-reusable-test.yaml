@@ -50,8 +50,7 @@ jobs:
       - name: List AVD Devices
         shell: bash
         run: |
-          ls -lR $ANDROID_HOME
-          $ANDROID_HOME/cmdline-tools/bin/avdmanager list
+          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list
 
       - name: Build
         id: build
