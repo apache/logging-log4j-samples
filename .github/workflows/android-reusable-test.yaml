@@ -47,14 +47,11 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@d156388eb19639ec20ade50009f3d199ce1e2808   # 4.1.0
 
-      - name: List system images
-        shell: bash
-        run: |
-          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep system-images
-
       - name: Create AVD Device
         shell: bash
         run: |
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
+          --install "system-images;android-31;google_apis_playstore;x86_64"
           $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd \
           --name generic-api-31-device \
           --device "5.4in FWVGA" \
