@@ -47,9 +47,11 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@d156388eb19639ec20ade50009f3d199ce1e2808   # 4.1.0
 
-      - name: Create AVD Device
+      - name: Create AVD Device and build
         id: avd
         shell: bash
+        env:
+          LOG4J_VERSION: ${{ inputs.log4j-version }}
         run: |
           # List installed and available packages
           $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list
@@ -66,21 +68,17 @@ jobs:
           $ANDROID_HOME/emulator/emulator \
           -no-audio -no-window -no-accel \
           -avd generic-api-31-device &
-
-      - name: Build
-        id: build
-        shell: bash
-        env:
-          LOG4J_VERSION: ${{ inputs.log4j-version }}
-        run: |
+          # Wait for gRPC port
+          for i in {1..30}; do
+            if netcat -z localhost 5554; then break; fi
+          done
+          # Run gradle
           log4j-samples-android/gradlew -p log4j-samples-android \
           --console plain \
           -Plog4jVersion=$LOG4J_VERSION \
           build connectedCheck
-
-      - name: Remove AVD Device
-        if: steps.avd.conclusion == 'success'
-        shell: bash
-        run: |
+          # Kill emulator
+          kill %1
+          # Delete device
           $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager delete avd \
           --name generic-api-31-device
