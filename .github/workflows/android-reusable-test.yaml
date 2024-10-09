@@ -61,7 +61,7 @@ jobs:
           mv $ANDROID_HOME/cmdline-tools/{cmdline-tools,latest}
           
           # Accept licenses
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+          echo -e 'y\ny\ny\ny\ny\ny\ny\n' | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
           
           # Installing the remaining tools
           $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager tools platform-tools
