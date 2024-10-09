@@ -55,13 +55,13 @@ jobs:
           $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list
           # Download images
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
-          --install "system-images;android-30;google_apis;x86" \
+          --install "system-images;android-31;default;x86_64" \
           emulator platform-tools
           # Create device
           $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd \
           --name generic-api-31-device \
           --device "5.4in FWVGA" \
-          --package "system-images;android-30;google_apis;x86"
+          --package "system-images;android-31;default;x86_64"
           # Run emulator
           $ANDROID_HOME/emulator/emulator \
           -no-audio -no-window -no-accel \
