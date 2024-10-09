@@ -56,7 +56,7 @@ jobs:
           # Download images
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
           --install "system-images;android-30;google_apis;x86" \
-          platform-tools
+          emulator platform-tools
           # Create device
           $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd \
           --name generic-api-31-device \
