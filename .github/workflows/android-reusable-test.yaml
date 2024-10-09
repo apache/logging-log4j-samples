@@ -44,31 +44,13 @@ jobs:
           distribution: 'temurin'
           java-version: 17
 
-#      - name: Setup Android SDK
-#        shell: bash
-#        env:
-#          ANDROID_SDK_VERSION: 10406996
-#          ANDROID_SDK_CHECKSUM: 8919e8752979db73d8321e9babe2caedcc393750817c1a5f56c128ec442fb540
-#        run: |
-#          # Create home directory
-#          export ANDROID_HOME=$HOME/.android/sdk
-#          mkdir -p $ANDROID_HOME
-#
-#          # Download and verify the `cmdline-tools`
-#          curl -o $ANDROID_HOME/cmdline-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_VERSION}_latest.zip
-#          echo "$ANDROID_SDK_CHECKSUM $ANDROID_HOME/cmdline-tools.zip" | sha256sum -c
-#          unzip -d $ANDROID_HOME/cmdline-tools{,.zip}
-#          mv $ANDROID_HOME/cmdline-tools/{cmdline-tools,latest}
-#
-#          # Accept licenses
-#          echo -e 'y\ny\ny\ny\ny\ny\ny\n' | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
-#
-#          # Installing the remaining tools
-#          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager tools platform-tools
-#
-#          # Exporting ANDROID_HOME and adding sdkmanager to the PATH
-#          echo "ANDROID_HOME=$ANDROID_HOME" >> $GITHUB_ENV
-#          echo $ANDROID_HOME/cmdline-tools/latest/bin >> $GITHUB_PATH
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@d156388eb19639ec20ade50009f3d199ce1e2808   # 4.1.0
+
+      - name: List AVD Devices
+        shell: bash
+        run: |
+          $ANDROID_HOME/tools/bin/avdmanager list
 
       - name: Build
         id: build
