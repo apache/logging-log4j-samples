@@ -95,5 +95,8 @@ jobs:
         if: steps.avd.conclusion == 'success'
         shell: bash
         run: |
+          # Kill the emulator
+          $ANDROID_HOME/platform-tools/adb -s emulator-5554 emu kill
+          # Delete the device
           $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager delete avd \
           --name generic-api-31-device
