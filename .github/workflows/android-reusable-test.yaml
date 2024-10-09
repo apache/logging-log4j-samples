@@ -41,6 +41,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@b36c23c0d998641eff861008f374ee103c25ac73   # 4.4.0
         with:
+          distribution: 'temurin'
           java-version: 17
 
       - name: Setup Android SDK
