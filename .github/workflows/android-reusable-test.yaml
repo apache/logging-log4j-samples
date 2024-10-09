@@ -51,12 +51,16 @@ jobs:
         id: avd
         shell: bash
         run: |
+          # Download images
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
           --install "system-images;android-31;google_apis_playstore;x86_64"
+          # Create device
           $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd \
           --name generic-api-31-device \
           --device "5.4in FWVGA" \
           --package "system-images;android-31;google_apis_playstore;x86_64"
+          # Run emulator
+          $ANDROID_HOME/emulator/emulator @generic-api-31-device &
 
       - name: Build
         id: build
