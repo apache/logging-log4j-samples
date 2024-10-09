@@ -53,46 +53,47 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
-      - name: Run tests
-        uses: reactivecircus/android-emulator-runner@v2
+      - name: Create AVD Device
+        id: avd
+        shell: bash
         env:
           LOG4J_VERSION: ${{ inputs.log4j-version }}
-        with:
-          api-level: 31
-          script: |
-            log4j-samples-android/gradlew -p log4j-samples-android \
-            --console plain \
-            -Plog4jVersion=$LOG4J_VERSION \
-            build connectedCheck
+        run: |
+          # List installed and available packages
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list
+          # Download images
+          echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
+          --install "system-images;android-31;default;x86_64" \
+          emulator platform-tools
+          # Create device
+          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd \
+          --name generic-api-31-device \
+          --device "5.4in FWVGA" \
+          --package "system-images;android-31;default;x86_64"
+          # Run emulator
+          $ANDROID_HOME/emulator/emulator \
+          -no-audio -no-window -no-accel \
+          -avd generic-api-31-device &
+          # Wait for device to go online
+          # It might take up to 5 minutes
+          for i in {1..300}; do
+            if $ANDROID_HOME/platform-tools/adb shell getprop sys.boot_completed 2> /dev/null; then break; fi
+          done
 
-#      - name: Create AVD Device and build
-#        id: avd
-#        shell: bash
-#        env:
-#          LOG4J_VERSION: ${{ inputs.log4j-version }}
-#        run: |
-#          # List installed and available packages
-#          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list
-#          # Download images
-#          echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
-#          --install "system-images;android-31;default;x86_64" \
-#          emulator platform-tools
-#          # Create device
-#          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd \
-#          --name generic-api-31-device \
-#          --device "5.4in FWVGA" \
-#          --package "system-images;android-31;default;x86_64"
-#          # Run emulator
-#          $ANDROID_HOME/emulator/emulator \
-#          -no-audio -no-window -no-accel \
-#          -avd generic-api-31-device &
-#          # Wait for gRPC port
-#          for i in {1..30}; do
-#            if netcat -z localhost 5554; then break; fi
-#          done
-#          # Run gradle
-#          # Kill emulator
-#          kill %1
-#          # Delete device
-#          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager delete avd \
-#          --name generic-api-31-device
+      - name: Build
+        id: build
+        shell: bash
+        env:
+          LOG4J_VERSION: ${{ inputs.log4j-version }}
+        run: |
+          log4j-samples-android/gradlew -p log4j-samples-android \
+          --console plain \
+          -Plog4jVersion=$LOG4J_VERSION \
+          build connectedCheck
+
+      - name: Remove AVD Device
+        if: steps.avd.conclusion == 'success'
+        shell: bash
+        run: |
+          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager delete avd \
+          --name generic-api-31-device
