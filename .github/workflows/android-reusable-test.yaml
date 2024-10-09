@@ -61,14 +61,14 @@ jobs:
           mv $ANDROID_HOME/cmdline-tools/{cmdline-tools,latest}
           
           # Accept licenses
-          yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager --licenses
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
           
           # Installing the remaining tools
-          $ANDROID_HOME/cmdline-tools/bin/sdkmanager tools platform-tools
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager tools platform-tools
           
           # Exporting ANDROID_HOME and adding sdkmanager to the PATH
           echo "ANDROID_HOME=$ANDROID_HOME" >> $GITHUB_ENV
-          echo $ANDROID_HOME/cmdline-tools/bin >> $GITHUB_PATH
+          echo $ANDROID_HOME/cmdline-tools/latest/bin >> $GITHUB_PATH
 
       - name: Build
         id: build
