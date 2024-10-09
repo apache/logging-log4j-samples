@@ -76,7 +76,7 @@ jobs:
         env:
           LOG4J_VERSION: ${{ inputs.log4j-version }}
         run: |
-          log4j-samples-android/gradlew -p log4j-samples-gradlew \
+          log4j-samples-android/gradlew -p log4j-samples-android \
           --console plain \
           -Plog4jVersion=$LOG4J_VERSION \
           build connectedCheck
