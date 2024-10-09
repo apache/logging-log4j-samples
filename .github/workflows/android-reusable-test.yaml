@@ -86,6 +86,8 @@ jobs:
         env:
           LOG4J_VERSION: ${{ inputs.log4j-version }}
         run: |
+          $ANDROID_HOME/platform-tools/adb start-server
+          $ANDROID_HOME/platform-tools/adb -s emulator-5554 logcat
           log4j-samples-android/gradlew -p log4j-samples-android \
           --console plain \
           -Plog4jVersion=$LOG4J_VERSION \
