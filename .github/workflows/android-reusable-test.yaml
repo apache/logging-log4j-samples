@@ -1,0 +1,58 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to you under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+name: graalvm-reusable-test
+
+on:
+  workflow_call:
+    inputs:
+      log4j-version:
+        description: 'Log4j version'
+        required: true
+        type: string
+
+permissions: read-all
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938   # 4.2.0
+
+      - name: Setup Java
+        uses: actions/setup-java@b36c23c0d998641eff861008f374ee103c25ac73   # 4.4.0
+        with:
+          java-version: 17
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@00854ea68c109d98c75d956347303bf7c45b0277   # 3.2.1
+
+      - name: Build
+        id: build
+        shell: bash
+        env:
+          LOG4J_VERSION: ${{ inputs.log4j-version }}
+        run: |
+          log4j-samples-android/gradlew -p log4j-samples-gradlew \
+          --console plain \
+          -Plog4jVersion=$LOG4J_VERSION \
+          build connectedCheck
