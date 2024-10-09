@@ -44,7 +44,30 @@ jobs:
           java-version: 17
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@00854ea68c109d98c75d956347303bf7c45b0277   # 3.2.1
+        shell: bash
+        env:
+          ANDROID_SDK_VERSION: 10406996
+          ANDROID_SDK_CHECKSUM: 8919e8752979db73d8321e9babe2caedcc393750817c1a5f56c128ec442fb540
+        run: |
+          # Create home directory
+          export ANDROID_HOME=$HOME/.android/sdk
+          mkdir -p $ANDROID_HOME
+          
+          # Download and verify the `cmdline-tools`
+          curl -O $ANDROID_HOME/cmdline-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_VERSION}_latest.zip
+          echo "$ANDROID_SDK_CHECKSUM $ANDROID_HOME/cmdline-tools.zip" | sha256sum -c
+          unzip -d $ANDROID_HOME/cmdline-tools{,.zip}
+          mv $ANDROID_HOME/cmdline-tools/{cmdline-tools,latest}
+          
+          # Accept licenses
+          yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager --licenses
+          
+          # Installing the remaining tools
+          $ANDROID_HOME/cmdline-tools/bin/sdkmanager tools platform-tools
+          
+          # Exporting ANDROID_HOME and adding sdkmanager to the PATH
+          echo "ANDROID_HOME=$ANDROID_HOME" >> $GITHUB_ENV
+          echo $ANDROID_HOME/cmdline-tools/bin >> $GITHUB_PATH
 
       - name: Build
         id: build
