@@ -41,33 +41,50 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@b36c23c0d998641eff861008f374ee103c25ac73   # 4.4.0
         with:
+          distribution: 'temurin'
           java-version: 17
 
-      - name: Setup Android SDK
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@d156388eb19639ec20ade50009f3d199ce1e2808   # 4.1.0
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Create AVD Device
+        id: avd
         shell: bash
         env:
           ANDROID_SDK_VERSION: 10406996
           ANDROID_SDK_CHECKSUM: 8919e8752979db73d8321e9babe2caedcc393750817c1a5f56c128ec442fb540
         run: |
-          # Create home directory
-          export ANDROID_HOME=$HOME/.android/sdk
-          mkdir -p $ANDROID_HOME
-          
-          # Download and verify the `cmdline-tools`
-          curl -O $ANDROID_HOME/cmdline-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_VERSION}_latest.zip
-          echo "$ANDROID_SDK_CHECKSUM $ANDROID_HOME/cmdline-tools.zip" | sha256sum -c
-          unzip -d $ANDROID_HOME/cmdline-tools{,.zip}
-          mv $ANDROID_HOME/cmdline-tools/{cmdline-tools,latest}
-          
-          # Accept licenses
-          yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager --licenses
-          
-          # Installing the remaining tools
-          $ANDROID_HOME/cmdline-tools/bin/sdkmanager tools platform-tools
-          
-          # Exporting ANDROID_HOME and adding sdkmanager to the PATH
-          echo "ANDROID_HOME=$ANDROID_HOME" >> $GITHUB_ENV
-          echo $ANDROID_HOME/cmdline-tools/bin >> $GITHUB_PATH
+          # List installed and available packages
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list
+          # Download images
+          echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
+          --install "system-images;android-31;default;x86_64" \
+          emulator platform-tools
+          # Create device
+          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd \
+          --name generic-api-31-device \
+          --device "5.4in FWVGA" \
+          --package "system-images;android-31;default;x86_64"
+          # Run emulator
+          $ANDROID_HOME/emulator/emulator \
+          -no-audio -no-window \
+          -avd generic-api-31-device &
+          # Enabled the cleanup job
+          echo EMULATOR_STARTED=true >> $GITHUB_ENV
+          # Wait for device to go online
+          # It might take up to 5 minutes
+          for i in {1..300}; do
+            # Don't stop the script if `adb` fails
+            boot_completed=$($ANDROID_HOME/platform-tools/adb shell getprop sys.boot_completed 2> /dev/null || echo "0")
+            if [ "${boot_completed}" = "1" ]; then break; fi
+            sleep 1
+          done
 
       - name: Build
         id: build
@@ -75,7 +92,17 @@ jobs:
         env:
           LOG4J_VERSION: ${{ inputs.log4j-version }}
         run: |
-          log4j-samples-android/gradlew -p log4j-samples-gradlew \
+          log4j-samples-android/gradlew -p log4j-samples-android \
           --console plain \
-          -Plog4jVersion=$LOG4J_VERSION \
+          -Plog4j.version=$LOG4J_VERSION \
           build connectedCheck
+
+      - name: Remove AVD Device
+        if: ${{ always() && env.EMULATOR_STARTED == 'true' }}
+        shell: bash
+        run: |
+          # Kill the emulator
+          $ANDROID_HOME/platform-tools/adb -s emulator-5554 emu kill
+          # Delete the device
+          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager delete avd \
+          --name generic-api-31-device

@@ -1,0 +1,40 @@
+////
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements. See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License. You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+////
+= Apache Log4j Samples: Android application
+
+This project is an example of Android application that uses
+https://logging.apache.org/log4j/2.x/manual/api.html[the Log4j API]
+for logging together with its reference implementation
+https://logging.apache.org/log4j/2.x/manual/implementation.html[Log4j Core].
+
+To build the project, run:
+
+[source,shell]
+----
+./gradlew build
+----
+
+inside this directory.
+
+Since version `2.25.0` this application is part of the integration tests for a Log4j release.
+
+== Known Android limitations
+
+The Android platform does not implement all the features of a standard JRE, which will prevent you from using all the features offered by Log4j Core.
+For a list of known limitations, see
+https://logging.apache.org/log4j/2.x/faq.html#android[our Android F.A.Q. entry].
+
