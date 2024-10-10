@@ -85,7 +85,7 @@
     <spring-framework.version>5.3.39</spring-framework.version>
 
     <!-- Pinned transitive dependencies -->
-    <byte-buddy.version>1.15.1</byte-buddy.version>
+    <byte-buddy.version>1.15.2</byte-buddy.version>
 
   </properties>
 
