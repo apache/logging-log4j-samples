@@ -325,6 +325,11 @@
               <version>${log4j.version}</version>
             </path>
           </annotationProcessorPaths>
+          <compilerArgs combine.children="append">
+            <!-- Provide arguments for the GraalVM processor -->
+            <arg>-Alog4j.graalvm.groupId=${project.groupId}</arg>
+            <arg>-Alog4j.graalvm.artifactId=${project.artifactId}</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
 
