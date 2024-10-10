@@ -26,9 +26,12 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // Points to the correct Apache snapshot/staging repository
+        //
+        // See gradle.properties
         maven {
-            name = 'Apache Snapshot Repository';
-            url = 'https://repository.apache.org/snapshots'
+            name = 'Apache Repository'
+            url = providers.gradleProperty("log4j.repository.url")
         }
     }
 }
