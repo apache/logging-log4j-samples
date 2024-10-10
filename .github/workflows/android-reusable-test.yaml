@@ -75,6 +75,8 @@ jobs:
           $ANDROID_HOME/emulator/emulator \
           -no-audio -no-window \
           -avd generic-api-31-device &
+          # Enabled the cleanup job
+          echo EMULATOR_STARTED=true >> $GITHUB_ENV
           # Wait for device to go online
           # It might take up to 5 minutes
           for i in {1..300}; do
@@ -96,7 +98,7 @@ jobs:
           build connectedCheck
 
       - name: Remove AVD Device
-        if: steps.avd.conclusion == 'success'
+        if: ${{ always() && env.EMULATOR_STARTED == 'true' }}
         shell: bash
         run: |
           # Kill the emulator
