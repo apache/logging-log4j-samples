@@ -25,10 +25,10 @@ xref:log4j-samples-configuration/README.adoc[`log4j-samples-configuration`]::
 Explains how to use a custom programmatic configuration.
 
 xref:log4j-samples-flume-embedded/README.adoc[`log4j-samples-flume-embedded`]::
-Explains how to use an embedded Flume agent to send logs to https://flume.apache.org[Apache Flume.]
+Explains how to use an embedded Flume agent to send logs to https://flume.apache.org[Apache Flume].
 
 xref:log4j-samples-flume-remote/README.adoc[`log4j-samples-flume-remote`]::
-Explains how to send logs to https://flume.apache.org[Apache Flume],
+Explains how to send logs to https://flume.apache.org[Apache Flume].
 
 xref:log4j-samples-graalvm/README.adoc[`log4j-samples-graalvm`]::
 Explains how to use Log4j API and its implementation to create native GraalVM images.

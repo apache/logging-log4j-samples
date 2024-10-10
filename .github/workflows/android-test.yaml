@@ -29,6 +29,6 @@ permissions: read-all
 jobs:
 
   android-test:
-    uses: apache/logging-log4j-samples/.github/workflows/android-reusable-test.yaml@feature/android-tests
+    uses: apache/logging-log4j-samples/.github/workflows/android-reusable-test.yaml@main
     with:
       log4j-version: ${{ inputs.log4j-version }}
