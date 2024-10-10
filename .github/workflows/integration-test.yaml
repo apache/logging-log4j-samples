@@ -1,0 +1,56 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to you under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+name: integration-test
+
+on:
+  workflow_dispatch:
+    inputs:
+      log4j-version:
+        description: Version of Log4j Core
+        # Should point to the current 2.x snapshot version
+        default: 2.25.0-SNAPSHOT
+      log4j-repository-url:
+        description: Additional Maven repository
+        default: 'https://repository.apache.org/snapshots'
+
+env:
+  MAVEN_ARGS: ${{ inputs.log4j-version }}
+
+permissions: read-all
+
+jobs:
+
+  jre-test:
+    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@feature/maven-args
+    with:
+      java-version: 21
+      maven-args: |
+        -Dlog4j.version=${{log4j-version}}
+        -Dlog4j.repository.url=${{log4j-repository-url}}
+
+  android-test:
+    uses: apache/logging-log4j-samples/.github/workflows/android-reusable-test.yaml@feature/integrated-tests
+    with:
+      log4j-version: ${{ inputs.log4j-version }}
+      log4j-repository-url: ${{ inputs.log4j-repository-url }}
+
+  graalvm-test:
+    uses: apache/logging-log4j-samples/.github/workflows/graalvm-reusable-test.yaml@feature/integrated-tests
+    with:
+      log4j-version: ${{ inputs.log4j-version }}
+      log4j-repository-url: ${{ inputs.log4j-repository-url }}
