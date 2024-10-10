@@ -21,9 +21,14 @@ on:
   workflow_call:
     inputs:
       log4j-version:
-        description: 'Log4j version'
-        required: true
+        description: Version of Log4j Core
         type: string
+        # Should point to the current 2.x snapshot version
+        default: 2.25.0-SNAPSHOT
+      log4j-repository-url:
+        description: Additional Maven repository
+        type: string
+        default: 'https://repository.apache.org/snapshots'
 
 permissions: read-all
 
@@ -91,10 +96,12 @@ jobs:
         shell: bash
         env:
           LOG4J_VERSION: ${{ inputs.log4j-version }}
+          LOG4J_REPOSITORY_URL: ${{ inputs.log4j-repository-url }}
         run: |
           log4j-samples-android/gradlew -p log4j-samples-android \
           --console plain \
           -Plog4j.version=$LOG4J_VERSION \
+          -Plog4j.repository.url=$LOG4J_REPOSITORY_URL \
           build connectedCheck
 
       - name: Remove AVD Device
