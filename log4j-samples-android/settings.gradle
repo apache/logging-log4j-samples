@@ -26,7 +26,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        mavenLocal()
+        maven {
+            name = 'Apache Snapshot Repository';
+            url = 'https://repository.apache.org/snapshots'
+        }
     }
 }
 rootProject.name = "Log4j Core Android"
