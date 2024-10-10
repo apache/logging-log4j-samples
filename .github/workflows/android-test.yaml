@@ -19,18 +19,16 @@ name: android-test
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "29 17 * * *"
+    inputs:
+      log4j-version:
+        description: The version of Log4j Core to use
+        default: "2.25.0-SNAPSHOT"
 
 permissions: read-all
 
 jobs:
 
   android-test:
-    strategy:
-      fail-fast: false
-      matrix:
-        log4j-version: [ "2.25.0-SNAPSHOT" ]
     uses: apache/logging-log4j-samples/.github/workflows/android-reusable-test.yaml@feature/android-tests
     with:
-      log4j-version: ${{ matrix.log4j-version }}
+      log4j-version: ${{ inputs.log4j-version }}
