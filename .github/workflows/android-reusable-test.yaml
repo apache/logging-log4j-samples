@@ -75,7 +75,8 @@ jobs:
           # Wait for device to go online
           # It might take up to 5 minutes
           for i in {1..300}; do
-            boot_completed=$($ANDROID_HOME/platform-tools/adb shell getprop sys.boot_completed 2> /dev/null)
+            # Don't stop the script if `adb` fails
+            boot_completed=$($ANDROID_HOME/platform-tools/adb shell getprop sys.boot_completed 2> /dev/null || echo "0")
             if [ "${boot_completed}" = "1" ]; then break; fi
             sleep 1
           done
