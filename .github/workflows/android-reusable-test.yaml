@@ -56,6 +56,9 @@ jobs:
       - name: Create AVD Device
         id: avd
         shell: bash
+        env:
+          ANDROID_SDK_VERSION: 10406996
+          ANDROID_SDK_CHECKSUM: 8919e8752979db73d8321e9babe2caedcc393750817c1a5f56c128ec442fb540
         run: |
           # List installed and available packages
           $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list
