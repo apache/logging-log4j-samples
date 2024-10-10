@@ -94,7 +94,7 @@ jobs:
         run: |
           log4j-samples-android/gradlew -p log4j-samples-android \
           --console plain \
-          -Plog4jVersion=$LOG4J_VERSION \
+          -Plog4j.version=$LOG4J_VERSION \
           build connectedCheck
 
       - name: Remove AVD Device
