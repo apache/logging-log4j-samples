@@ -30,6 +30,8 @@ on:
       - "**.adoc"
       - "**.md"
       - "**.txt"
+  schedule:
+    - cron: "29 17 * * *"
 
 permissions: read-all
 
@@ -37,6 +39,4 @@ jobs:
 
   build:
     if: github.actor != 'dependabot[bot]'
-    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@rel/11.3.0
-    with:
-      java-version: 21
+    uses: apache/logging-log4j-samples/.github/workflows/integration-test.yaml@main

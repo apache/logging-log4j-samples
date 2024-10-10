@@ -18,6 +18,17 @@
 name: integration-test
 
 on:
+  workflow_call:
+    inputs:
+      log4j-version:
+        description: Version of Log4j Core
+        type: string
+        # Should point to the current 2.x snapshot version
+        default: 2.25.0-SNAPSHOT
+      log4j-repository-url:
+        description: Additional Maven repository
+        type: string
+        default: 'https://repository.apache.org/snapshots'
   workflow_dispatch:
     inputs:
       log4j-version:
