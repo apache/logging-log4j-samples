@@ -18,20 +18,26 @@ limitations under the License.
 
 This repository contains several examples to help the user with some of the more advanced Log4j features.
 
+xref:log4j-samples-android/README.adoc[`log4j-samples-android`]::
+Explains how to use Log4j Core on Android.
+
 xref:log4j-samples-configuration/README.adoc[`log4j-samples-configuration`]::
-Explains how to use a custom programmatic configuration,
+Explains how to use a custom programmatic configuration.
 
 xref:log4j-samples-flume-embedded/README.adoc[`log4j-samples-flume-embedded`]::
-Explains how to use an embedded Flume agent to send logs to https://flume.apache.org[Apache Flume],
+Explains how to use an embedded Flume agent to send logs to https://flume.apache.org[Apache Flume.]
 
 xref:log4j-samples-flume-remote/README.adoc[`log4j-samples-flume-remote`]::
 Explains how to send logs to https://flume.apache.org[Apache Flume],
+
+xref:log4j-samples-graalvm/README.adoc[`log4j-samples-graalvm`]::
+Explains how to use Log4j API and its implementation to create native GraalVM images.
 
 xref:log4j-samples-jlink/README.adoc[`log4j-samples-jlink`]::
 An example of JLink custom JRE.
 
 xref:log4j-samples-loggerProperties/README.adoc[`log4j-samples-loggerProperties`]::
-Explains how to write a custom property lookup,
+Explains how to write a custom property lookup.
 
 xref:log4j-spring-cloud-config-sample-application/README.md[`log4j-spring-cloud-config-sample-application`]::
 An example of Spring Boot application that reads its logging configuration from a Spring Cloud Configuration Server.
