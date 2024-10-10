@@ -20,14 +20,15 @@ name: graalvm-reusable-test
 on:
   workflow_call:
     inputs:
-      backend:
-        description: 'Logging backend'
-        required: true
-        type: string
       log4j-version:
-        description: 'Log4j version'
-        required: true
+        description: Version of Log4j Core
         type: string
+        # Should point to the current 2.x snapshot version
+        default: 2.25.0-SNAPSHOT
+      log4j-repository-url:
+        description: Additional Maven repository
+        type: string
+        default: 'https://repository.apache.org/snapshots'
 
 permissions: read-all
 
@@ -40,6 +41,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        backend: [ jul, log4j-core-minimal, log4j-core-jtl, log4j-core, logback, simple]
         os: [ macos-latest, ubuntu-latest, windows-latest ]
 
     steps:
@@ -57,7 +59,7 @@ jobs:
         shell: bash
         env:
           LOG4J_VERSION: ${{ inputs.log4j-version }}
-          MAVEN_PROFILE: use-${{ inputs.backend }}
+          MAVEN_PROFILE: use-${{ matrix.backend }}
         run: |
           ./mvnw -f log4j-samples-graalvm \
             --show-version --batch-mode --errors --no-transfer-progress \

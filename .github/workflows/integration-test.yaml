@@ -18,6 +18,17 @@
 name: integration-test
 
 on:
+  workflow_call:
+    inputs:
+      log4j-version:
+        description: Version of Log4j Core
+        type: string
+        # Should point to the current 2.x snapshot version
+        default: 2.25.0-SNAPSHOT
+      log4j-repository-url:
+        description: Additional Maven repository
+        type: string
+        default: 'https://repository.apache.org/snapshots'
   workflow_dispatch:
     inputs:
       log4j-version:
@@ -36,21 +47,21 @@ permissions: read-all
 jobs:
 
   jre-test:
-    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@feature/maven-args
+    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@main
     with:
       java-version: 21
       maven-args: |
-        -Dlog4j.version=${{log4j-version}}
-        -Dlog4j.repository.url=${{log4j-repository-url}}
+        -Dlog4j.version=${{ inputs.log4j-version }}
+        -Dlog4j.repository.url=${{ inputs.log4j-repository-url }}
 
   android-test:
-    uses: apache/logging-log4j-samples/.github/workflows/android-reusable-test.yaml@feature/integrated-tests
+    uses: apache/logging-log4j-samples/.github/workflows/android-reusable-test.yaml@main
     with:
       log4j-version: ${{ inputs.log4j-version }}
       log4j-repository-url: ${{ inputs.log4j-repository-url }}
 
   graalvm-test:
-    uses: apache/logging-log4j-samples/.github/workflows/graalvm-reusable-test.yaml@feature/integrated-tests
+    uses: apache/logging-log4j-samples/.github/workflows/graalvm-reusable-test.yaml@main
     with:
       log4j-version: ${{ inputs.log4j-version }}
       log4j-repository-url: ${{ inputs.log4j-repository-url }}

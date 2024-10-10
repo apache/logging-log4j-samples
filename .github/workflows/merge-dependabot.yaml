@@ -28,17 +28,21 @@ permissions: read-all
 
 jobs:
 
-  build:
+  integration-test:
     if: github.repository == 'apache/logging-log4j-samples' && github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]'
-    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@rel/11.3.0
+    uses: apache/logging-log4j-samples/.github/workflows/integration-test.yaml@main
     with:
       java-version: 21
 
   merge-dependabot:
     needs: build
-    uses: apache/logging-parent/.github/workflows/merge-dependabot-reusable.yaml@rel/11.3.0
+    uses: apache/logging-parent/.github/workflows/merge-dependabot-reusable.yaml@main
     permissions:
       contents: write                                         # to push changelog commits
       pull-requests: write                                    # to close the PR
     secrets:
       GPG_SECRET_KEY: ${{ secrets.LOGGING_GPG_SECRET_KEY }}   # to sign commits
+    with:
+      maven-args: |
+        -Dlog4j.version=${{ inputs.log4j-version }}
+        -Dlog4j.repository.url=${{ inputs.log4j-repository-url }}

@@ -21,9 +21,14 @@ on:
   workflow_call:
     inputs:
       log4j-version:
-        description: 'Log4j version'
-        required: true
+        description: Version of Log4j Core
         type: string
+        # Should point to the current 2.x snapshot version
+        default: 2.25.0-SNAPSHOT
+      log4j-repository-url:
+        description: Additional Maven repository
+        type: string
+        default: 'https://repository.apache.org/snapshots'
 
 permissions: read-all
 
@@ -46,6 +51,12 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@d156388eb19639ec20ade50009f3d199ce1e2808   # 4.1.0
+        with:
+          develocity-access-key: ${{ secrets.GE_ACCESS_KEY }}
+          develocity-injection-enabled: true
+          develocity-url: https://ge.apache.org
+          develocity-plugin-version: 3.18.1
+
 
       - name: Enable KVM
         run: |
@@ -56,10 +67,17 @@ jobs:
       - name: Create AVD Device
         id: avd
         shell: bash
-        env:
-          ANDROID_SDK_VERSION: 10406996
-          ANDROID_SDK_CHECKSUM: 8919e8752979db73d8321e9babe2caedcc393750817c1a5f56c128ec442fb540
         run: |
+          # Debug environment variables
+          printenv | grep '^ANDROID\|^HOME' | sort
+          
+          # Set `ANDROID_USER_HOME` since `emulator` and `avdmanager` use different definitions:
+          # * `avdmanager` uses `$XDG_CONFIG_HOME/.android` with a fallback to `$HOME/.android`:
+          #   https://cs.android.com/android-studio/platform/tools/base/+/mirror-goog-studio-main:common/src/main/java/com/android/prefs/AbstractAndroidLocations.kt
+          # * `emulator` uses `HOME/.android`
+          export ANDROID_USER_HOME="$HOME/.android"
+          echo "ANDROID_USER_HOME=$ANDROID_USER_HOME" >> $GITHUB_ENV
+          
           # List installed and available packages
           $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list
           # Download images
@@ -71,6 +89,7 @@ jobs:
           --name generic-api-31-device \
           --device "5.4in FWVGA" \
           --package "system-images;android-31;default;x86_64"
+          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list avds
           # Run emulator
           $ANDROID_HOME/emulator/emulator \
           -no-audio -no-window \
@@ -91,10 +110,12 @@ jobs:
         shell: bash
         env:
           LOG4J_VERSION: ${{ inputs.log4j-version }}
+          LOG4J_REPOSITORY_URL: ${{ inputs.log4j-repository-url }}
         run: |
           log4j-samples-android/gradlew -p log4j-samples-android \
           --console plain \
           -Plog4j.version=$LOG4J_VERSION \
+          -Plog4j.repository.url=$LOG4J_REPOSITORY_URL \
           build connectedCheck
 
       - name: Remove AVD Device

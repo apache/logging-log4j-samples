@@ -56,6 +56,21 @@
          Hence, we use a fake version and DO NOT CHANGE IT! -->
     <revision>0.0.0-SNAPSHOT</revision>
 
+    <!--
+      ~ Version of Log4j Core
+      ~
+      ~ Set to latest stable 2.x release for users.
+      ~ Our workflows override this.
+      -->
+    <log4j.version>2.24.1</log4j.version>
+    <!--
+      ~ Additional Maven repository
+      ~
+      ~ Default: Apache Snapshots Repository
+      ~ Our workflows override this.
+      -->
+    <log4j.repository.url>https://repository.apache.org/snapshots</log4j.repository.url>
+
     <!-- Some samples require JDK 9+ -->
     <minimalJavaBuildVersion>11</minimalJavaBuildVersion>
     <maven.compiler.release>11</maven.compiler.release>
@@ -267,12 +282,11 @@
 
   <repositories>
 
+    <!-- The repository that contains the requested Log4j version -->
     <repository>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>apache.staging</id>
-      <url>https://repository.apache.org/content/repositories/orgapachelogging-1303</url>
+      <id>log4j</id>
+      <name>Log4j Maven Repository</name>
+      <url>${log4j.repository.url}</url>
     </repository>
 
   </repositories>
@@ -311,6 +325,11 @@
               <version>${log4j.version}</version>
             </path>
           </annotationProcessorPaths>
+          <compilerArgs combine.children="append">
+            <!-- Provide arguments for the GraalVM processor -->
+            <arg>-Alog4j.graalvm.groupId=${project.groupId}</arg>
+            <arg>-Alog4j.graalvm.artifactId=${project.artifactId}</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
 
