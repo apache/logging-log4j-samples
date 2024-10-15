@@ -49,14 +49,6 @@ updates:
     registries:
       - maven-central
 
-  - package-ecosystem: maven
-    directory: "log4j-samples-graalvm"
-    schedule:
-      interval: daily
-    open-pull-requests-limit: 10
-    registries:
-      - maven-central
-
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
