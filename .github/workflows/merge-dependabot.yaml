@@ -35,14 +35,10 @@ jobs:
       java-version: 21
 
   merge-dependabot:
-    needs: build
+    needs: integration-test
     uses: apache/logging-parent/.github/workflows/merge-dependabot-reusable.yaml@main
     permissions:
       contents: write                                         # to push changelog commits
       pull-requests: write                                    # to close the PR
     secrets:
       GPG_SECRET_KEY: ${{ secrets.LOGGING_GPG_SECRET_KEY }}   # to sign commits
-    with:
-      maven-args: |
-        -Dlog4j.version=${{ inputs.log4j-version }}
-        -Dlog4j.repository.url=${{ inputs.log4j-repository-url }}
