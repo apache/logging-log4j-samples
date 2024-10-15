@@ -70,14 +70,14 @@ jobs:
         run: |
           # Debug environment variables
           printenv | grep '^ANDROID\|^HOME' | sort
-          
+
           # Set `ANDROID_USER_HOME` since `emulator` and `avdmanager` use different definitions:
           # * `avdmanager` uses `$XDG_CONFIG_HOME/.android` with a fallback to `$HOME/.android`:
           #   https://cs.android.com/android-studio/platform/tools/base/+/mirror-goog-studio-main:common/src/main/java/com/android/prefs/AbstractAndroidLocations.kt
           # * `emulator` uses `HOME/.android`
           export ANDROID_USER_HOME="$HOME/.android"
           echo "ANDROID_USER_HOME=$ANDROID_USER_HOME" >> $GITHUB_ENV
-          
+
           # List installed and available packages
           $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list
           # Download images

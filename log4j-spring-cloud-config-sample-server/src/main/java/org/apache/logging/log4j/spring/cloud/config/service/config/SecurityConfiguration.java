@@ -16,19 +16,24 @@
  */
 package org.apache.logging.log4j.spring.cloud.config.service.config;
 
+import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 
 /**
  *
  */
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/health").antMatchers("/metrics").antMatchers("/info");
+public class SecurityConfiguration {
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() throws Exception {
+        return web -> web.ignoring()
+                .requestMatchers(antMatcher("/health"))
+                .requestMatchers(antMatcher("/metrics"))
+                .requestMatchers(antMatcher("/info"));
     }
 }

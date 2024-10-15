@@ -17,9 +17,9 @@
 package org.apache.logging.log4j.samples.app;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Random;
-import javax.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;

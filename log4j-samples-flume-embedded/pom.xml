@@ -39,11 +39,6 @@
       <artifactId>spring-webmvc</artifactId>
     </dependency>
     <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
       <groupId>org.apache.flume.flume-ng-channels</groupId>
       <artifactId>flume-file-channel</artifactId>
       <scope>runtime</scope>
