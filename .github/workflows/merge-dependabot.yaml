@@ -31,8 +31,6 @@ jobs:
   integration-test:
     if: github.repository == 'apache/logging-log4j-samples' && github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]'
     uses: apache/logging-log4j-samples/.github/workflows/integration-test.yaml@main
-    with:
-      java-version: 21
 
   merge-dependabot:
     needs: integration-test
