@@ -29,6 +29,10 @@ on:
         description: Additional Maven repository
         type: string
         default: 'https://repository.apache.org/snapshots'
+      samples-ref:
+        description: The branch, tag or SHA of `logging-log4j-samples` to checkout
+        type: string
+        default: ${{ github.ref }}
   workflow_dispatch:
     inputs:
       log4j-version:
@@ -38,6 +42,10 @@ on:
       log4j-repository-url:
         description: Additional Maven repository
         default: 'https://repository.apache.org/snapshots'
+      samples-ref:
+        description: The branch, tag or SHA of `logging-log4j-samples` to checkout
+        type: string
+        default: 'refs/heads/main'
 
 env:
   MAVEN_ARGS: ${{ inputs.log4j-version }}
@@ -47,12 +55,14 @@ permissions: read-all
 jobs:
 
   jre-test:
-    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@main
+    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@feature/reproducibility-check
     with:
       java-version: 21
       maven-args: |
         -Dlog4j.version=${{ inputs.log4j-version }}
         -Dlog4j.repository.url=${{ inputs.log4j-repository-url }}
+      repository: 'apache/logging-log4j-samples'
+      ref: ${{ inputs.samples-ref }}
 
   android-test:
     uses: apache/logging-log4j-samples/.github/workflows/android-reusable-test.yaml@main
