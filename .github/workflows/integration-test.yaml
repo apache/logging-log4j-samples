@@ -69,9 +69,11 @@ jobs:
     with:
       log4j-version: ${{ inputs.log4j-version }}
       log4j-repository-url: ${{ inputs.log4j-repository-url }}
+      samples-ref: ${{ inputs.samples-ref }}
 
   graalvm-test:
     uses: apache/logging-log4j-samples/.github/workflows/graalvm-reusable-test.yaml@main
     with:
       log4j-version: ${{ inputs.log4j-version }}
       log4j-repository-url: ${{ inputs.log4j-repository-url }}
+      samples-ref: ${{ inputs.samples-ref }}
