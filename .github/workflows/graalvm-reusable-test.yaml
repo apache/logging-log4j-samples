@@ -36,13 +36,12 @@ jobs:
 
   build:
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
         backend: [ jul, log4j-core-minimal, log4j-core-jtl, log4j-core, logback, simple]
-        os: [ macos-latest, ubuntu-latest, windows-latest ]
 
     steps:
 
