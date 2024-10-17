@@ -34,7 +34,7 @@ permissions: read-all
 
 jobs:
 
-  build:
+  android-test:
 
     runs-on: ubuntu-latest
 

@@ -34,7 +34,7 @@ permissions: read-all
 
 jobs:
 
-  build:
+  graalvm-test:
 
     runs-on: ubuntu-latest
 
