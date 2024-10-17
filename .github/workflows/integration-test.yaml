@@ -63,6 +63,7 @@ jobs:
         -Dlog4j.repository.url=${{ inputs.log4j-repository-url }}
       repository: 'apache/logging-log4j-samples'
       ref: ${{ inputs.samples-ref }}
+      test-report-suffix: '-it'
 
   android-test:
     uses: apache/logging-log4j-samples/.github/workflows/android-reusable-test.yaml@main
