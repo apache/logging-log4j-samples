@@ -1,0 +1,747 @@
+{
+  "configurationfactory": {
+    "org.apache.logging.log4j.core.config.xml.XmlConfigurationFactory": {
+      "pluginNames": [
+        "xmlconfigurationfactory"
+      ],
+      "elementName": "XmlConfigurationFactory",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    }
+  },
+  "converter": {
+    "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$Black": {
+      "pluginNames": [
+        "black"
+      ],
+      "elementName": "black",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$Blue": {
+      "pluginNames": [
+        "blue"
+      ],
+      "elementName": "blue",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$Cyan": {
+      "pluginNames": [
+        "cyan"
+      ],
+      "elementName": "cyan",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$Green": {
+      "pluginNames": [
+        "green"
+      ],
+      "elementName": "green",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$Magenta": {
+      "pluginNames": [
+        "magenta"
+      ],
+      "elementName": "magenta",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$Red": {
+      "pluginNames": [
+        "red"
+      ],
+      "elementName": "red",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$White": {
+      "pluginNames": [
+        "white"
+      ],
+      "elementName": "white",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$Yellow": {
+      "pluginNames": [
+        "yellow"
+      ],
+      "elementName": "yellow",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.ClassNamePatternConverter": {
+      "pluginNames": [
+        "classnamepatternconverter"
+      ],
+      "elementName": "ClassNamePatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.DatePatternConverter": {
+      "pluginNames": [
+        "datepatternconverter"
+      ],
+      "elementName": "DatePatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.EncodingPatternConverter": {
+      "pluginNames": [
+        "encode"
+      ],
+      "elementName": "encode",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.EndOfBatchPatternConverter": {
+      "pluginNames": [
+        "endofbatchpatternconverter"
+      ],
+      "elementName": "EndOfBatchPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.EqualsIgnoreCaseReplacementConverter": {
+      "pluginNames": [
+        "equalsignorecase"
+      ],
+      "elementName": "equalsIgnoreCase",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.EqualsReplacementConverter": {
+      "pluginNames": [
+        "equals"
+      ],
+      "elementName": "equals",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.ExtendedThrowablePatternConverter": {
+      "pluginNames": [
+        "extendedthrowablepatternconverter"
+      ],
+      "elementName": "ExtendedThrowablePatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.FileLocationPatternConverter": {
+      "pluginNames": [
+        "filelocationpatternconverter"
+      ],
+      "elementName": "FileLocationPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.FullLocationPatternConverter": {
+      "pluginNames": [
+        "fulllocationpatternconverter"
+      ],
+      "elementName": "FullLocationPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.HighlightConverter": {
+      "pluginNames": [
+        "highlight"
+      ],
+      "elementName": "highlight",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.LevelPatternConverter": {
+      "pluginNames": [
+        "levelpatternconverter"
+      ],
+      "elementName": "LevelPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.LineLocationPatternConverter": {
+      "pluginNames": [
+        "linelocationpatternconverter"
+      ],
+      "elementName": "LineLocationPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.LineSeparatorPatternConverter": {
+      "pluginNames": [
+        "lineseparatorpatternconverter"
+      ],
+      "elementName": "LineSeparatorPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.LoggerFqcnPatternConverter": {
+      "pluginNames": [
+        "loggerfqcnpatternconverter"
+      ],
+      "elementName": "LoggerFqcnPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.LoggerPatternConverter": {
+      "pluginNames": [
+        "loggerpatternconverter"
+      ],
+      "elementName": "LoggerPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.MapPatternConverter": {
+      "pluginNames": [
+        "mappatternconverter"
+      ],
+      "elementName": "MapPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.MarkerPatternConverter": {
+      "pluginNames": [
+        "markerpatternconverter"
+      ],
+      "elementName": "MarkerPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.MarkerSimpleNamePatternConverter": {
+      "pluginNames": [
+        "markernamepatternconverter"
+      ],
+      "elementName": "MarkerNamePatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.MaxLengthConverter": {
+      "pluginNames": [
+        "maxlength"
+      ],
+      "elementName": "maxLength",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.MdcPatternConverter": {
+      "pluginNames": [
+        "mdcpatternconverter"
+      ],
+      "elementName": "MdcPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.MessagePatternConverter": {
+      "pluginNames": [
+        "messagepatternconverter"
+      ],
+      "elementName": "MessagePatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.MethodLocationPatternConverter": {
+      "pluginNames": [
+        "methodlocationpatternconverter"
+      ],
+      "elementName": "MethodLocationPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.NanoTimePatternConverter": {
+      "pluginNames": [
+        "nanotimepatternconverter"
+      ],
+      "elementName": "NanoTimePatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.NdcPatternConverter": {
+      "pluginNames": [
+        "ndcpatternconverter"
+      ],
+      "elementName": "NdcPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.ProcessIdPatternConverter": {
+      "pluginNames": [
+        "processidpatternconverter"
+      ],
+      "elementName": "ProcessIdPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.RegexReplacementConverter": {
+      "pluginNames": [
+        "replace"
+      ],
+      "elementName": "replace",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.RelativeTimePatternConverter": {
+      "pluginNames": [
+        "relativetimepatternconverter"
+      ],
+      "elementName": "RelativeTimePatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.RepeatPatternConverter": {
+      "pluginNames": [
+        "repeat"
+      ],
+      "elementName": "repeat",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.RootThrowablePatternConverter": {
+      "pluginNames": [
+        "rootthrowablepatternconverter"
+      ],
+      "elementName": "RootThrowablePatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.SequenceNumberPatternConverter": {
+      "pluginNames": [
+        "sequencenumberpatternconverter"
+      ],
+      "elementName": "SequenceNumberPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.StyleConverter": {
+      "pluginNames": [
+        "style"
+      ],
+      "elementName": "style",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.ThreadIdPatternConverter": {
+      "pluginNames": [
+        "threadidpatternconverter"
+      ],
+      "elementName": "ThreadIdPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.ThreadNamePatternConverter": {
+      "pluginNames": [
+        "threadpatternconverter"
+      ],
+      "elementName": "ThreadPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.ThreadPriorityPatternConverter": {
+      "pluginNames": [
+        "threadprioritypatternconverter"
+      ],
+      "elementName": "ThreadPriorityPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.ThrowablePatternConverter": {
+      "pluginNames": [
+        "throwablepatternconverter"
+      ],
+      "elementName": "ThrowablePatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.UuidPatternConverter": {
+      "pluginNames": [
+        "uuidpatternconverter"
+      ],
+      "elementName": "UuidPatternConverter",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.pattern.VariablesNotEmptyReplacementConverter": {
+      "pluginNames": [
+        "notempty"
+      ],
+      "elementName": "notEmpty",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    }
+  },
+  "core": {
+    "org.apache.logging.log4j.core.appender.ConsoleAppender": {
+      "pluginNames": [
+        "console"
+      ],
+      "elementName": "appender",
+      "printable": true,
+      "defer": false,
+      "builderHierarchy": [
+        "org.apache.logging.log4j.core.appender.ConsoleAppender$Builder",
+        "org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender$Builder",
+        "org.apache.logging.log4j.core.appender.AbstractAppender$Builder",
+        "org.apache.logging.log4j.core.filter.AbstractFilterable$Builder"
+      ]
+    },
+    "org.apache.logging.log4j.core.appender.FileAppender": {
+      "pluginNames": [
+        "file"
+      ],
+      "elementName": "appender",
+      "printable": true,
+      "defer": false,
+      "builderHierarchy": [
+        "org.apache.logging.log4j.core.appender.FileAppender$Builder",
+        "org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender$Builder",
+        "org.apache.logging.log4j.core.appender.AbstractAppender$Builder",
+        "org.apache.logging.log4j.core.filter.AbstractFilterable$Builder"
+      ]
+    },
+    "org.apache.logging.log4j.core.config.AppenderRef": {
+      "pluginNames": [
+        "appender-ref",
+        "appenderref"
+      ],
+      "elementName": "appender-ref",
+      "printable": true,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.AppendersPlugin": {
+      "pluginNames": [
+        "appenders"
+      ],
+      "elementName": "Appenders",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.LoggerConfig": {
+      "pluginNames": [
+        "logger"
+      ],
+      "elementName": "Logger",
+      "printable": true,
+      "defer": false,
+      "builderHierarchy": [
+        "org.apache.logging.log4j.core.config.LoggerConfig$Builder"
+      ]
+    },
+    "org.apache.logging.log4j.core.config.LoggerConfig$RootLogger": {
+      "pluginNames": [
+        "root"
+      ],
+      "elementName": "Root",
+      "printable": true,
+      "defer": false,
+      "builderHierarchy": [
+        "org.apache.logging.log4j.core.config.LoggerConfig$RootLogger$Builder"
+      ]
+    },
+    "org.apache.logging.log4j.core.config.LoggersPlugin": {
+      "pluginNames": [
+        "loggers"
+      ],
+      "elementName": "Loggers",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.layout.PatternLayout": {
+      "pluginNames": [
+        "patternlayout"
+      ],
+      "elementName": "layout",
+      "printable": true,
+      "defer": false,
+      "builderHierarchy": [
+        "org.apache.logging.log4j.core.layout.PatternLayout$Builder"
+      ]
+    }
+  },
+  "typeconverter": {
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$BigDecimalConverter": {
+      "pluginNames": [
+        "bigdecimal"
+      ],
+      "elementName": "BigDecimal",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$BigIntegerConverter": {
+      "pluginNames": [
+        "biginteger"
+      ],
+      "elementName": "BigInteger",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$BooleanConverter": {
+      "pluginNames": [
+        "boolean"
+      ],
+      "elementName": "Boolean",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$ByteArrayConverter": {
+      "pluginNames": [
+        "bytearray"
+      ],
+      "elementName": "ByteArray",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$ByteConverter": {
+      "pluginNames": [
+        "byte"
+      ],
+      "elementName": "Byte",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$CharArrayConverter": {
+      "pluginNames": [
+        "characterarray"
+      ],
+      "elementName": "CharacterArray",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$CharacterConverter": {
+      "pluginNames": [
+        "character"
+      ],
+      "elementName": "Character",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$CharsetConverter": {
+      "pluginNames": [
+        "charset"
+      ],
+      "elementName": "Charset",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$ClassConverter": {
+      "pluginNames": [
+        "class"
+      ],
+      "elementName": "Class",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$CronExpressionConverter": {
+      "pluginNames": [
+        "cronexpression"
+      ],
+      "elementName": "CronExpression",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$DoubleConverter": {
+      "pluginNames": [
+        "double"
+      ],
+      "elementName": "Double",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$DurationConverter": {
+      "pluginNames": [
+        "duration"
+      ],
+      "elementName": "Duration",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$FileConverter": {
+      "pluginNames": [
+        "file"
+      ],
+      "elementName": "File",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$FloatConverter": {
+      "pluginNames": [
+        "float"
+      ],
+      "elementName": "Float",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$InetAddressConverter": {
+      "pluginNames": [
+        "inetaddress"
+      ],
+      "elementName": "InetAddress",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$IntegerConverter": {
+      "pluginNames": [
+        "integer"
+      ],
+      "elementName": "Integer",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$LevelConverter": {
+      "pluginNames": [
+        "level"
+      ],
+      "elementName": "Level",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$LongConverter": {
+      "pluginNames": [
+        "long"
+      ],
+      "elementName": "Long",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$PathConverter": {
+      "pluginNames": [
+        "path"
+      ],
+      "elementName": "Path",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$PatternConverter": {
+      "pluginNames": [
+        "pattern"
+      ],
+      "elementName": "Pattern",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$SecurityProviderConverter": {
+      "pluginNames": [
+        "securityprovider"
+      ],
+      "elementName": "SecurityProvider",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$ShortConverter": {
+      "pluginNames": [
+        "short"
+      ],
+      "elementName": "Short",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$StringConverter": {
+      "pluginNames": [
+        "string"
+      ],
+      "elementName": "String",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$UriConverter": {
+      "pluginNames": [
+        "uri"
+      ],
+      "elementName": "URI",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$UrlConverter": {
+      "pluginNames": [
+        "url"
+      ],
+      "elementName": "URL",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    },
+    "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$UuidConverter": {
+      "pluginNames": [
+        "uuid"
+      ],
+      "elementName": "UUID",
+      "printable": false,
+      "defer": false,
+      "builderHierarchy": []
+    }
+  }
+}

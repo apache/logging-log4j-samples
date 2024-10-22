@@ -1,9 +1,0 @@
-[
-  {
-    "allowed-packages": [
-      "org.apache.logging.log4j.core"
-    ],
-    "directory": "log4j-core",
-    "module": "org.apache.logging.log4j:log4j-core"
-  }
-]

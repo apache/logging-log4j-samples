@@ -1,0 +1,288 @@
+[
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.JsonTemplateLayout",
+    "methods": [
+      {
+        "name": "newBuilder",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.JsonTemplateLayout$Builder",
+    "methods": [],
+    "fields": [
+      {
+        "name": "charset"
+      },
+      {
+        "name": "configuration"
+      },
+      {
+        "name": "eventDelimiter"
+      },
+      {
+        "name": "eventTemplate"
+      },
+      {
+        "name": "eventTemplateAdditionalFields"
+      },
+      {
+        "name": "eventTemplateRootObjectKey"
+      },
+      {
+        "name": "eventTemplateUri"
+      },
+      {
+        "name": "locationInfoEnabled"
+      },
+      {
+        "name": "maxStringLength"
+      },
+      {
+        "name": "nullEventDelimiterEnabled"
+      },
+      {
+        "name": "recyclerFactory"
+      },
+      {
+        "name": "stackTraceElementTemplate"
+      },
+      {
+        "name": "stackTraceElementTemplateUri"
+      },
+      {
+        "name": "stackTraceEnabled"
+      },
+      {
+        "name": "truncatedStringSuffix"
+      }
+    ]
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.JsonTemplateLayout$EventTemplateAdditionalField",
+    "methods": [
+      {
+        "name": "newBuilder",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.JsonTemplateLayout$EventTemplateAdditionalField$Builder",
+    "methods": [],
+    "fields": [
+      {
+        "name": "format"
+      },
+      {
+        "name": "key"
+      },
+      {
+        "name": "value"
+      }
+    ]
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.CaseConverterResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.CounterResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.EndOfBatchResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.EventAdditionalFieldInterceptor",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.EventRootObjectKeyInterceptor",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.ExceptionResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.ExceptionRootCauseResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.LevelResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.LoggerResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.MainMapResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.MapResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.MarkerResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.MessageParameterResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.MessageResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.SourceResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.ThreadContextDataResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.ThreadContextStackResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.ThreadResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.resolver.TimestampResolverFactory",
+    "methods": [
+      {
+        "name": "getInstance",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.layout.template.json.util.RecyclerFactoryConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  }
+]
