@@ -2,7 +2,7 @@
   "resources": {
     "includes": [
       {
-        "pattern": "\\Qlogging.properties\\E"
+        "pattern": "logback\\.xml"
       }
     ]
   },

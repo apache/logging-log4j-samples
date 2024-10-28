@@ -19,11 +19,11 @@ limitations under the License.
 
 This project shows how to generate a native image using GraalVM.
 
-In order to use it:
+To use it:
 
-. set the `JAVA_HOME` environment variable to the path of a GraalVM installation,
-. set the current working directory to the folder containing this file,
-. generate the artifact locally with:
+. Set the `JAVA_HOME` environment variable to the path of a GraalVM installation,
+. Set the current working directory to the folder containing this file,
+. Generate the artifact locally with:
 +
 [source,shell]
 ----
@@ -32,24 +32,42 @@ In order to use it:
 +
 where `<backend>` can be:
 
-`log4j-core`::
-This profile uses Log4j Core as logging backend with its out-of-the-box reachability metadata.
-
-`log4j-core-jtl`::
-This profile uses Log4j Core as logging backend with the addition of JSON Template Layout.
-
-`log4j-core-minimal`::
-This profile uses Log4j Core a logging backend with an external reachability metadata source optimized for size.
-
-`logback`::
-This profile uses Logback as logging backend.
+`simple`::
+This profile uses `SimpleLogger` as logging backend.
 
 `jul`::
 This profile uses `java.util.logging` as logging backend.
 
-`simple`::
-This profile uses `SimpleLogger` as logging backend.
-. run the application with
+`logback`::
+This profile uses Logback as logging backend.
+
+`log4j-core`::
+This profile uses Log4j Core as logging backend with its out-of-the-box reachability metadata.
+It uses
+https://logging.apache.org/log4j/2.x/manual/pattern-layout.html[Pattern Layout]
+to format log events.
+
+`log4j-core-jtl`::
+This profile uses Log4j Core as logging backend with its out-of-the-box reachability metadata.
+It uses
+https://logging.apache.org/log4j/2.x/manual/json-template-layout.html[JSON Template Layout]
+to format log events.
+
+[#log4j-core-minimal]
+`log4j-core-minimal`::
+This profile uses Log4j Core a logging backend with an external reachability metadata source optimized for size.
+It uses
+https://logging.apache.org/log4j/2.x/manual/pattern-layout.html[Pattern Layout]
+to format log events.
+
+[#log4j-core-jtl-minimal]
+`log4j-core-jtl-minimal`::
+This profile uses Log4j Core a logging backend with an external reachability metadata source optimized for size.
+It uses
+https://logging.apache.org/log4j/2.x/manual/json-template-layout.html[JSON Template Layout]
+to format log events.
+
+. Run the application with
 +
 [source,shell]
 ----
@@ -58,10 +76,9 @@ target/log4j-samples-graalvm
 
 == Reachability metadata
 
-Log4j as many other Java libraries, relies heavily on reflection to convert the configuration file into an instance of a
+Log4j, as many other Java libraries, relies heavily on reflection to convert the configuration file into an instance of a
 https://logging.apache.org/log4j/2.x/javadoc/log4j-core/org/apache/logging/log4j/core/config/Configuration.html[Configuration]
 object.
-
 The classes that are accessed through reflection are called Log4j plugins and GraalVM must be aware of their existence through the usage of reachability metadata.
 
 See
@@ -70,28 +87,15 @@ and
 https://www.graalvm.org/latest/reference-manual/native-image/metadata/[GraalVM reachability metadata]
 for more details.
 
-The reachability metadata in this project was:
-
-* generated using the
-https://www.graalvm.org/latest/reference-manual/native-image/metadata/AutomaticMetadataCollection/#tracing-agent[GraalVM tracing agent]:
-+
-[source,shell,subs=+attributes]
-----
-# Build application classpath
-export CLASSPATH=$(\
-../mvnw -q \
-dependency:build-classpath -DincludeScope=runtime -Dmdep.outputProperty=classpath \
-help:evaluate -Dexpression=classpath -DforceStdout \
-)
-CLASSPATH="target/log4j-samples-graalvm-0.0.0-SNAPSHOT.jar:$CLASSPATH"
-# Run application using the GraalVM agent
-$JAVA_HOME/bin/java \
--agentlib:native-image-agent=config-output-dir=src/reachability-metadata/minimal/log4j-core/2.24.0 \
-org.apache.logging.log4j.samples.graalvm.Main
-----
-
-* the generated `reflect-config.json` file was further trimmed down manually, by removing all the Log4j plugins that are not used by this configuration.
-These plugins are easy to spot, because they only have a `name` key.
+The
+https://logging.apache.org/log4j/2.x/manual/plugins.html#plugin-registry[Log4j plugin descriptors]
+and
+GraalVM reachability metadata used in the customized
+<<log4j-core-minimal,`use-log4j-core-minimal`>>
+and
+<<log4j-core-jtl-minimal,`use-log4j-core-jtl-minimal`>>
+profiles were generated using the procedure described in the documentation of the
+https://logging.apache.org/log4j/transform/cli.html#log4j-converter-plugin-descriptor[`log4j-converter-plugin-descriptor` tool].
 
 == Native binary size
 
@@ -104,12 +108,24 @@ Since this is a trivial Java application, the difference between the binary size
 In a typical application, those classes are already required, so the difference should be smaller.
 ====
 
-[cols="1,1"]
+[cols="3,1"]
 |===
 | Configuration | Size
 
+| With `SimpleLogger`
+| 13.90 MiB
+
+| With `java.util.logging`
+| 14.10 MiB
+
+| With Logback
+| 30.62 MiB
+
 | With Log4j Core (manually optimized reachability metadata)
 | 36.19 MiB
+
+| With Log4j Core + JSON Template Layout (manually optimized reachability metadata)
+| 37.40 MiB
 
 | With Log4j Core (embedded full reachability metadata)
 | 46.80 MiB
@@ -117,12 +133,4 @@ In a typical application, those classes are already required, so the difference 
 | With Log4j Core + JSON Template Layout (embedded full reachability metadata)
 | 47.37 MiB
 
-| With Logback
-| 30.62 MiB
-
-| With `java.util.logging`
-| 14.10 MiB
-
-| With `SimpleLogger`
-| 13.90 MiB
 |===
