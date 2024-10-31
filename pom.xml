@@ -97,6 +97,7 @@
     <jackson.version>2.18.0</jackson.version>
     <kotlin.version>2.0.21</kotlin.version>
 
+    <snakeyaml.version>2.3</snakeyaml.version>
   </properties>
 
   <dependencyManagement>
@@ -192,6 +193,14 @@
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpclient</artifactId>
         <version>${httpclient.version}</version>
+      </dependency>
+
+      <!-- Transitive dependency of multiple dependencies -->
+      <!-- We fix a common version -->
+      <dependency>
+        <groupId>org.yaml</groupId>
+        <artifactId>snakeyaml</artifactId>
+        <version>${snakeyaml.version}</version>
       </dependency>
 
       <!-- Transitive dependency of multiple dependencies -->
