@@ -56,7 +56,7 @@ jobs:
           ref: ${{ inputs.samples-ref }}
 
       - name: Setup GraalVM
-        uses: graalvm/setup-graalvm@6f327093bb6a42fe5eac053d21b168c46aa46f22   # 1.2.4
+        uses: graalvm/setup-graalvm@557ffcf459751b4d92319ee255bf3bec9b73964c   # 1.2.5
         with:
           java-version: '21'
 
