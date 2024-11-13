@@ -62,7 +62,7 @@
       ~ Set to latest stable 2.x release for users.
       ~ Our workflows override this.
       -->
-    <log4j.version>2.24.1</log4j.version>
+    <log4j.version>3.0.0-beta3</log4j.version>
     <!--
       ~ Additional Maven repository
       ~
@@ -86,7 +86,7 @@
     <flume.version>1.11.0</flume.version>
     <jetty.version>11.0.24</jetty.version>
     <javax-jms.version>2.0.1</javax-jms.version>
-    <log4j.version>2.24.1</log4j.version>
+    <log4j.version>3.0.0-beta3</log4j.version>
     <spring-boot.version>3.3.5</spring-boot.version>
     <spring-cloud.version>2023.0.3</spring-cloud.version>
 
