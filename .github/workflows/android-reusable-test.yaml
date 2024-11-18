@@ -57,7 +57,7 @@ jobs:
           java-version: 17
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@d156388eb19639ec20ade50009f3d199ce1e2808   # 4.1.0
+        uses: gradle/actions/setup-gradle@473878a77f1b98e2b5ac4af93489d1656a80a5ed   # 4.2.0
         with:
           develocity-access-key: ${{ secrets.GE_ACCESS_KEY }}
           develocity-injection-enabled: true
