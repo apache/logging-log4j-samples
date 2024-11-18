@@ -65,10 +65,11 @@ jobs:
         shell: bash
         env:
           LOG4J_VERSION: ${{ inputs.log4j-version }}
+          LOG4J_REPOSITORY_URL: ${{ inputs.log4j-repository-url }}
           MAVEN_PROFILE: use-${{ matrix.backend }}
         run: |
           ./mvnw -f log4j-samples-graalvm \
             --show-version --batch-mode --errors --no-transfer-progress \
-            -Dlog4j.version=$LOG4J_VERSION \
+            -Dlog4j.version=$LOG4J_VERSION -Dlog4j.repository.url=$LOG4J_REPOSITORY_URL\
             -P$MAVEN_PROFILE \
             clean verify
