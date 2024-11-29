@@ -88,7 +88,7 @@
     <javax-jms.version>2.0.1</javax-jms.version>
     <log4j.version>3.0.0-beta3</log4j.version>
     <spring-boot.version>3.3.5</spring-boot.version>
-    <spring-cloud.version>2023.0.3</spring-cloud.version>
+    <spring-cloud.version>2023.0.4</spring-cloud.version>
 
     <!-- Pinned transitive dependencies -->
     <!-- Try removing from time to time -->
