@@ -55,7 +55,7 @@ permissions: read-all
 jobs:
 
   jre-test:
-    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@feature/reproducibility-check
+    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@main
     with:
       java-version: 21
       maven-args: |
