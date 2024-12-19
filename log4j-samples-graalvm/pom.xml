@@ -31,19 +31,12 @@
 
   <properties>
     <!--
-  ~ Version of Log4j Core
-  ~
-  ~ Set to latest stable 2.x release for users.
-  ~ Our workflows override this.
-  -->
-    <log4j.version>2.24.1</log4j.version>
-    <!--
-      ~ Additional Maven repository
+      ~ Version of Log4j Core
       ~
-      ~ Default: Apache Snapshots Repository
+      ~ Set to latest stable 2.x release for users.
       ~ Our workflows override this.
       -->
-    <log4j.repository.url>https://repository.apache.org/snapshots</log4j.repository.url>
+    <log4j.version>2.24.1</log4j.version>
 
     <!-- Some samples require JDK 9+ -->
     <minimalJavaBuildVersion>17</minimalJavaBuildVersion>
@@ -62,7 +55,7 @@
     <json-unit.version>3.4.1</json-unit.version>
     <junit.version>5.11.3</junit.version>
     <log4j.version>2.25.0-SNAPSHOT</log4j.version>
-    <logback.version>1.5.11</logback.version>
+    <logback.version>1.5.12</logback.version>
     <slf4j.version>2.0.16</slf4j.version>
 
     <!-- IT to run for each profile -->
@@ -147,17 +140,6 @@
     </dependency>
 
   </dependencies>
-
-  <repositories>
-
-    <!-- The repository that contains the requested Log4j version -->
-    <repository>
-      <id>log4j</id>
-      <name>Log4j Maven Repository</name>
-      <url>${log4j.repository.url}</url>
-    </repository>
-
-  </repositories>
 
   <build>
     <plugins>
@@ -640,5 +622,40 @@
         <profile-resources>simple</profile-resources>
       </properties>
     </profile>
+
+    <!--
+      ~ An additional Maven staging repository if the `log4j.repository.url` property is not empty.
+      -->
+    <profile>
+      <id>staging-repo</id>
+      <activation>
+        <property>
+          <name>log4j.repository.url</name>
+          <value>!</value>
+        </property>
+      </activation>
+
+      <repositories>
+        <!-- Use primarily Maven Central -->
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>Central Repository</name>
+          <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+        <!-- The repository that contains the requested Log4j version -->
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>log4j-staging</id>
+          <name>Log4j Staging Repository</name>
+          <url>${log4j.repository.url}</url>
+        </repository>
+      </repositories>
+    </profile>
+
   </profiles>
 </project>

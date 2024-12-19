@@ -26,9 +26,9 @@ on:
         # Should point to the current 2.x snapshot version
         default: 2.25.0-SNAPSHOT
       log4j-repository-url:
-        description: Additional Maven repository
+        description: Staging Maven repository. Should be empty for snapshots.
         type: string
-        default: 'https://repository.apache.org/snapshots'
+        default: ''
       samples-ref:
         description: The branch, tag or SHA of `logging-log4j-samples` to checkout
         type: string
@@ -40,8 +40,8 @@ on:
         # Should point to the current 2.x snapshot version
         default: 2.25.0-SNAPSHOT
       log4j-repository-url:
-        description: Additional Maven repository
-        default: 'https://repository.apache.org/snapshots'
+        description: Staging Maven repository. Should be empty for snapshots.
+        default: ''
       samples-ref:
         description: The branch, tag or SHA of `logging-log4j-samples` to checkout
         type: string
@@ -55,7 +55,7 @@ permissions: read-all
 jobs:
 
   jre-test:
-    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@feature/reproducibility-check
+    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@main
     with:
       java-version: 21
       maven-args: |

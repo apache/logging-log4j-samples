@@ -62,14 +62,7 @@
       ~ Set to latest stable 2.x release for users.
       ~ Our workflows override this.
       -->
-    <log4j.version>2.24.1</log4j.version>
-    <!--
-      ~ Additional Maven repository
-      ~
-      ~ Default: Apache Snapshots Repository
-      ~ Our workflows override this.
-      -->
-    <log4j.repository.url>https://repository.apache.org/snapshots</log4j.repository.url>
+    <log4j.version>2.24.3</log4j.version>
 
     <!-- Some samples require JDK 17+ -->
     <minimalJavaBuildVersion>17</minimalJavaBuildVersion>
@@ -86,17 +79,17 @@
     <flume.version>1.11.0</flume.version>
     <jetty.version>11.0.24</jetty.version>
     <javax-jms.version>2.0.1</javax-jms.version>
-    <log4j.version>2.24.1</log4j.version>
-    <spring-boot.version>3.3.5</spring-boot.version>
-    <spring-cloud.version>2023.0.3</spring-cloud.version>
+    <spring-boot.version>3.4.0</spring-boot.version>
+    <spring-cloud.version>2024.0.0</spring-cloud.version>
 
     <!-- Pinned transitive dependencies -->
     <!-- Try removing from time to time -->
     <guava.version>33.3.1-jre</guava.version>
     <httpclient.version>4.5.14</httpclient.version>
-    <jackson.version>2.18.0</jackson.version>
+    <jackson.version>2.18.2</jackson.version>
     <kotlin.version>2.0.21</kotlin.version>
 
+    <snakeyaml.version>2.3</snakeyaml.version>
   </properties>
 
   <dependencyManagement>
@@ -197,6 +190,14 @@
       <!-- Transitive dependency of multiple dependencies -->
       <!-- We fix a common version -->
       <dependency>
+        <groupId>org.yaml</groupId>
+        <artifactId>snakeyaml</artifactId>
+        <version>${snakeyaml.version}</version>
+      </dependency>
+
+      <!-- Transitive dependency of multiple dependencies -->
+      <!-- We fix a common version -->
+      <dependency>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-bom</artifactId>
         <version>${kotlin.version}</version>
@@ -234,17 +235,6 @@
 
     </dependencies>
   </dependencyManagement>
-
-  <repositories>
-
-    <!-- The repository that contains the requested Log4j version -->
-    <repository>
-      <id>log4j</id>
-      <name>Log4j Maven Repository</name>
-      <url>${log4j.repository.url}</url>
-    </repository>
-
-  </repositories>
 
   <build>
 
@@ -291,5 +281,44 @@
     </plugins>
 
   </build>
+
+  <profiles>
+
+    <!--
+      ~ An additional Maven staging repository if the `log4j.repository.url` property is not empty.
+      -->
+    <profile>
+      <id>staging-repo</id>
+      <activation>
+        <property>
+          <name>log4j.repository.url</name>
+          <value>!</value>
+        </property>
+      </activation>
+
+      <repositories>
+        <!-- Use primarily Maven Central -->
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>Central Repository</name>
+          <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+        <!-- The repository that contains the requested Log4j version -->
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>log4j-staging</id>
+          <name>Log4j Staging Repository</name>
+          <url>${log4j.repository.url}</url>
+        </repository>
+      </repositories>
+
+    </profile>
+
+  </profiles>
 
 </project>

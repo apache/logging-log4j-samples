@@ -26,9 +26,9 @@ on:
         # Should point to the current 2.x snapshot version
         default: 2.25.0-SNAPSHOT
       log4j-repository-url:
-        description: Additional Maven repository
+        description: Staging Maven repository. Should be empty for snapshots.
         type: string
-        default: 'https://repository.apache.org/snapshots'
+        default: ''
       samples-ref:
         description: The branch, tag or SHA of `logging-log4j-samples` to checkout
         type: string
@@ -50,13 +50,13 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871   # 4.2.1
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683   # 4.2.2
         with:
           repository: 'apache/logging-log4j-samples'
           ref: ${{ inputs.samples-ref }}
 
       - name: Setup GraalVM
-        uses: graalvm/setup-graalvm@6f327093bb6a42fe5eac053d21b168c46aa46f22   # 1.2.4
+        uses: graalvm/setup-graalvm@557ffcf459751b4d92319ee255bf3bec9b73964c   # 1.2.5
         with:
           java-version: '21'
 
@@ -65,10 +65,11 @@ jobs:
         shell: bash
         env:
           LOG4J_VERSION: ${{ inputs.log4j-version }}
+          LOG4J_REPOSITORY_URL: ${{ inputs.log4j-repository-url }}
           MAVEN_PROFILE: use-${{ matrix.backend }}
         run: |
           ./mvnw -f log4j-samples-graalvm \
             --show-version --batch-mode --errors --no-transfer-progress \
-            -Dlog4j.version=$LOG4J_VERSION \
+            -Dlog4j.version=$LOG4J_VERSION -Dlog4j.repository.url=$LOG4J_REPOSITORY_URL\
             -P$MAVEN_PROFILE \
             clean verify
