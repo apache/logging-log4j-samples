@@ -84,7 +84,7 @@
 
     <!-- Pinned transitive dependencies -->
     <!-- Try removing from time to time -->
-    <guava.version>33.3.1-jre</guava.version>
+    <guava.version>33.4.0-jre</guava.version>
     <httpclient.version>4.5.14</httpclient.version>
     <jackson.version>2.18.2</jackson.version>
     <kotlin.version>2.1.0</kotlin.version>
