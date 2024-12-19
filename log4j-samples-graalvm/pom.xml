@@ -53,7 +53,7 @@
     <assertj.version>3.26.3</assertj.version>
     <json-org.version>20240303</json-org.version>
     <json-unit.version>3.4.1</json-unit.version>
-    <junit.version>5.11.3</junit.version>
+    <junit.version>5.11.4</junit.version>
     <log4j.version>2.25.0-SNAPSHOT</log4j.version>
     <logback.version>1.5.12</logback.version>
     <slf4j.version>2.0.16</slf4j.version>
