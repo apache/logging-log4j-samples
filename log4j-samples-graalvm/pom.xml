@@ -24,6 +24,7 @@
     <relativePath />
   </parent>
 
+  <groupId>org.apache.logging.log4j.samples</groupId>
   <artifactId>log4j-samples-graalvm</artifactId>
   <version>${revision}</version>
   <name>Apache Log4j Samples: GraalVM native image</name>
@@ -53,12 +54,13 @@
     <json-org.version>20240303</json-org.version>
     <json-unit.version>3.4.1</json-unit.version>
     <junit.version>5.11.3</junit.version>
-    <log4j.version>3.0.0-beta3</log4j.version>
+    <log4j.version>2.25.0-SNAPSHOT</log4j.version>
     <logback.version>1.5.12</logback.version>
     <slf4j.version>2.0.16</slf4j.version>
 
     <!-- IT to run for each profile -->
     <integration-tests-include>none</integration-tests-include>
+    <profile-resources>none</profile-resources>
   </properties>
 
   <dependencyManagement>
@@ -142,6 +144,32 @@
   <build>
     <plugins>
 
+      <!--
+        ~ Step 0: we add per-profile resource.
+        -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>add-profile-resources</id>
+            <goals>
+              <goal>add-resource</goal>
+            </goals>
+            <configuration>
+              <resources>
+                <resource>
+                  <directory>src/reachability-metadata/${profile-resources}/resources</directory>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!--
+        ~ Step 1: we create the application as executable JAR without dependencies.
+        -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -160,19 +188,68 @@
       </plugin>
 
       <!--
-        ~ Creates a native executable
+        ~ Step 2 (optional): we shade the application.
+        ~
+        ~ This step is only necessary to create custom images containing Log4j Core in the profiles:
+        ~ * `use-log4j-core-minimal`
+        ~ * `use-log4j-core-jtl-minimal`
+        ~
+        ~ This step is disabled by default.
+        -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>shade-jar-with-dependencies</id>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <phase>none</phase>
+            <configuration>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>module-info.class</exclude>
+                    <exclude>META-INF/versions/*/module-info.class</exclude>
+                    <exclude>META-INF/MANIFEST.MF</exclude>
+                    <exclude>META-INF/DEPENDENCIES</exclude>
+                  </excludes>
+                </filter>
+                <!--
+                  ~ Removes the metadata embedded in official Log4j JARs.
+                  ~ The metadata will be replaced with a custom version.
+                  -->
+                <filter>
+                  <artifact>org.apache.logging.log4j:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/org/apache/logging/log4j/core/config/plugins/Log4j2Plugins.dat</exclude>
+                    <exclude>META-INF/native-image/org.apache.logging.log4j/*/reflect-config.json</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+              <shadedArtifactAttached>true</shadedArtifactAttached>
+              <shadedClassifierName>shaded</shadedClassifierName>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer" />
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheNoticeResourceTransformer" />
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer" />
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!--
+        ~ Step 3: Creates a native executable.
         -->
       <plugin>
         <groupId>org.graalvm.buildtools</groupId>
         <artifactId>native-maven-plugin</artifactId>
         <version>0.10.4</version>
         <extensions>true</extensions>
-        <configuration>
-          <mainClass>org.apache.logging.log4j.samples.graalvm.Main</mainClass>
-          <metadataRepository>
-            <enabled>false</enabled>
-          </metadataRepository>
-        </configuration>
         <executions>
           <execution>
             <id>build-native</id>
@@ -180,12 +257,18 @@
               <goal>compile-no-fork</goal>
             </goals>
             <phase>package</phase>
+            <configuration>
+              <mainClass>org.apache.logging.log4j.samples.graalvm.Main</mainClass>
+              <metadataRepository>
+                <enabled>false</enabled>
+              </metadataRepository>
+            </configuration>
           </execution>
         </executions>
       </plugin>
 
       <!--
-        ~ Cleans the logs directory before running the executable
+        ~ Step 4: Cleans the logs directory before running the executable.
         -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -213,7 +296,7 @@
       </plugin>
 
       <!--
-        ~ Runs the native executable
+        ~ Step 5: Runs the native executable.
         -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -235,7 +318,7 @@
       </plugin>
 
       <!--
-        ~ Verifies the content of the log file
+        ~ Step 6: Verifies the content of the log file.
         -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -259,6 +342,9 @@
   <profiles>
 
     <!--
+      ~ ################################################################################################################
+      ~ JAVA UTIL LOGGING
+      ~ ################################################################################################################
       ~ Enable this profile to use JUL as logging implementation.
       -->
     <profile>
@@ -266,6 +352,7 @@
 
       <properties>
         <integration-tests-include>**/JulIT.class</integration-tests-include>
+        <profile-resources>jul</profile-resources>
       </properties>
 
       <dependencies>
@@ -275,26 +362,12 @@
           <scope>runtime</scope>
         </dependency>
       </dependencies>
-
-      <build>
-        <plugins>
-          <!--
-            ~ JUL requires reflection metadata for FileHandler
-            -->
-          <plugin>
-            <groupId>org.graalvm.buildtools</groupId>
-            <artifactId>native-maven-plugin</artifactId>
-            <configuration>
-              <buildArgs>
-                <arg>-H:ConfigurationFileDirectories=${basedir}/src/reachability-metadata/jul</arg>
-              </buildArgs>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
     </profile>
 
     <!--
+      ~ ################################################################################################################
+      ~ LOG4J CORE (minimal)
+      ~ ################################################################################################################
       ~ Enable this profile to use Log4j Core as logging implementation with a manually crafted metadata file.
       -->
     <profile>
@@ -302,6 +375,7 @@
 
       <properties>
         <integration-tests-include>**/StandardIT.class</integration-tests-include>
+        <profile-resources>log4j-core-minimal</profile-resources>
       </properties>
 
       <dependencies>
@@ -312,31 +386,47 @@
         </dependency>
       </dependencies>
 
+      <!--
+        ~ Use a different source of Log4j Core metadata.
+        -->
       <build>
         <plugins>
-          <!--
-            ~ Use a different source of Log4j Core metadata.
-            -->
+          <!-- Filter out the full embedded configuration -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>shade-jar-with-dependencies</id>
+                <phase>package</phase>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Creates native image based on the shaded artifact -->
           <plugin>
             <groupId>org.graalvm.buildtools</groupId>
             <artifactId>native-maven-plugin</artifactId>
-            <configuration>
-              <buildArgs>
-                <arg>--exclude-config</arg>
-                <arg>log4j-core.*jar</arg>
-                <arg>META-INF/native-image/org\.apache\.logging\.log4j/log4j-core/reflect-config\.json</arg>
-              </buildArgs>
-              <metadataRepository>
-                <enabled>true</enabled>
-                <localPath>${project.basedir}/src/reachability-metadata/minimal</localPath>
-              </metadataRepository>
-            </configuration>
+            <version>0.10.3</version>
+            <extensions>true</extensions>
+            <executions>
+              <execution>
+                <id>build-native</id>
+                <configuration>
+                  <classpath>
+                    <jar>${project.build.directory}/${project.artifactId}-${project.version}-shaded.jar</jar>
+                  </classpath>
+                </configuration>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>
     </profile>
 
     <!--
+      ~ ################################################################################################################
+      ~ LOG4J CORE (full)
+      ~ ################################################################################################################
       ~ Enable this profile to use Log4j Core as logging implementation with a full metadata file.
       -->
     <profile>
@@ -356,13 +446,17 @@
     </profile>
 
     <!--
-  ~ Enable this profile to use Log4j Core + JSON Template Layout
-  -->
+      ~ ################################################################################################################
+      ~ LOG4J CORE + JTL (minimal)
+      ~ ################################################################################################################
+      ~ Enable this profile to use a handcrafted configuration Log4j Core + JSON Template Layout
+      -->
     <profile>
-      <id>use-log4j-core-jtl</id>
+      <id>use-log4j-core-jtl-minimal</id>
 
       <properties>
         <integration-tests-include>**/JsonTemplateLayoutIT.class</integration-tests-include>
+        <profile-resources>log4j-core-jtl-minimal</profile-resources>
       </properties>
 
       <dependencies>
@@ -387,22 +481,35 @@
 
       </dependencies>
 
+      <!--
+        ~ Use a different source of Log4j Core metadata.
+        -->
       <build>
         <plugins>
-          <!--
-            ~ The JSON Template Layout configuration is in `log4j2-jtl`.
-            -->
+          <!-- Filter out the full embedded configuration -->
           <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <version>3.5.0</version>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
             <executions>
               <execution>
-                <id>run-executable</id>
+                <id>shade-jar-with-dependencies</id>
+                <phase>package</phase>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Creates native image based on the shaded artifact -->
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <version>0.10.3</version>
+            <extensions>true</extensions>
+            <executions>
+              <execution>
+                <id>build-native</id>
                 <configuration>
-                  <arguments>
-                    <argument>-Dlog4j2.configurationFile=log4j2-jtl.xml</argument>
-                  </arguments>
+                  <classpath>
+                    <jar>${project.build.directory}/${project.artifactId}-${project.version}-shaded.jar</jar>
+                  </classpath>
                 </configuration>
               </execution>
             </executions>
@@ -412,6 +519,46 @@
     </profile>
 
     <!--
+      ~ ################################################################################################################
+      ~ LOG4J CORE + JTL (full)
+      ~ ################################################################################################################
+      ~ Enable this profile to use Log4j Core + JSON Template Layout
+      -->
+    <profile>
+      <id>use-log4j-core-jtl</id>
+
+      <properties>
+        <integration-tests-include>**/JsonTemplateLayoutIT.class</integration-tests-include>
+        <profile-resources>log4j-core-jtl</profile-resources>
+      </properties>
+
+      <dependencies>
+
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-core</artifactId>
+          <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-layout-template-json</artifactId>
+          <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-nop</artifactId>
+          <scope>test</scope>
+        </dependency>
+
+      </dependencies>
+    </profile>
+
+    <!--
+      ~ ################################################################################################################
+      ~ LOGBACK
+      ~ ################################################################################################################
       ~ Enable this profile to use Logback as logging implementation.
       -->
     <profile>
@@ -419,6 +566,7 @@
 
       <properties>
         <integration-tests-include>**/StandardIT.class</integration-tests-include>
+        <profile-resources>logback</profile-resources>
       </properties>
 
       <dependencies>
@@ -437,56 +585,42 @@
 
       </dependencies>
 
+      <!--
+        ~ Logback needs additional metadata
+        -->
       <build>
         <plugins>
-          <!--
-            ~ Logback needs additional metadata
-            -->
+          <!-- Use external reflection metadata configuration -->
           <plugin>
             <groupId>org.graalvm.buildtools</groupId>
             <artifactId>native-maven-plugin</artifactId>
-            <configuration>
-              <metadataRepository>
-                <enabled>true</enabled>
-              </metadataRepository>
-              <buildArgs>
-                <arg>-H:IncludeResources=logback.xml</arg>
-              </buildArgs>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
-    <profile>
-      <id>use-simple</id>
-
-      <properties>
-        <integration-tests-include>**/SimpleIT.class</integration-tests-include>
-      </properties>
-
-      <build>
-        <plugins>
-          <!--
-            ~ SimpleLogger needs some system properties
-            -->
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <version>3.5.0</version>
             <executions>
               <execution>
-                <id>run-executable</id>
+                <id>build-native</id>
                 <configuration>
-                  <arguments>
-                    <argument>-Dlog4j.provider=org.apache.logging.log4j.simple.internal.SimpleProvider</argument>
-                  </arguments>
+                  <metadataRepository>
+                    <enabled>true</enabled>
+                  </metadataRepository>
                 </configuration>
               </execution>
             </executions>
           </plugin>
         </plugins>
       </build>
+    </profile>
+
+    <!--
+      ~ ################################################################################################################
+      ~ SIMPLE LOGGER
+      ~ ################################################################################################################
+      -->
+    <profile>
+      <id>use-simple</id>
+
+      <properties>
+        <integration-tests-include>**/SimpleIT.class</integration-tests-include>
+        <profile-resources>simple</profile-resources>
+      </properties>
     </profile>
 
     <!--

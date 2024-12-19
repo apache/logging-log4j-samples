@@ -1,0 +1,1320 @@
+[
+  {
+    "name": "org.apache.logging.log4j.core.appender.AbstractAppender$Builder",
+    "methods": [],
+    "fields": [
+      {
+        "name": "configuration"
+      },
+      {
+        "name": "ignoreExceptions"
+      },
+      {
+        "name": "layout"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  {
+    "name": "org.apache.logging.log4j.core.appender.AbstractOutputStreamAppender$Builder",
+    "methods": [],
+    "fields": [
+      {
+        "name": "bufferSize"
+      },
+      {
+        "name": "bufferedIo"
+      },
+      {
+        "name": "immediateFlush"
+      }
+    ]
+  },
+  {
+    "name": "org.apache.logging.log4j.core.appender.ConsoleAppender",
+    "methods": [
+      {
+        "name": "newBuilder",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.appender.ConsoleAppender$Builder",
+    "methods": [],
+    "fields": [
+      {
+        "name": "direct"
+      },
+      {
+        "name": "follow"
+      },
+      {
+        "name": "target"
+      }
+    ]
+  },
+  {
+    "name": "org.apache.logging.log4j.core.appender.FileAppender",
+    "methods": [
+      {
+        "name": "newBuilder",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.appender.FileAppender$Builder",
+    "methods": [],
+    "fields": [
+      {
+        "name": "advertise"
+      },
+      {
+        "name": "advertiseUri"
+      },
+      {
+        "name": "append"
+      },
+      {
+        "name": "createOnDemand"
+      },
+      {
+        "name": "fileGroup"
+      },
+      {
+        "name": "fileName"
+      },
+      {
+        "name": "fileOwner"
+      },
+      {
+        "name": "filePermissions"
+      },
+      {
+        "name": "locking"
+      }
+    ]
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.AppenderRef",
+    "methods": [
+      {
+        "name": "createAppenderRef",
+        "parameterTypes": [
+          "java.lang.String",
+          "org.apache.logging.log4j.Level",
+          "org.apache.logging.log4j.core.Filter"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.AppendersPlugin",
+    "methods": [
+      {
+        "name": "createAppenders",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.Appender[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.LoggerConfig",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.String",
+          "org.apache.logging.log4j.Level",
+          "boolean"
+        ]
+      },
+      {
+        "name": "newBuilder",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.LoggerConfig$Builder",
+    "methods": [],
+    "fields": [
+      {
+        "name": "additivity"
+      },
+      {
+        "name": "config"
+      },
+      {
+        "name": "filter"
+      },
+      {
+        "name": "includeLocation"
+      },
+      {
+        "name": "level"
+      },
+      {
+        "name": "levelAndRefs"
+      },
+      {
+        "name": "loggerName"
+      },
+      {
+        "name": "properties"
+      },
+      {
+        "name": "refs"
+      }
+    ]
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.LoggerConfig$RootLogger",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "newRootBuilder",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.LoggerConfig$RootLogger$Builder",
+    "methods": [],
+    "fields": [
+      {
+        "name": "additivity"
+      },
+      {
+        "name": "config"
+      },
+      {
+        "name": "filter"
+      },
+      {
+        "name": "includeLocation"
+      },
+      {
+        "name": "level"
+      },
+      {
+        "name": "levelAndRefs"
+      },
+      {
+        "name": "properties"
+      },
+      {
+        "name": "refs"
+      }
+    ]
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.LoggersPlugin",
+    "methods": [
+      {
+        "name": "createLoggers",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.LoggerConfig[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$BigDecimalConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$BigIntegerConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$BooleanConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$ByteArrayConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$ByteConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$CharArrayConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$CharacterConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$CharsetConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$ClassConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$CronExpressionConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$DoubleConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$DurationConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$FileConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$FloatConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$InetAddressConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$IntegerConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$LevelConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$LongConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$PathConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$PatternConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$SecurityProviderConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$ShortConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$StringConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$UriConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$UrlConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.convert.TypeConverters$UuidConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.validation.validators.NotBlankValidator",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.validation.validators.RequiredValidator",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.validation.validators.ValidHostValidator",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.validation.validators.ValidPortValidator",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.visitors.PluginAttributeVisitor",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.visitors.PluginBuilderAttributeVisitor",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.visitors.PluginConfigurationVisitor",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.visitors.PluginElementVisitor",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.visitors.PluginLoggerContextVisitor",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.visitors.PluginNodeVisitor",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.plugins.visitors.PluginValueVisitor",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.config.xml.XmlConfigurationFactory",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.filter.AbstractFilterable$Builder",
+    "methods": [],
+    "fields": [
+      {
+        "name": "filter"
+      },
+      {
+        "name": "propertyArray"
+      }
+    ]
+  },
+  {
+    "name": "org.apache.logging.log4j.core.layout.PatternLayout",
+    "methods": [
+      {
+        "name": "createLayout",
+        "parameterTypes": [
+          "java.lang.String",
+          "org.apache.logging.log4j.core.layout.PatternSelector",
+          "org.apache.logging.log4j.core.config.Configuration",
+          "org.apache.logging.log4j.core.pattern.RegexReplacement",
+          "java.nio.charset.Charset",
+          "boolean",
+          "boolean",
+          "java.lang.String",
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "newBuilder",
+        "parameterTypes": []
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.layout.PatternLayout$Builder",
+    "methods": [],
+    "fields": [
+      {
+        "name": "alwaysWriteExceptions"
+      },
+      {
+        "name": "charset"
+      },
+      {
+        "name": "configuration"
+      },
+      {
+        "name": "disableAnsi"
+      },
+      {
+        "name": "footer"
+      },
+      {
+        "name": "header"
+      },
+      {
+        "name": "noConsoleNoAnsi"
+      },
+      {
+        "name": "pattern"
+      },
+      {
+        "name": "patternSelector"
+      },
+      {
+        "name": "regexReplacement"
+      }
+    ]
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$Black",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.util.List",
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$Blue",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.util.List",
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$Cyan",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.util.List",
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$Green",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.util.List",
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$Magenta",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.util.List",
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$Red",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.util.List",
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$White",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.util.List",
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter$Yellow",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.util.List",
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.ClassNamePatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.DatePatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.EncodingPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.EndOfBatchPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.EqualsIgnoreCaseReplacementConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.EqualsReplacementConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.ExtendedThrowablePatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "@org.jspecify.annotations.Nullable java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.FileLocationPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.FullLocationPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.HighlightConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.LevelPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.LineLocationPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.LineSeparatorPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.LoggerFqcnPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.LoggerPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.MapPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      },
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]",
+          "org.apache.logging.log4j.message.MapMessage.MapFormat"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.MarkerPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.MarkerSimpleNamePatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.MaxLengthConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.MdcPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.MessagePatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.MethodLocationPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.NanoTimePatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.NdcPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.ProcessIdPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.RegexReplacementConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.RelativeTimePatternConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.RepeatPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.RootThrowablePatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "@org.jspecify.annotations.Nullable java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.SequenceNumberPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.StyleConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.ThreadIdPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.ThreadNamePatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.ThreadPriorityPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.ThrowablePatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "@org.jspecify.annotations.Nullable java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.UuidPatternConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.pattern.VariablesNotEmptyReplacementConverter",
+    "methods": [
+      {
+        "name": "newInstance",
+        "parameterTypes": [
+          "org.apache.logging.log4j.core.config.Configuration",
+          "java.lang.String[]"
+        ]
+      }
+    ],
+    "fields": []
+  }
+]
