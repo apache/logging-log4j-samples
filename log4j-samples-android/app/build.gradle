@@ -60,7 +60,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
-    androidTestImplementation 'org.assertj:assertj-core:3.26.3'
+    androidTestImplementation 'org.assertj:assertj-core:3.27.0'
 
     // Log4j
     implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
