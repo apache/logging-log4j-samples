@@ -73,6 +73,15 @@
     <!-- Skip `bnd-baseline-maven-plugin` since this is not deployed -->
     <bnd.baseline.skip>true</bnd.baseline.skip>
 
+    <!--
+      ~ Skip CycloneDX since this artifact is not deployed.
+      ~ CycloneDX attempts to download non-existent snapshots from `repository.apache.org`,
+      ~ which ends up in a ban of the Github Runner IP.
+      ~
+      ~ See: https://infra.apache.org/infra-ban.html
+      -->
+    <cyclonedx.skip>true</cyclonedx.skip>
+
     <!-- dependency versions -->
     <disruptor.version>4.0.0</disruptor.version>
     <flatten-maven-plugin.version>1.5.0</flatten-maven-plugin.version>
