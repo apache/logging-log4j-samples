@@ -25,14 +25,18 @@
             <PatternLayout pattern="%msg"/>
         </List>
     </Appenders>
-    <ScriptFilter>
-        <Script language="javascript"><![CDATA[
-            marker == null || !marker.isInstanceOf("DENY");
+    <Scripts>
+        <Script language="javascript" name="MARKER_FILTER"><![CDATA[
+            logEvent.marker == null || !logEvent.marker.isInstanceOf("DENY");
         ]]></Script>
-    </ScriptFilter>
+    </Scripts>
     <Loggers>
         <Root level="ALL">
             <AppenderRef ref="LIST"/>
+            <!-- TODO: https://github.com/apache/logging-log4j2/issues/3335 -->
+            <ScriptFilter>
+                <ScriptRef ref="MARKER_FILTER"/>
+            </ScriptFilter>
         </Root>
     </Loggers>
 </Configuration>
