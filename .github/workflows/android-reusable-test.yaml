@@ -62,7 +62,7 @@ jobs:
           develocity-access-key: ${{ secrets.GE_ACCESS_KEY }}
           develocity-injection-enabled: true
           develocity-url: https://develocity.apache.org
-          develocity-plugin-version: 3.18.1
+          develocity-plugin-version: 3.18.2
 
 
       - name: Enable KVM
