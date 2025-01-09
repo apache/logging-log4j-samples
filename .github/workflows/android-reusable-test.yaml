@@ -61,7 +61,7 @@ jobs:
         with:
           develocity-access-key: ${{ secrets.GE_ACCESS_KEY }}
           develocity-injection-enabled: true
-          develocity-url: https://ge.apache.org
+          develocity-url: https://develocity.apache.org
           develocity-plugin-version: 3.18.1
 
 
