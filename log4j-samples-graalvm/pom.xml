@@ -59,7 +59,7 @@
     <revision>0.0.0-SNAPSHOT</revision>
 
     <!-- Dependencies (alphabetical) -->
-    <assertj.version>3.27.2</assertj.version>
+    <assertj.version>3.27.3</assertj.version>
     <json-org.version>20241224</json-org.version>
     <json-unit.version>4.1.0</json-unit.version>
     <junit.version>5.11.4</junit.version>
