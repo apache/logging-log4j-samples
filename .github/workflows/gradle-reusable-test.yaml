@@ -38,7 +38,7 @@ permissions: read-all
 
 jobs:
 
-  android-test:
+  gradle-test:
 
     runs-on: ubuntu-latest
 
@@ -64,6 +64,14 @@ jobs:
           develocity-url: https://ge.apache.org
           develocity-plugin-version: 3.18.1
 
+      - name: Test log4j-samples-gradle-metadata
+        id: build
+        shell: bash
+        env:
+          LOG4J_VERSION: ${{ inputs.log4j-version }}
+          LOG4J_REPOSITORY_URL: ${{ inputs.log4j-repository-url }}
+        run: |
+          log4j-samples-gradle-metadata/gradlew -p log4j-samples-gradle-metadata build
 
       - name: Enable KVM
         run: |
@@ -112,7 +120,7 @@ jobs:
             sleep 1
           done
 
-      - name: Build
+      - name: Test log4j-samples-android
         id: build
         shell: bash
         env:
