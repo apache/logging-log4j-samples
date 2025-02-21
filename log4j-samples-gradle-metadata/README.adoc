@@ -14,27 +14,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ////
-= Apache Log4j Samples: Android application
+= Apache Log4j Samples: Gradle Metadata Consumption
 
-This project is an example of Android application that uses
-https://logging.apache.org/log4j/2.x/manual/api.html[the Log4j API]
-for logging together with its reference implementation
-https://logging.apache.org/log4j/2.x/manual/implementation.html[Log4j Core].
+This project is an example that validates that, when used in Gradle, Log4j provides transitive dependencies to annotation libraries on the compile classpath.
+The example also checks that these libraries are visible when used on the Module Path (JPMS), by including a module-info.java file.
+This project is part of the integration tests for a Log4j release.
 
-To build the project, run:
+To build the project, and with that run all validations, run:
 
 [source,shell]
 ----
-./gradlew :app:build
+./gradlew :log4j-samples-gradle-metadata:build
 ----
 
 in the samples repository root.
-
-Since version `2.25.0` this application is part of the integration tests for a Log4j release.
-
-== Known Android limitations
-
-The Android platform does not implement all the features of a standard JRE, which will prevent you from using all the features offered by Log4j Core.
-For a list of known limitations, see
-https://logging.apache.org/log4j/2.x/faq.html#android[our Android F.A.Q. entry].
-
