@@ -64,7 +64,7 @@
     <json-unit.version>4.1.0</json-unit.version>
     <junit.version>5.12.0</junit.version>
     <log4j.version>2.25.0-SNAPSHOT</log4j.version>
-    <logback.version>1.5.16</logback.version>
+    <logback.version>1.5.17</logback.version>
     <slf4j.version>2.0.17</slf4j.version>
 
     <!-- IT to run for each profile -->
