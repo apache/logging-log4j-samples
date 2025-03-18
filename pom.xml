@@ -87,7 +87,7 @@
     <disruptor.version>4.0.0</disruptor.version>
     <flatten-maven-plugin.version>1.5.0</flatten-maven-plugin.version>
     <flume.version>1.11.0</flume.version>
-    <jetty.version>11.0.24</jetty.version>
+    <jetty.version>11.0.25</jetty.version>
     <javax-jms.version>2.0.1</javax-jms.version>
     <spotbugs-annotations.version>4.9.3</spotbugs-annotations.version>
     <spring-boot.version>3.4.3</spring-boot.version>
