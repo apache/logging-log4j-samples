@@ -98,6 +98,7 @@
     <guava.version>33.4.5-jre</guava.version>
     <httpclient.version>4.5.14</httpclient.version>
     <jackson.version>2.18.3</jackson.version>
+    <joda-time.version>2.12.7</joda-time.version>
     <kotlin.version>2.1.20</kotlin.version>
     <snakeyaml.version>2.4</snakeyaml.version>
     <slf4j.version>2.0.17</slf4j.version>
@@ -120,14 +121,6 @@
       </dependency>
 
       <!-- External dependencies -->
-      <dependency>
-        <groupId>org.apache.logging.log4j</groupId>
-        <artifactId>log4j-bom</artifactId>
-        <version>${log4j.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
       <dependency>
         <groupId>com.lmax</groupId>
         <artifactId>disruptor</artifactId>
@@ -201,11 +194,31 @@
       <!-- Transitive dependency of multiple dependencies -->
       <!-- We fix a common version -->
       <dependency>
+        <groupId>joda-time</groupId>
+        <artifactId>joda-time</artifactId>
+        <version>${joda-time.version}</version>
+      </dependency>
+
+      <!-- Transitive dependency of multiple dependencies -->
+      <!-- We fix a common version -->
+      <dependency>
         <groupId>org.yaml</groupId>
         <artifactId>snakeyaml</artifactId>
         <version>${snakeyaml.version}</version>
       </dependency>
 
+      <dependency>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-annotations</artifactId>
+        <version>${spotbugs-annotations.version}</version>
+      </dependency>
+
+      <!--
+        ~ BOMs
+        ~
+        ~ BOMs are placed at the end, to they don't override the versions above.
+        ~ This is especially important for the very opinionated `spring-boot-dependencies`.
+        -->
       <!-- Transitive dependency of multiple dependencies -->
       <!-- We fix a common version -->
       <dependency>
@@ -227,9 +240,11 @@
       </dependency>
 
       <dependency>
-        <groupId>com.github.spotbugs</groupId>
-        <artifactId>spotbugs-annotations</artifactId>
-        <version>${spotbugs-annotations.version}</version>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-bom</artifactId>
+        <version>${log4j.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
 
       <dependency>
