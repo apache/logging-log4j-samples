@@ -276,6 +276,24 @@
     </dependencies>
   </dependencyManagement>
 
+  <repositories>
+    <!--
+      ~ The repository that contains the requested Log4j version.
+      ~
+      ~ By default, we use Apache Snapshots.
+      ~ An alternative repository is defined in the `staging-repo` profile.
+      -->
+    <!-- The repository that contains the requested Log4j version -->
+    <repository>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <id>log4j-repo</id>
+      <name>Apache Snapshot Repository</name>
+      <url>https://repository.apache.org/snapshots</url>
+    </repository>
+  </repositories>
+
   <build>
 
     <pluginManagement>
@@ -334,7 +352,6 @@
       <activation>
         <property>
           <name>log4j.repository.url</name>
-          <value>!</value>
         </property>
       </activation>
 
@@ -353,7 +370,7 @@
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
-          <id>log4j-staging</id>
+          <id>log4j-repo</id>
           <name>Log4j Staging Repository</name>
           <url>${log4j.repository.url}</url>
         </repository>
