@@ -33,6 +33,10 @@ on:
         description: The branch, tag or SHA of `logging-log4j-samples` to checkout
         type: string
         default: ${{ github.ref }}
+    secrets:
+      DEVELOCITY_ACCESS_KEY:
+        description: The access key to the Develocity server
+        required: false
 
 permissions: read-all
 

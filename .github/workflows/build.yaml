@@ -40,3 +40,5 @@ jobs:
   integration-test:
     if: github.actor != 'dependabot[bot]'
     uses: apache/logging-log4j-samples/.github/workflows/integration-test.yaml@main
+    secrets:
+      DEVELOCITY_ACCESS_KEY: ${{ secrets.DEVELOCITY_ACCESS_KEY }}
