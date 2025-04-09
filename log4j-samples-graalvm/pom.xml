@@ -20,7 +20,7 @@
   <parent>
     <groupId>org.apache.logging</groupId>
     <artifactId>logging-parent</artifactId>
-    <version>12.0.0</version>
+    <version>12.1.0</version>
     <relativePath />
   </parent>
 
@@ -150,42 +150,26 @@
 
   </dependencies>
 
+  <repositories>
+    <!--
+      ~ The repository that contains the requested Log4j version.
+      ~
+      ~ By default, we use Apache Snapshots.
+      ~ An alternative repository is defined in the `staging-repo` profile.
+      -->
+    <!-- The repository that contains the requested Log4j version -->
+    <repository>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <id>log4j-repo</id>
+      <name>Apache Snapshot Repository</name>
+      <url>https://repository.apache.org/snapshots</url>
+    </repository>
+  </repositories>
+
   <build>
     <plugins>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>remove-obsolete-configuration</id>
-            <goals>
-              <goal>enforce</goal>
-            </goals>
-            <configuration>
-              <rules>
-                <requireProperty>
-                  <property>project.parent.version</property>
-                  <regex>12.0.0</regex>
-                  <message>Remove obsolete configurations, see `TODO` comments.</message>
-                </requireProperty>
-              </rules>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <!-- TODO: Remove after `logging-parent` version `12.1.0` is out -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <compilerArgs combine.children="append">
-            <!-- Workaround Error Prone breaking change -->
-            <arg>--should-stop=ifError=FLOW</arg>
-          </compilerArgs>
-        </configuration>
-      </plugin>
 
       <!--
         ~ Step 0: we add per-profile resource.
@@ -674,7 +658,6 @@
       <activation>
         <property>
           <name>log4j.repository.url</name>
-          <value>!</value>
         </property>
       </activation>
 
@@ -693,7 +676,7 @@
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
-          <id>log4j-staging</id>
+          <id>log4j-repo</id>
           <name>Log4j Staging Repository</name>
           <url>${log4j.repository.url}</url>
         </repository>
