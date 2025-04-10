@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id 'com.android.application' version '8.8.2' apply false
-    id 'com.android.library' version '8.8.0' apply false
+module org.example.log4j.metadata {
+    requires org.apache.logging.log4j;
 }
