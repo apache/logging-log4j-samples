@@ -65,7 +65,6 @@ jobs:
           develocity-plugin-version: 3.18.2
 
       - name: Test log4j-samples-gradle-metadata
-        id: build
         shell: bash
         env:
           LOG4J_VERSION: ${{ inputs.log4j-version }}
@@ -124,7 +123,6 @@ jobs:
           done
 
       - name: Test log4j-samples-android
-        id: build
         shell: bash
         env:
           LOG4J_VERSION: ${{ inputs.log4j-version }}
