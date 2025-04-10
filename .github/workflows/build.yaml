@@ -39,4 +39,4 @@ jobs:
 
   integration-test:
     if: github.actor != 'dependabot[bot]'
-    uses: apache/logging-log4j-samples/.github/workflows/integration-test.yaml@pull/279/head
+    uses: jjohannes/logging-log4j-samples/.github/workflows/integration-test.yaml@add-gradle-metadata-example
