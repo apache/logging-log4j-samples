@@ -66,7 +66,7 @@ jobs:
       test-report-suffix: '-it'
 
   gradle-test:
-    uses: apache/logging-log4j-samples/.github/workflows/gradle-reusable-test.yaml@main
+    uses: apache/logging-log4j-samples/.github/workflows/gradle-reusable-test.yaml@pull/279/head
     with:
       log4j-version: ${{ inputs.log4j-version }}
       log4j-repository-url: ${{ inputs.log4j-repository-url }}
