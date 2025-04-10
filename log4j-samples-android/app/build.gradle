@@ -19,13 +19,13 @@ plugins {
 }
 
 android {
-    compileSdk 34
-    namespace "org.apache.logging.log4j.samples.android"
+    compileSdk = 34
+    namespace = "org.apache.logging.log4j.samples.android"
 
     defaultConfig {
         applicationId "org.apache.logging.log4j.samples.android"
-        minSdk 26
-        targetSdk 34
+        minSdk = 26
+        targetSdk = 34
         versionCode 1
         versionName "1.0"
 
