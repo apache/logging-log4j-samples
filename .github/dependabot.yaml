@@ -26,7 +26,9 @@ registries:
 
 updates:
   - package-ecosystem: maven
-    directory: "/"
+    directories:
+      - "/"
+      - "log4j-samples-graalvm"
     schedule:
       interval: daily
     open-pull-requests-limit: 10
@@ -34,15 +36,8 @@ updates:
       - maven-central
 
   - package-ecosystem: gradle
-    directory: "log4j-samples-android"
-    schedule:
-      interval: daily
-    open-pull-requests-limit: 10
-    registries:
-      - maven-central
-
-  - package-ecosystem: maven
-    directory: "log4j-samples-graalvm"
+    directories:
+      - "/"
     schedule:
       interval: daily
     open-pull-requests-limit: 10
