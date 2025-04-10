@@ -26,24 +26,19 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven {
-            name = 'Apache Snapshots Repository'
-            url = "https://repository.apache.org/snapshots"
-            mavenContent {
-                snapshotsOnly()
-            }
-        }
         // Points to the correct Apache staging repository
-        //
-        // See gradle.properties
-        var repositoryUrl = providers.gradleProperty("log4j.repository.url")
-        if (repositoryUrl != null && !repositoryUrl.toString().isEmpty()) {
-            maven {
-                name = 'Apache Repository'
-                url = repositoryUrl
-                mavenContent {
-                    releasesOnly()
-                }
+        var apacheSnapshots = 'https://repository.apache.org/snapshots'
+        var repositoryUrl = providers.gradleProperty('log4j.repository.url')
+                .filter { !it.isEmpty() }
+                .getOrElse(apacheSnapshots)
+        maven {
+            name = 'Log4j Repository'
+            url = repositoryUrl
+            mavenContent {
+                // Only use this repository for Apache Logging Services artifacts
+                includeGroupAndSubgroups('org.apache.logging')
+                // Only use this repository for either snapshots or releases
+                repositoryUrl == apacheSnapshots ? snapshotsOnly() : releasesOnly()
             }
         }
     }
