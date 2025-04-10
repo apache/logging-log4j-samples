@@ -36,7 +36,7 @@ dependencyResolutionManagement {
         // Points to the correct Apache staging repository
         //
         // See gradle.properties
-        var repositoryUrl = providers.gradleProperty("log4j.repository.url")
+        var repositoryUrl = providers.environmentVariable('LOG4J_REPOSITORY_URL').get()
         if (repositoryUrl != null && !repositoryUrl.toString().isEmpty()) {
             maven {
                 name = 'Apache Repository'
