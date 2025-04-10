@@ -73,7 +73,7 @@ jobs:
           ./gradlew \
           -Plog4j.version=$LOG4J_VERSION \
           -Plog4j.repository.url=$LOG4J_REPOSITORY_URL \
-          :app:build :app:connectedCheck
+          :log4j-samples-gradle-metadata
 
       - name: Enable KVM
         run: |
