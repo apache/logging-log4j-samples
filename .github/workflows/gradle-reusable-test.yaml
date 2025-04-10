@@ -38,7 +38,7 @@ permissions: read-all
 
 jobs:
 
-  android-test:
+  gradle-test:
 
     runs-on: ubuntu-latest
 
@@ -64,6 +64,16 @@ jobs:
           develocity-url: https://develocity.apache.org
           develocity-plugin-version: 3.18.2
 
+      - name: Test log4j-samples-gradle-metadata
+        shell: bash
+        env:
+          LOG4J_VERSION: ${{ inputs.log4j-version }}
+          LOG4J_REPOSITORY_URL: ${{ inputs.log4j-repository-url }}
+        run: |
+          ./gradlew \
+          -Plog4j.version=$LOG4J_VERSION \
+          -Plog4j.repository.url=$LOG4J_REPOSITORY_URL \
+          :log4j-samples-gradle-metadata:check
 
       - name: Enable KVM
         run: |
@@ -112,18 +122,16 @@ jobs:
             sleep 1
           done
 
-      - name: Build
-        id: build
+      - name: Test log4j-samples-android
         shell: bash
         env:
           LOG4J_VERSION: ${{ inputs.log4j-version }}
           LOG4J_REPOSITORY_URL: ${{ inputs.log4j-repository-url }}
         run: |
-          log4j-samples-android/gradlew -p log4j-samples-android \
-          --console plain \
+          ./gradlew \
           -Plog4j.version=$LOG4J_VERSION \
           -Plog4j.repository.url=$LOG4J_REPOSITORY_URL \
-          build connectedCheck
+          :app:build :app:connectedCheck
 
       - name: Remove AVD Device
         if: ${{ always() && env.EMULATOR_STARTED == 'true' }}

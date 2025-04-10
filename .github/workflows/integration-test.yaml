@@ -65,8 +65,8 @@ jobs:
       ref: ${{ inputs.samples-ref }}
       test-report-suffix: '-it'
 
-  android-test:
-    uses: apache/logging-log4j-samples/.github/workflows/android-reusable-test.yaml@main
+  gradle-test:
+    uses: apache/logging-log4j-samples/.github/workflows/gradle-reusable-test.yaml@main
     with:
       log4j-version: ${{ inputs.log4j-version }}
       log4j-repository-url: ${{ inputs.log4j-repository-url }}

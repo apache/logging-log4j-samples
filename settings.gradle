@@ -48,5 +48,11 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "Log4j Core Android"
+rootProject.name = 'logging-log4j-samples'
+
+// Android example
 include ':app'
+project(':app').projectDir = file('log4j-samples-android/app')
+
+// Gradle Metadata example
+include ':log4j-samples-gradle-metadata'
