@@ -26,8 +26,8 @@ Async logger is designed to optimize this area by replacing the blocking queue w
 
 **Log4J2**  supports JSON,XML and YAML in addition to properties file configuration . Here I use XML file for the configuration.
 
-### Add log4j Dependancy :
-Add log4j Dependancy in  `pom.xml` file:
+### Add log4j Dependency :
+Add log4j Dependency in  `pom.xml` file:
 
 ```xml
 <dependency>
@@ -42,7 +42,7 @@ Add log4j Dependancy in  `pom.xml` file:
 </dependency>
 ```
 
-### Add disruptor Dependancy :
+### Add disruptor Dependency :
 
 Add disruptor in `pom.xml` file
 
@@ -98,7 +98,7 @@ Path : `src/resources/log4j2.xml`
 
 
 ```
-3. *Now add `AsyncAppender` Appender into the `Loggers` sections. So after the configuraiton, `log4j2.xml` file should be look like :*
+3. *Now add `AsyncAppender` Appender into the `Loggers` sections. So after the configuration, `log4j2.xml` file should be look like :*
 
 ```xml
 <Configuration status="DEBUG">
@@ -239,6 +239,6 @@ The Output should be l0ok like this in your terminal :
 So we are done with configuring `asynchronous` logging in Log4j 2 using the `Log4jContextSelector` system property.
 You can optimize the performance of your Java by using The option for asynchronous in Log4J 2 tools.
 
-For more detials you can check this link.
+For more details you can check this link.
 [https://logging.apache.org/log4j/2.x/manual/async.html
 ](https://logging.apache.org/log4j/2.x/manual/async.html)
