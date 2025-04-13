@@ -30,8 +30,6 @@ on:
       - "**.adoc"
       - "**.md"
       - "**.txt"
-  schedule:
-    - cron: "29 17 * * *"
 
 permissions: read-all
 

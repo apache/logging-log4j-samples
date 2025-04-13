@@ -33,6 +33,9 @@ Explains how to send logs to https://flume.apache.org[Apache Flume].
 xref:log4j-samples-graalvm/README.adoc[`log4j-samples-graalvm`]::
 Explains how to use Log4j API and its implementation to create native GraalVM images.
 
+xref:log4j-samples-gradle-metadata/README.adoc[`log4j-samples-gradle-metadata`]::
+Shows how strict compile classpath or module path checking can be enabled for compilation in Gradle when Log4j is used and that all required annotation libraries are available.
+
 xref:log4j-samples-jlink/README.adoc[`log4j-samples-jlink`]::
 An example of JLink custom JRE.
 

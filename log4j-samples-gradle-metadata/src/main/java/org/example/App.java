@@ -14,25 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.logging.log4j.samples.async;
+package org.example;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-public class Log4J2AsyncLoggerExceptionExample {
-
-    private static final Logger logger = LogManager.getLogger(Log4J2AsyncLoggerExceptionExample.class);
+public class App {
+    org.apache.logging.log4j.message.ParameterizedMessage m; // needs errorprone
+    org.apache.logging.log4j.status.StatusData d; // needs spotbugs
+    org.apache.logging.log4j.util.SystemPropertiesPropertySource s; // needs aQute.bnd
+    org.apache.logging.log4j.util.Activator a; // needs osgi
+    org.apache.logging.log4j.spi.LoggerRegistry<?> r; // needs jspecify
 
     public static void main(String[] args) {
-
-        try {
-            System.out.println(getException());
-        } catch (IllegalArgumentException e) {
-            logger.error("An error occurred.", e);
-        }
-    }
-
-    static int getException() throws IllegalArgumentException {
-        throw new IllegalArgumentException("Hello, Something Went Wrong. Exception Occurred!!");
+        System.out.println("Hello from: " + App.class.getModule().getName());
     }
 }
