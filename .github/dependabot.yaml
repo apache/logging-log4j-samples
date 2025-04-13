@@ -28,24 +28,33 @@ updates:
   - package-ecosystem: maven
     directory: "/"
     schedule:
-      interval: daily
-    open-pull-requests-limit: 10
+      interval: weekly
+    groups:
+      all:
+        patterns:
+          - "*"
     registries:
       - maven-central
 
   - package-ecosystem: gradle
     directory: "log4j-samples-android"
     schedule:
-      interval: daily
-    open-pull-requests-limit: 10
+      interval: weekly
+    groups:
+      all:
+        patterns:
+          - "*"
     registries:
       - maven-central
 
   - package-ecosystem: maven
     directory: "log4j-samples-graalvm"
     schedule:
-      interval: daily
-    open-pull-requests-limit: 10
+      interval: weekly
+    groups:
+      all:
+        patterns:
+          - "*"
     registries:
       - maven-central
 
@@ -53,3 +62,7 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
+    groups:
+      all:
+        patterns:
+          - "*"
