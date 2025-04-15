@@ -28,7 +28,7 @@ dependencyResolutionManagement {
         mavenCentral()
         // Points to the correct Apache staging repository
         var apacheSnapshots = 'https://repository.apache.org/snapshots'
-        var repositoryUrl = providers.gradleProperty('log4j.repository.url')
+        var repositoryUrl = providers.environmentVariable('LOG4J_REPOSITORY_URL')
                 .filter { !it.isEmpty() }
                 .getOrElse(apacheSnapshots)
         maven {

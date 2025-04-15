@@ -71,8 +71,6 @@ jobs:
           LOG4J_REPOSITORY_URL: ${{ inputs.log4j-repository-url }}
         run: |
           ./gradlew \
-          -Plog4j.version=$LOG4J_VERSION \
-          -Plog4j.repository.url=$LOG4J_REPOSITORY_URL \
           :log4j-samples-gradle-metadata:check
 
       - name: Enable KVM
@@ -129,8 +127,6 @@ jobs:
           LOG4J_REPOSITORY_URL: ${{ inputs.log4j-repository-url }}
         run: |
           ./gradlew \
-          -Plog4j.version=$LOG4J_VERSION \
-          -Plog4j.repository.url=$LOG4J_REPOSITORY_URL \
           :app:build :app:connectedCheck
 
       - name: Remove AVD Device
