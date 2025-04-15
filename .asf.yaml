@@ -47,4 +47,10 @@ github:
   # Prevent force pushes to primary branches
   protected_branches:
     main:
+      # All commits must be signed
       required_signatures: true
+      # All reviews must be addressed before merging
+      required_conversation_resolution: true
+      # At least one positive review must be present
+      required_pull_request_reviews:
+        required_approving_review_count: 1
