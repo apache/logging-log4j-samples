@@ -49,7 +49,7 @@ android {
     }
 }
 
-def log4jVersion = providers.gradleProperty("log4j.version").get()
+def log4jVersion = providers.environmentVariable("LOG4J_VERSION").getOrElse("2.+")
 
 dependencies {
 
