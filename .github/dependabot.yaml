@@ -30,8 +30,11 @@ updates:
       - "/"
       - "log4j-samples-graalvm"
     schedule:
-      interval: daily
-    open-pull-requests-limit: 10
+      interval: weekly
+    groups:
+      all:
+        patterns:
+          - "*"
     registries:
       - maven-central
 
@@ -39,8 +42,11 @@ updates:
     directories:
       - "/"
     schedule:
-      interval: daily
-    open-pull-requests-limit: 10
+      interval: weekly
+    groups:
+      all:
+        patterns:
+          - "*"
     registries:
       - maven-central
 
@@ -48,3 +54,7 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
+    groups:
+      all:
+        patterns:
+          - "*"
