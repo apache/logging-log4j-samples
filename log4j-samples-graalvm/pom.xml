@@ -36,7 +36,7 @@
       ~ Set to latest stable 2.x release for users.
       ~ Our workflows override this.
       -->
-    <log4j.version>2.24.1</log4j.version>
+    <log4j.version>2.24.3</log4j.version>
 
     <!-- Some samples require JDK 9+ -->
     <minimalJavaBuildVersion>17</minimalJavaBuildVersion>
@@ -63,7 +63,6 @@
     <json-org.version>20250107</json-org.version>
     <json-unit.version>4.1.1</json-unit.version>
     <junit.version>5.12.2</junit.version>
-    <log4j.version>3.0.0-beta3</log4j.version>
     <logback.version>1.5.18</logback.version>
     <slf4j.version>2.0.17</slf4j.version>
 
