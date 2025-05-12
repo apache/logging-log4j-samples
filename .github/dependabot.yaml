@@ -37,6 +37,8 @@ updates:
           - "*"
     registries:
       - maven-central
+    ignore:
+      - dependency-name: "org.apache.logging.log4j:*"
 
   - package-ecosystem: gradle
     directories:
@@ -49,6 +51,8 @@ updates:
           - "*"
     registries:
       - maven-central
+    ignore:
+      - dependency-name: "org.apache.logging.log4j:*"
 
   - package-ecosystem: github-actions
     directory: "/"
