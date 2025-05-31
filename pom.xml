@@ -90,11 +90,12 @@
     <jetty.version>11.0.25</jetty.version>
     <javax-jms.version>2.0.1</javax-jms.version>
     <spotbugs-annotations.version>4.9.3</spotbugs-annotations.version>
-    <spring-boot.version>3.4.5</spring-boot.version>
-    <spring-cloud.version>2024.0.1</spring-cloud.version>
+    <spring-boot.version>3.5.0</spring-boot.version>
+    <spring-cloud.version>2025.0.0</spring-cloud.version>
 
     <!-- Pinned transitive dependencies -->
     <!-- Try removing from time to time -->
+    <error_prone.version>2.38.0</error_prone.version>
     <guava.version>33.4.8-jre</guava.version>
     <httpclient.version>4.5.14</httpclient.version>
     <jackson.version>2.19.0</jackson.version>
@@ -173,6 +174,14 @@
         <groupId>javax.jms</groupId>
         <artifactId>javax.jms-api</artifactId>
         <version>${javax-jms.version}</version>
+      </dependency>
+
+      <!-- Transitive dependency of multiple dependencies -->
+      <!-- We fix a common version -->
+      <dependency>
+        <groupId>com.google.errorprone</groupId>
+        <artifactId>error_prone_annotations</artifactId>
+        <version>${error_prone.version}</version>
       </dependency>
 
       <!-- Transitive dependency of multiple dependencies -->
