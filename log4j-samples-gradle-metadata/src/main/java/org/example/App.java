@@ -24,6 +24,6 @@ public class App {
     org.apache.logging.log4j.spi.LoggerRegistry<?> r; // needs jspecify
 
     public static void main(String[] args) {
-        System.out.println("Hello from: " + App.class.getModule().getName());
+        System.out.println("Hello from: " + App.class.getName());
     }
 }
