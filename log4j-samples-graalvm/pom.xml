@@ -36,7 +36,7 @@
       ~ Set to latest stable 2.x release for users.
       ~ Our workflows override this.
       -->
-    <log4j.version>2.24.3</log4j.version>
+    <log4j.version>2.25.0</log4j.version>
 
     <!-- Some samples require JDK 9+ -->
     <minimalJavaBuildVersion>17</minimalJavaBuildVersion>

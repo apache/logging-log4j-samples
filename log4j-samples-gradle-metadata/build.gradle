@@ -18,7 +18,7 @@ plugins {
     id("application")
 }
 
-def log4jVersion = providers.environmentVariable("LOG4J_VERSION").getOrElse("2.+")
+def log4jVersion = providers.environmentVariable("LOG4J_VERSION").getOrElse("2.25.0")
 
 application {
     mainModule = "org.example.log4j.metadata"

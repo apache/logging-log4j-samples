@@ -24,7 +24,7 @@ on:
         description: Version of Log4j Core
         type: string
         # Should point to the current 2.x snapshot version
-        default: 2.25.0-SNAPSHOT
+        default: 2.26.0-SNAPSHOT
       log4j-repository-url:
         description: Staging Maven repository. Should be empty for snapshots.
         type: string
@@ -46,9 +46,6 @@ on:
         description: The branch, tag or SHA of `logging-log4j-samples` to checkout
         type: string
         default: 'refs/heads/main'
-
-env:
-  MAVEN_ARGS: ${{ inputs.log4j-version }}
 
 permissions: read-all
 
