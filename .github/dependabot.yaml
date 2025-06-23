@@ -39,7 +39,7 @@ updates:
       - maven-central
     ignore:
       - dependency-name: "org.apache.logging.log4j:*"
-        versions: ["[3,)"]
+        versions: ["[3.0.0-alpha1,)"]
 
   - package-ecosystem: gradle
     directories:
@@ -54,7 +54,7 @@ updates:
       - maven-central
     ignore:
       - dependency-name: "org.apache.logging.log4j:*"
-        versions: ["[3,)"]
+        versions: ["[3.0.0-alpha1,)"]
 
   - package-ecosystem: github-actions
     directory: "/"
