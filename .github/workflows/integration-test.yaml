@@ -24,7 +24,7 @@ on:
         description: Version of Log4j Core
         type: string
         # Should point to the current 2.x snapshot version
-        default: 2.25.0-SNAPSHOT
+        default: 2.26.0-SNAPSHOT
       log4j-repository-url:
         description: Staging Maven repository. Should be empty for snapshots.
         type: string
@@ -51,9 +51,6 @@ on:
         type: string
         default: 'refs/heads/main'
 
-env:
-  MAVEN_ARGS: ${{ inputs.log4j-version }}
-
 permissions: read-all
 
 jobs:
@@ -69,8 +66,8 @@ jobs:
       ref: ${{ inputs.samples-ref }}
       test-report-suffix: '-it'
 
-  android-test:
-    uses: apache/logging-log4j-samples/.github/workflows/android-reusable-test.yaml@main
+  gradle-test:
+    uses: apache/logging-log4j-samples/.github/workflows/gradle-reusable-test.yaml@main
     with:
       log4j-version: ${{ inputs.log4j-version }}
       log4j-repository-url: ${{ inputs.log4j-repository-url }}

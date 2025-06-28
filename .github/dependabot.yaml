@@ -26,30 +26,41 @@ registries:
 
 updates:
   - package-ecosystem: maven
-    directory: "/"
+    directories:
+      - "/"
+      - "log4j-samples-graalvm"
     schedule:
-      interval: daily
-    open-pull-requests-limit: 10
+      interval: weekly
+    groups:
+      all:
+        patterns:
+          - "*"
     registries:
       - maven-central
+    ignore:
+      - dependency-name: "org.apache.logging.log4j:*"
+        versions: ["[3.0.0-alpha1,)"]
 
   - package-ecosystem: gradle
-    directory: "log4j-samples-android"
+    directories:
+      - "/"
     schedule:
-      interval: daily
-    open-pull-requests-limit: 10
+      interval: weekly
+    groups:
+      all:
+        patterns:
+          - "*"
     registries:
       - maven-central
-
-  - package-ecosystem: maven
-    directory: "log4j-samples-graalvm"
-    schedule:
-      interval: daily
-    open-pull-requests-limit: 10
-    registries:
-      - maven-central
+    ignore:
+      - dependency-name: "org.apache.logging.log4j:*"
+        versions: ["[3.0.0-alpha1,)"]
 
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: weekly
+    groups:
+      all:
+        patterns:
+          - "*"

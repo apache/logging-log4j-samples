@@ -15,17 +15,17 @@
  * limitations under the License.
  */
 plugins {
-    id 'com.android.application'
+    id 'com.android.application' version '8.10.1'
 }
 
 android {
-    compileSdk 34
-    namespace "org.apache.logging.log4j.samples.android"
+    compileSdk = 34
+    namespace = "org.apache.logging.log4j.samples.android"
 
     defaultConfig {
         applicationId "org.apache.logging.log4j.samples.android"
-        minSdk 26
-        targetSdk 34
+        minSdk = 26
+        targetSdk = 34
         versionCode 1
         versionName "1.0"
 
@@ -49,11 +49,11 @@ android {
     }
 }
 
-def log4jVersion = providers.gradleProperty("log4j.version").get()
+def log4jVersion = providers.environmentVariable("LOG4J_VERSION").getOrElse("2.+")
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'com.google.android.material:material:1.12.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
 

@@ -20,7 +20,7 @@
   <parent>
     <groupId>org.apache.logging</groupId>
     <artifactId>logging-parent</artifactId>
-    <version>12.1.0</version>
+    <version>12.1.1</version>
     <relativePath />
   </parent>
 
@@ -36,7 +36,7 @@
       ~ Set to latest stable 2.x release for users.
       ~ Our workflows override this.
       -->
-    <log4j.version>2.24.1</log4j.version>
+    <log4j.version>2.25.0</log4j.version>
 
     <!-- Some samples require JDK 9+ -->
     <minimalJavaBuildVersion>17</minimalJavaBuildVersion>
@@ -60,10 +60,9 @@
 
     <!-- Dependencies (alphabetical) -->
     <assertj.version>3.27.3</assertj.version>
-    <json-org.version>20250107</json-org.version>
-    <json-unit.version>4.1.0</json-unit.version>
-    <junit.version>5.12.1</junit.version>
-    <log4j.version>2.25.0-SNAPSHOT</log4j.version>
+    <json-org.version>20250517</json-org.version>
+    <json-unit.version>4.1.1</json-unit.version>
+    <junit.version>5.13.1</junit.version>
     <logback.version>1.5.18</logback.version>
     <slf4j.version>2.0.17</slf4j.version>
 
@@ -328,7 +327,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>3.5.0</version>
+        <version>3.5.1</version>
         <executions>
           <execution>
             <id>run-executable</id>
