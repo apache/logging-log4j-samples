@@ -30,6 +30,10 @@ dependencies {
 }
 
 tasks.withType(JavaCompile).configureEach {
+    // Test compatibility of `compileOnly` dependencies with Java 8
+    //
+    // See: https://github.com/gradle/gradle/issues/33964
+    options.release = 8
     options.compilerArgs.add("-Werror") // treat all warnings as errors
     options.compilerArgs.add("-Xlint:all") // includes 'classfile' check
 }
@@ -55,14 +59,14 @@ tasks.register("assertRuntimeClasspath") {
     inputs.files(configurations.runtimeClasspath)
     doLast {
         def actual = inputs.files.collect { it.name.replaceAll("-[0-9].*", "") }
-        assert actual.sort() == expectedRuntimeClasspath : "Unexpected runtime classpath: $actual"
+        assert actual.sort() == expectedRuntimeClasspath : "Unexpected runtime classpath:\nActual: $actual\nExpected: $expectedRuntimeClasspath"
     }
 }
 tasks.register("assertCompileClasspath") {
     inputs.files(configurations.compileClasspath)
     doLast {
         def actual = inputs.files.collect { it.name.replaceAll("-[0-9].*", "") }
-        assert actual.sort() == expectedCompileClasspath : "Unexpected compile classpath: $actual"
+        assert actual.sort() == expectedCompileClasspath : "Unexpected compile classpath:\nActual: $actual\nExpected: $expectedCompileClasspath"
     }
 }
 
