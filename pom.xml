@@ -63,7 +63,7 @@
       ~ Set to latest stable 2.x release for users.
       ~ Our workflows override this.
       -->
-    <log4j.version>2.25.0</log4j.version>
+    <log4j.version>2.25.1</log4j.version>
 
     <!-- Some samples require JDK 17+ -->
     <minimalJavaBuildVersion>17</minimalJavaBuildVersion>
@@ -89,16 +89,16 @@
     <flume.version>1.11.0</flume.version>
     <jetty.version>11.0.25</jetty.version>
     <javax-jms.version>2.0.1</javax-jms.version>
-    <spotbugs-annotations.version>4.9.3</spotbugs-annotations.version>
-    <spring-boot.version>3.5.3</spring-boot.version>
+    <spotbugs-annotations.version>4.9.4</spotbugs-annotations.version>
+    <spring-boot.version>3.5.4</spring-boot.version>
     <spring-cloud.version>2025.0.0</spring-cloud.version>
 
     <!-- Pinned transitive dependencies -->
     <!-- Try removing from time to time -->
-    <error_prone.version>2.39.0</error_prone.version>
+    <error_prone.version>2.41.0</error_prone.version>
     <guava.version>33.4.8-jre</guava.version>
     <httpclient.version>4.5.14</httpclient.version>
-    <jackson.version>2.19.1</jackson.version>
+    <jackson.version>2.19.2</jackson.version>
     <joda-time.version>2.14.0</joda-time.version>
     <kotlin.version>2.2.0</kotlin.version>
     <snakeyaml.version>2.4</snakeyaml.version>
