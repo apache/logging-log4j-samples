@@ -29,7 +29,7 @@
   <properties>
     <spotbugs.skip>true</spotbugs.skip>
     <!-- Dependency versions -->
-    <nashorn.version>15.6</nashorn.version>
+    <nashorn.version>15.7</nashorn.version>
   </properties>
 
   <dependencies>
