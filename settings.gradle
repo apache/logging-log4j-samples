@@ -21,6 +21,42 @@ pluginManagement {
         mavenCentral()
     }
 }
+
+/*
+ * Fail the build if any WARN/ERROR log events occur.
+ * Some projects forbid *any* build-time logging at these levels;
+ * this ensures Log4j upgrades don't get blocked by harmless noise.
+ *
+ * See: https://github.com/apache/logging-log4j2/issues/3779
+ */
+import org.gradle.internal.logging.events.LogEvent
+import org.gradle.internal.logging.LoggingManagerInternal
+def events = []
+def listener = { e ->
+    if (e instanceof LogEvent && e.logLevel.ordinal() >= LogLevel.WARN.ordinal()) {
+        events << e
+    }
+}
+
+gradle.settingsEvaluated {
+    def loggingManager = gradle.services.get(LoggingManagerInternal)
+    loggingManager.addOutputEventListener(listener)
+    /*
+     * Note: This relies on Gradle’s internal logging APIs.
+     * It may break in Gradle 9.x or later, but that’s expected —
+     * using internal hooks is unsupported until Gradle provides a stable alternative.
+     */
+    gradle.buildFinished {
+        loggingManager.removeOutputEventListener(listener)
+        if (!events.isEmpty()) {
+            println "\n* Build failed due to ${events.size()} WARN/ERROR log event(s):"
+            events.each { println "[${it.logLevel}] ${it.message}" }
+            throw new GradleException("Build aborted: disallowed WARN/ERROR log events detected.")
+        }
+    }
+}
+
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
