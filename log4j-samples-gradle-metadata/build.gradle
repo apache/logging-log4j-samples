@@ -18,15 +18,13 @@ plugins {
     id("application")
 }
 
-def log4jVersion = providers.environmentVariable("LOG4J_VERSION").getOrElse("2.25.0")
-
 application {
     mainModule = "org.example.log4j.metadata"
     mainClass = "org.example.App" // see: src/main/java/org/example/App.java
 }
 
 dependencies {
-    implementation("org.apache.logging.log4j:log4j-api:$log4jVersion")
+    implementation("org.apache.logging.log4j:log4j-api:${project.ext.log4jVersion}")
 }
 
 tasks.withType(JavaCompile).configureEach {

@@ -49,8 +49,6 @@ android {
     }
 }
 
-def log4jVersion = providers.environmentVariable("LOG4J_VERSION").getOrElse("2.+")
-
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.7.1'
@@ -63,9 +61,9 @@ dependencies {
     androidTestImplementation 'org.assertj:assertj-core:3.27.4'
 
     // Log4j
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
-    androidTestImplementation(group: 'org.apache.logging.log4j', name: 'log4j-core-test', version: log4jVersion) {
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: project.ext.log4jVersion
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: project.ext.log4jVersion
+    androidTestImplementation(group: 'org.apache.logging.log4j', name: 'log4j-core-test', version: project.ext.log4jVersion) {
         exclude group: 'com.google.code.java-allocation-instrumenter'
         exclude group: 'org.apache.logging.log4j', module: 'log4j-api-test'
         exclude group: 'org.hamcrest'

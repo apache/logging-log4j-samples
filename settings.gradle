@@ -44,6 +44,12 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = 'logging-log4j-samples'
+def log4jVersion = providers.environmentVariable("LOG4J_VERSION")
+        .orElse(providers.gradleProperty("log4jVersion"))
+        .get()
+gradle.beforeProject { Project it ->
+    it.ext.log4jVersion = log4jVersion
+}
 
 // Android example
 include ':app'
