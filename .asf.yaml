@@ -16,7 +16,7 @@
 #
 
 # `.asf.yaml` is a branch-specific YAML configuration file for Git repositories to control features such as notifications, GitHub settings, etc.
-# See its documentation for details: https://cwiki.apache.org/confluence/display/INFRA/Git+-+.asf.yaml+features
+# See its documentation for details: https://github.com/apache/infrastructure-asfyaml
 
 # Bare minimum `notifications` to
 #
@@ -24,7 +24,7 @@
 # 2. Forward commits to `commits@`
 # 3. Forward `dependabot` PRs to `robots@`
 #
-# Note that `notifications` are merged with the defaults accessible from: https://gitbox.apache.org/schemes.cgi?logging-log4j-samples
+# Note that `notifications` are merged with the defaults accessible from: https://gitbox.apache.org/schemes.cgi?logging-log4j2
 notifications:
   commits: commits@logging.apache.org
   issues: notifications@logging.apache.org
@@ -42,9 +42,24 @@ github:
     - log4j2
     - logging
 
-  del_branch_on_merge: true
+  # Pull Request settings:
+  # https://github.com/apache/infrastructure-asfyaml#pull-request-settings
+  pull_requests:
+    # allow auto-merge
+    allow_auto_merge: true
+    # enable updating head branches of pull requests
+    allow_update_branch: true
+    # auto-delete head branches after being merged
+    del_branch_on_merge: true
 
-  # Prevent force pushes to primary branches
+  # Enforce squashing while merging PRs.
+  # Otherwise, the git log gets polluted severely.
+  enabled_merge_buttons:
+    squash:  true
+    merge:   false
+    rebase:  false
+
+  # Enforce Review-then-Commit
   protected_branches:
     main:
       # All commits must be signed
