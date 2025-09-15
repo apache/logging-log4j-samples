@@ -100,7 +100,7 @@
     <httpclient.version>4.5.14</httpclient.version>
     <jackson.version>2.20.0</jackson.version>
     <joda-time.version>2.14.0</joda-time.version>
-    <kotlin.version>2.2.10</kotlin.version>
+    <kotlin.version>2.2.20</kotlin.version>
     <snakeyaml.version>2.5</snakeyaml.version>
     <slf4j.version>2.0.17</slf4j.version>
   </properties>
