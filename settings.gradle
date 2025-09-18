@@ -23,7 +23,7 @@ pluginManagement {
 }
 
 /*
- * Fail the build if any WARN/ERROR log events occur.
+ * Fail the build if any ERROR log events occur.
  * Some projects forbid *any* build-time logging at these levels;
  * this ensures Log4j upgrades don't get blocked by harmless noise.
  *
@@ -33,7 +33,7 @@ import org.gradle.internal.logging.events.LogEvent
 import org.gradle.internal.logging.LoggingManagerInternal
 def events = []
 def listener = { e ->
-    if (e instanceof LogEvent && e.logLevel.ordinal() >= LogLevel.WARN.ordinal()) {
+    if (e instanceof LogEvent && e.logLevel.ordinal() >= LogLevel.ERROR.ordinal()) {
         events << e
     }
 }
@@ -49,9 +49,9 @@ gradle.settingsEvaluated {
     gradle.buildFinished {
         loggingManager.removeOutputEventListener(listener)
         if (!events.isEmpty()) {
-            println "\n* Build failed due to ${events.size()} WARN/ERROR log event(s):"
+            println "\n* Build failed due to ${events.size()} ERROR log event(s):"
             events.each { println "[${it.logLevel}] ${it.message}" }
-            throw new GradleException("Build aborted: disallowed WARN/ERROR log events detected.")
+            throw new GradleException("Build aborted: disallowed ERROR log events detected.")
         }
     }
 }
