@@ -36,7 +36,7 @@
       ~ Set to latest stable 2.x release for users.
       ~ Our workflows override this.
       -->
-    <log4j.version>2.25.1</log4j.version>
+    <log4j.version>2.25.2</log4j.version>
 
     <!-- Some samples require JDK 9+ -->
     <minimalJavaBuildVersion>17</minimalJavaBuildVersion>
@@ -59,7 +59,7 @@
     <revision>0.0.0-SNAPSHOT</revision>
 
     <!-- Dependencies (alphabetical) -->
-    <assertj.version>3.27.4</assertj.version>
+    <assertj.version>3.27.6</assertj.version>
     <json-org.version>20250517</json-org.version>
     <json-unit.version>4.1.1</json-unit.version>
     <junit.version>5.13.4</junit.version>
@@ -274,7 +274,7 @@
       <plugin>
         <groupId>org.graalvm.buildtools</groupId>
         <artifactId>native-maven-plugin</artifactId>
-        <version>0.11.0</version>
+        <version>0.11.1</version>
         <extensions>true</extensions>
         <executions>
           <execution>
@@ -432,7 +432,7 @@
           <plugin>
             <groupId>org.graalvm.buildtools</groupId>
             <artifactId>native-maven-plugin</artifactId>
-            <version>0.11.0</version>
+            <version>0.11.1</version>
             <extensions>true</extensions>
             <executions>
               <execution>
@@ -527,7 +527,7 @@
           <plugin>
             <groupId>org.graalvm.buildtools</groupId>
             <artifactId>native-maven-plugin</artifactId>
-            <version>0.11.0</version>
+            <version>0.11.1</version>
             <extensions>true</extensions>
             <executions>
               <execution>
