@@ -33,6 +33,10 @@ on:
         description: The branch, tag or SHA of `logging-log4j-samples` to checkout
         type: string
         default: ${{ github.ref }}
+    secrets:
+      DEVELOCITY_ACCESS_KEY:
+        description: The access key to the Develocity server
+        required: false
   workflow_dispatch:
     inputs:
       log4j-version:
@@ -68,6 +72,8 @@ jobs:
       log4j-version: ${{ inputs.log4j-version }}
       log4j-repository-url: ${{ inputs.log4j-repository-url }}
       samples-ref: ${{ inputs.samples-ref }}
+    secrets:
+      DEVELOCITY_ACCESS_KEY: ${{ secrets.DEVELOCITY_ACCESS_KEY }}
 
   graalvm-test:
     uses: apache/logging-log4j-samples/.github/workflows/graalvm-reusable-test.yaml@main
