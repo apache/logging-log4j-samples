@@ -50,8 +50,7 @@ def expectedCompileClasspath = [
     "org.osgi.annotation.bundle",
     "org.osgi.annotation.versioning",
     "org.osgi.resource",
-    "org.osgi.service.serviceloader",
-    "spotbugs-annotations"
+    "org.osgi.service.serviceloader"
 ]
 
 tasks.register("assertRuntimeClasspath") {
