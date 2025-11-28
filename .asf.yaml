@@ -62,8 +62,6 @@ github:
   # Enforce Review-then-Commit
   protected_branches:
     main:
-      # All commits must be signed
-      required_signatures: true
       # All reviews must be addressed before merging
       required_conversation_resolution: true
       # At least one positive review must be present
