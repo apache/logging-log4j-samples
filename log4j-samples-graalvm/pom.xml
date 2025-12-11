@@ -61,9 +61,9 @@
     <!-- Dependencies (alphabetical) -->
     <assertj.version>3.27.6</assertj.version>
     <json-org.version>20250517</json-org.version>
-    <json-unit.version>4.1.1</json-unit.version>
-    <junit.version>6.0.0</junit.version>
-    <logback.version>1.5.19</logback.version>
+    <json-unit.version>5.0.0</json-unit.version>
+    <junit.version>6.0.1</junit.version>
+    <logback.version>1.5.20</logback.version>
     <slf4j.version>2.0.17</slf4j.version>
 
     <!-- IT to run for each profile -->
@@ -274,7 +274,7 @@
       <plugin>
         <groupId>org.graalvm.buildtools</groupId>
         <artifactId>native-maven-plugin</artifactId>
-        <version>0.11.1</version>
+        <version>0.11.2</version>
         <extensions>true</extensions>
         <executions>
           <execution>
@@ -327,7 +327,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>3.6.1</version>
+        <version>3.6.2</version>
         <executions>
           <execution>
             <id>run-executable</id>
@@ -432,7 +432,7 @@
           <plugin>
             <groupId>org.graalvm.buildtools</groupId>
             <artifactId>native-maven-plugin</artifactId>
-            <version>0.11.1</version>
+            <version>0.11.2</version>
             <extensions>true</extensions>
             <executions>
               <execution>
@@ -527,7 +527,7 @@
           <plugin>
             <groupId>org.graalvm.buildtools</groupId>
             <artifactId>native-maven-plugin</artifactId>
-            <version>0.11.1</version>
+            <version>0.11.2</version>
             <extensions>true</extensions>
             <executions>
               <execution>
