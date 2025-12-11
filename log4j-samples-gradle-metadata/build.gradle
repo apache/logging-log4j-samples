@@ -45,13 +45,11 @@ def expectedCompileClasspath = [
     "biz.aQute.bnd.annotation",
     "error_prone_annotations",
     "jspecify",
-    "jsr305",
     "log4j-api",
     "org.osgi.annotation.bundle",
     "org.osgi.annotation.versioning",
     "org.osgi.resource",
-    "org.osgi.service.serviceloader",
-    "spotbugs-annotations"
+    "org.osgi.service.serviceloader"
 ]
 
 tasks.register("assertRuntimeClasspath") {
