@@ -26,6 +26,14 @@
   </Appenders>
   <Loggers>
     <Root level="TRACE">
+      <!--
+        Added solely to verify the reachability-metadata regression (issue #3871).
+        This configuration is not intended for production use: relying on ThresholdFilter
+        instead of the more efficient built-in level checks is discouraged.
+
+        See: https://github.com/apache/logging-log4j2/issues/3871
+      -->
+      <ThresholdFilter level="DEBUG"/>
       <AppenderRef ref="FILE"/>
     </Root>
   </Loggers>

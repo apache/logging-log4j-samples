@@ -110,6 +110,15 @@
       "builderHierarchy": [
         "org.apache.logging.log4j.layout.template.json.JsonTemplateLayout$EventTemplateAdditionalField$Builder"
       ]
+    },
+    "org.apache.logging.log4j.core.filter.ThresholdFilter": {
+      "pluginNames": [
+        "thresholdfilter"
+      ],
+      "elementName": "filter",
+      "printable": true,
+      "defer": false,
+      "builderHierarchy": []
     }
   },
   "jsontemplateresolverfactory": {

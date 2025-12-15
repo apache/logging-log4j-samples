@@ -506,6 +506,15 @@
       "builderHierarchy": [
         "org.apache.logging.log4j.core.layout.PatternLayout$Builder"
       ]
+    },
+    "org.apache.logging.log4j.core.filter.ThresholdFilter": {
+      "pluginNames": [
+        "thresholdfilter"
+      ],
+      "elementName": "filter",
+      "printable": true,
+      "defer": false,
+      "builderHierarchy": []
     }
   },
   "typeconverter": {

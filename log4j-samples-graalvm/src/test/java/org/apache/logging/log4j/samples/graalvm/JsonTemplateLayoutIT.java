@@ -33,7 +33,7 @@ import org.junit.jupiter.api.Test;
  */
 class JsonTemplateLayoutIT {
 
-    static final String[] STANDARD_LEVELS = {"ERROR", "WARN", "INFO", "DEBUG", "TRACE"};
+    static final String[] STANDARD_LEVELS = {"ERROR", "WARN", "INFO", "DEBUG"};
 
     @Test
     void verifyStdOut() {
