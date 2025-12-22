@@ -32,7 +32,7 @@
     <log4j2.version>${log4j.version}</log4j2.version>
 
     <!-- Dependency versions -->
-    <aspectj.version>1.9.25</aspectj.version>
+    <aspectj.version>1.9.25.1</aspectj.version>
   </properties>
 
   <dependencies>
