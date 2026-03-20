@@ -16,32 +16,33 @@
  */
 package org.apache.logging.log4j.samples.jlink;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
-class StandardIT {
+public class StandardIT {
 
     @Test
-    void verifyStdOut() throws IOException {
+    public void verifyStdOut() throws IOException {
         final Path basePath = Paths.get(System.getProperty("basedir"), "target", "logs");
         final Path logFile = basePath.resolve("out.log");
 
-        assertThat(logFile).exists().isNotEmptyFile();
+        Assert.assertTrue("Log file does not exist", Files.exists(logFile));
+        Assert.assertTrue("Log file is empty", Files.size(logFile) > 0);
 
         final List<String> lines = Files.readAllLines(logFile, StandardCharsets.UTF_8);
 
-        assertThat(lines).hasSize(2);
-        assertThat(lines.get(0))
-                .matches("XML: .* INFO\\s+\\[main] o\\.a\\.l\\.l\\.s\\.j\\.Main Starting Log4j JLink Sample\\.\\.\\.");
-        assertThat(lines.get(1))
-                .matches(
-                        "XML: .* WARN\\s+\\[main] o\\.a\\.l\\.l\\.s\\.j\\.Main Please add your name as command line parameter\\.");
+        Assert.assertEquals(2, lines.size());
+        Assert.assertTrue(lines.get(0)
+                .matches("XML: .* INFO\\s+\\[main] o\\.a\\.l\\.l\\.s\\.j\\.Main Starting Log4j JLink Sample\\.\\.\\."));
+        Assert.assertTrue(
+                lines.get(1)
+                        .matches(
+                                "XML: .* WARN\\s+\\[main] o\\.a\\.l\\.l\\.s\\.j\\.Main Please add your name as command line parameter\\."));
     }
 }
