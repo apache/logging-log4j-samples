@@ -15,8 +15,10 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://www.w3.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <groupId>org.apache.logging.log4j.samples</groupId>
     <artifactId>log4j-samples</artifactId>
@@ -30,6 +32,12 @@
   <properties>
     <!-- Plugin version -->
     <maven-jlink-plugin.version>3.2.0</maven-jlink-plugin.version>
+
+    <!-- OS-specific launcher suffix -->
+    <launcher.suffix />
+
+    <!-- Optional readability improvement -->
+    <jlink.launcher.path>${project.build.directory}/maven-jlink/default/bin/${project.artifactId}${launcher.suffix}</jlink.launcher.path>
   </properties>
 
   <dependencies>
@@ -39,7 +47,6 @@
       <artifactId>log4j-api</artifactId>
     </dependency>
 
-    <!-- Runtime dependencies -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
@@ -51,7 +58,7 @@
       <scope>runtime</scope>
     </dependency>
 
-    <!-- TEST DEPENDENCIES -->
+    <!-- TEST -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -59,8 +66,10 @@
     </dependency>
 
   </dependencies>
+
   <build>
     <plugins>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -81,6 +90,7 @@
         </executions>
       </plugin>
 
+      <!-- ✅ FIXED HERE -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -93,7 +103,7 @@
             </goals>
             <phase>integration-test</phase>
             <configuration>
-              <executable>${project.build.directory}/maven-jlink/default/bin/${project.artifactId}</executable>
+              <executable>${jlink.launcher.path}</executable>
               <outputFile>${project.build.directory}/logs/out.log</outputFile>
             </configuration>
           </execution>
@@ -128,6 +138,23 @@
           <launcher>log4j-samples-jlink=org.apache.logging.log4j.samples.jlink/org.apache.logging.log4j.samples.jlink.Main</launcher>
         </configuration>
       </plugin>
+
     </plugins>
   </build>
+
+  <!-- ✅ Windows profile -->
+  <profiles>
+    <profile>
+      <id>windows</id>
+      <activation>
+        <os>
+          <family>Windows</family>
+        </os>
+      </activation>
+      <properties>
+        <launcher.suffix>.exe</launcher.suffix>
+      </properties>
+    </profile>
+  </profiles>
+
 </project>
