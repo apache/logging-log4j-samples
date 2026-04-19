@@ -52,7 +52,7 @@ permissions: read-all
 jobs:
 
   jre-test:
-    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@main
+    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@gha/v0
     with:
       java-version: 21
       maven-args: |
@@ -63,14 +63,14 @@ jobs:
       test-report-suffix: '-it'
 
   gradle-test:
-    uses: apache/logging-log4j-samples/.github/workflows/gradle-reusable-test.yaml@main
+    uses: ./.github/workflows/gradle-reusable-test.yaml
     with:
       log4j-version: ${{ inputs.log4j-version }}
       log4j-repository-url: ${{ inputs.log4j-repository-url }}
       samples-ref: ${{ inputs.samples-ref }}
 
   graalvm-test:
-    uses: apache/logging-log4j-samples/.github/workflows/graalvm-reusable-test.yaml@main
+    uses: ./.github/workflows/graalvm-reusable-test.yaml
     with:
       log4j-version: ${{ inputs.log4j-version }}
       log4j-repository-url: ${{ inputs.log4j-repository-url }}
