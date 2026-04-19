@@ -1316,5 +1316,19 @@
       }
     ],
     "fields": []
+  },
+  {
+    "name": "org.apache.logging.log4j.core.filter.ThresholdFilter",
+    "methods": [
+      {
+        "name": "createFilter",
+        "parameterTypes": [
+          "org.apache.logging.log4j.Level",
+          "org.apache.logging.log4j.core.Filter$Result",
+          "org.apache.logging.log4j.core.Filter$Result"
+        ]
+      }
+    ],
+    "fields": []
   }
 ]
