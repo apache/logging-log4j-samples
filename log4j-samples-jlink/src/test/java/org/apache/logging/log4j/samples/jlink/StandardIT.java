@@ -22,8 +22,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class StandardIT {
 
@@ -32,15 +32,15 @@ public class StandardIT {
         final Path basePath = Paths.get(System.getProperty("basedir"), "target", "logs");
         final Path logFile = basePath.resolve("out.log");
 
-        Assert.assertTrue("Log file does not exist", Files.exists(logFile));
-        Assert.assertTrue("Log file is empty", Files.size(logFile) > 0);
+        Assertions.assertTrue(Files.exists(logFile), "Log file does not exist");
+        Assertions.assertTrue(Files.size(logFile) > 0, "Log file is empty");
 
         final List<String> lines = Files.readAllLines(logFile, StandardCharsets.UTF_8);
 
-        Assert.assertEquals(2, lines.size());
-        Assert.assertTrue(lines.get(0)
+        Assertions.assertEquals(2, lines.size());
+        Assertions.assertTrue(lines.get(0)
                 .matches("XML: .* INFO\\s+\\[main] o\\.a\\.l\\.l\\.s\\.j\\.Main Starting Log4j JLink Sample\\.\\.\\."));
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 lines.get(1)
                         .matches(
                                 "XML: .* WARN\\s+\\[main] o\\.a\\.l\\.l\\.s\\.j\\.Main Please add your name as command line parameter\\."));

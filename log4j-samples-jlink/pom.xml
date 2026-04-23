@@ -34,10 +34,10 @@
     <maven-jlink-plugin.version>3.2.0</maven-jlink-plugin.version>
 
     <!-- OS-specific launcher suffix -->
-    <launcher.suffix />
+    <jlink.launcher.suffix />
 
     <!-- Optional readability improvement -->
-    <jlink.launcher.path>${project.build.directory}/maven-jlink/default/bin/${project.artifactId}${launcher.suffix}</jlink.launcher.path>
+    <jlink.launcher.path>${project.build.directory}/maven-jlink/default/bin/${project.artifactId}${jlink.launcher.suffix}</jlink.launcher.path>
   </properties>
 
   <dependencies>
@@ -60,8 +60,8 @@
 
     <!-- TEST -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
       <scope>test</scope>
     </dependency>
 
@@ -90,7 +90,6 @@
         </executions>
       </plugin>
 
-      <!-- ✅ FIXED HERE -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -142,7 +141,6 @@
     </plugins>
   </build>
 
-  <!-- ✅ Windows profile -->
   <profiles>
     <profile>
       <id>windows</id>
@@ -152,7 +150,7 @@
         </os>
       </activation>
       <properties>
-        <launcher.suffix>.exe</launcher.suffix>
+        <jlink.launcher.suffix>.exe</jlink.launcher.suffix>
       </properties>
     </profile>
   </profiles>
