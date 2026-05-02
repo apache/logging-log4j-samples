@@ -36,4 +36,4 @@ permissions: read-all
 jobs:
 
   integration-test:
-    uses: apache/logging-log4j-samples/.github/workflows/integration-test.yaml@main
+    uses: ./.github/workflows/integration-test.yaml
