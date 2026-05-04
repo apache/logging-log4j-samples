@@ -31,7 +31,7 @@
 
   <properties>
     <!-- Plugin version -->
-    <maven-jlink-plugin.version>3.2.0</maven-jlink-plugin.version>
+    <maven-jlink-plugin.version>3.3.0</maven-jlink-plugin.version>
 
     <!-- OS-specific launcher suffix -->
     <jlink.launcher.suffix />
