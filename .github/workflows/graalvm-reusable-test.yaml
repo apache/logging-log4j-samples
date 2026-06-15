@@ -50,13 +50,13 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # 6.0.2
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10   # 6.0.3
         with:
           repository: 'apache/logging-log4j-samples'
           ref: ${{ inputs.samples-ref }}
 
       - name: Setup GraalVM
-        uses: graalvm/setup-graalvm@60c26726de13f8b90771df4bc1641a52a3159994   # 1.5.2
+        uses: graalvm/setup-graalvm@329c42c5f4c343bceb505f0b28cc8499bc2bf174   # 1.5.4
         with:
           java-version: '21'
 
