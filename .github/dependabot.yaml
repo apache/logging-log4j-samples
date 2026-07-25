@@ -34,9 +34,10 @@ updates:
     cooldown:
       default-days: 7
     groups:
-      maven-updates:
-        patterns:
-          - "*"
+      maven-minor-updates:
+        update-types:
+          - "minor"
+          - "patch"
     registries:
       - maven-central
     ignore:
@@ -51,9 +52,10 @@ updates:
     cooldown:
       default-days: 7
     groups:
-      gradle-updates:
-        patterns:
-          - "*"
+      gradle-minor-updates:
+        update-types:
+          - "minor"
+          - "patch"
     registries:
       - maven-central
     ignore:
