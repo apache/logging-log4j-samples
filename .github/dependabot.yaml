@@ -31,8 +31,10 @@ updates:
       - "log4j-samples-graalvm"
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 7
     groups:
-      all:
+      maven-updates:
         patterns:
           - "*"
     registries:
@@ -46,8 +48,10 @@ updates:
       - "/"
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 7
     groups:
-      all:
+      gradle-updates:
         patterns:
           - "*"
     registries:
@@ -60,7 +64,9 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 7
     groups:
-      all:
+      github-actions-updates:
         patterns:
           - "*"
