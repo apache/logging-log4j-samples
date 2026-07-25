@@ -42,6 +42,13 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      ANDROID_API_LEVEL: 31
+      # The default options of `android-emulator-runner`, except:
+      # * `-no-snapshot` is removed, so the AVD snapshot cache can be used,
+      # * `-camera-back none` is added.
+      EMULATOR_OPTIONS: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+
     steps:
 
       - name: Checkout repository
@@ -79,18 +86,18 @@ jobs:
           path: |
             ~/.android/avd
             ~/.android/adb*
-          key: avd-31
+          key: avd-${{ env.ANDROID_API_LEVEL }}
 
       # Only runs on a cache miss to create an AVD snapshot and speed up the next builds
       - name: Generate AVD snapshot
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: ReactiveCircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d   # 2.38.0
         with:
-          api-level: 31
+          api-level: ${{ env.ANDROID_API_LEVEL }}
           # `x86` (the default) is not available for API level 31
           arch: x86_64
           force-avd-creation: false
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          emulator-options: ${{ env.EMULATOR_OPTIONS }}
           disable-animations: false
           script: echo "Generated AVD snapshot"
 
@@ -100,11 +107,11 @@ jobs:
           LOG4J_VERSION: ${{ inputs.log4j-version }}
           LOG4J_REPOSITORY_URL: ${{ inputs.log4j-repository-url }}
         with:
-          api-level: 31
+          api-level: ${{ env.ANDROID_API_LEVEL }}
           # `x86` (the default) is not available for API level 31
           arch: x86_64
           force-avd-creation: false
           # `-no-snapshot-save` loads the cached snapshot, but does not overwrite it
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          emulator-options: -no-snapshot-save ${{ env.EMULATOR_OPTIONS }}
           script: |
             ./gradlew :app:build :app:connectedCheck
