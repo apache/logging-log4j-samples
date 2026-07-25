@@ -38,11 +38,24 @@
     <project.build.outputTimestamp>2023-09-14T15:03:45Z</project.build.outputTimestamp>
 
     <!-- Dependency versions -->
-    <kubernetes-client.version>7.4.0</kubernetes-client.version>
+    <kubernetes-client.version>7.8.0</kubernetes-client.version>
+    <netty.version>4.1.135.Final</netty.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+
+      <!--
+        ~ `kubernetes-client` requires a more recent version of Netty
+        ~ than the one managed by `spring-boot-dependencies`.
+        -->
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-bom</artifactId>
+        <version>${netty.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
 
       <dependency>
         <groupId>io.fabric8</groupId>
