@@ -72,62 +72,15 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
-      - name: Create AVD Device
-        id: avd
-        shell: bash
-        run: |
-          # Debug environment variables
-          printenv | grep '^ANDROID\|^HOME' | sort
-
-          # Set `ANDROID_USER_HOME` since `emulator` and `avdmanager` use different definitions:
-          # * `avdmanager` uses `$XDG_CONFIG_HOME/.android` with a fallback to `$HOME/.android`:
-          #   https://cs.android.com/android-studio/platform/tools/base/+/mirror-goog-studio-main:common/src/main/java/com/android/prefs/AbstractAndroidLocations.kt
-          # * `emulator` uses `HOME/.android`
-          export ANDROID_USER_HOME="$HOME/.android"
-          echo "ANDROID_USER_HOME=$ANDROID_USER_HOME" >> $GITHUB_ENV
-
-          # List installed and available packages
-          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list
-          # Download images
-          echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
-          --install "system-images;android-31;default;x86_64" \
-          emulator platform-tools
-          # Create device
-          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd \
-          --name generic-api-31-device \
-          --device "5.4in FWVGA" \
-          --package "system-images;android-31;default;x86_64"
-          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list avds
-          # Run emulator
-          $ANDROID_HOME/emulator/emulator \
-          -no-audio -no-window \
-          -avd generic-api-31-device &
-          # Enabled the cleanup job
-          echo EMULATOR_STARTED=true >> $GITHUB_ENV
-          # Wait for device to go online
-          # It might take up to 5 minutes
-          for i in {1..300}; do
-            # Don't stop the script if `adb` fails
-            boot_completed=$($ANDROID_HOME/platform-tools/adb shell getprop sys.boot_completed 2> /dev/null || echo "0")
-            if [ "${boot_completed}" = "1" ]; then break; fi
-            sleep 1
-          done
-
       - name: Test log4j-samples-android
-        shell: bash
+        uses: ReactiveCircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d   # 2.38.0
         env:
           LOG4J_VERSION: ${{ inputs.log4j-version }}
           LOG4J_REPOSITORY_URL: ${{ inputs.log4j-repository-url }}
-        run: |
-          ./gradlew \
-          :app:build :app:connectedCheck
-
-      - name: Remove AVD Device
-        if: ${{ always() && env.EMULATOR_STARTED == 'true' }}
-        shell: bash
-        run: |
-          # Kill the emulator
-          $ANDROID_HOME/platform-tools/adb -s emulator-5554 emu kill
-          # Delete the device
-          $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager delete avd \
-          --name generic-api-31-device
+        with:
+          api-level: 31
+          # `x86` (the default) is not available for API level 31
+          arch: x86_64
+          script: |
+            ./gradlew \
+            :app:build :app:connectedCheck

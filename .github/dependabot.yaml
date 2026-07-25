@@ -62,9 +62,10 @@ updates:
       interval: weekly
     cooldown:
       default-days: 7
-    # Actions are pinned to major version tags, so only major updates are relevant
+    # `actions/*` are pinned to major version tags, so only major updates are relevant.
+    # Other actions are pinned by hash and receive all updates.
     ignore:
-      - dependency-name: "*"
+      - dependency-name: "actions/*"
         update-types:
           - "version-update:semver-minor"
           - "version-update:semver-patch"
