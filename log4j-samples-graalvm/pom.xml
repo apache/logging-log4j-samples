@@ -66,6 +66,16 @@
     <logback.version>1.6.0</logback.version>
     <slf4j.version>2.0.18</slf4j.version>
 
+    <!-- Maven plugins (alphabetical) -->
+    <!--
+      ~ Do not upgrade to 1.1.6: it references an internal Maven API
+      ~ that is not available in the plugin class realm.
+      ~ The problem will be fixed in 1.1.7.
+      ~
+      ~ See: https://github.com/graalvm/native-build-tools/issues/1000
+      -->
+    <native-maven-plugin.version>1.1.5</native-maven-plugin.version>
+
     <!-- IT to run for each profile -->
     <integration-tests-include>none</integration-tests-include>
     <profile-resources>none</profile-resources>
@@ -168,6 +178,17 @@
   </repositories>
 
   <build>
+    <pluginManagement>
+      <plugins>
+
+        <plugin>
+          <groupId>org.graalvm.buildtools</groupId>
+          <artifactId>native-maven-plugin</artifactId>
+          <version>${native-maven-plugin.version}</version>
+        </plugin>
+
+      </plugins>
+    </pluginManagement>
     <plugins>
 
       <!--
@@ -274,7 +295,6 @@
       <plugin>
         <groupId>org.graalvm.buildtools</groupId>
         <artifactId>native-maven-plugin</artifactId>
-        <version>1.1.6</version>
         <extensions>true</extensions>
         <executions>
           <execution>
@@ -432,7 +452,6 @@
           <plugin>
             <groupId>org.graalvm.buildtools</groupId>
             <artifactId>native-maven-plugin</artifactId>
-            <version>1.1.6</version>
             <extensions>true</extensions>
             <executions>
               <execution>
@@ -527,7 +546,6 @@
           <plugin>
             <groupId>org.graalvm.buildtools</groupId>
             <artifactId>native-maven-plugin</artifactId>
-            <version>1.1.6</version>
             <extensions>true</extensions>
             <executions>
               <execution>
