@@ -24,7 +24,7 @@ on:
         description: Version of Log4j Core
         type: string
         # Should point to the current 2.x snapshot version
-        default: 2.26.0-SNAPSHOT
+        default: 2.27.0-SNAPSHOT
       log4j-repository-url:
         description: Staging Maven repository. Should be empty for snapshots.
         type: string
@@ -38,7 +38,7 @@ on:
       log4j-version:
         description: Version of Log4j Core
         # Should point to the current 2.x snapshot version
-        default: 2.25.0-SNAPSHOT
+        default: 2.27.0-SNAPSHOT
       log4j-repository-url:
         description: Staging Maven repository. Should be empty for snapshots.
         default: ''
