@@ -60,7 +60,11 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
-    groups:
-      all:
-        patterns:
-          - "*"
+    cooldown:
+      default-days: 7
+    # Actions are pinned to major version tags, so only major updates are relevant
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-minor"
+          - "version-update:semver-patch"
