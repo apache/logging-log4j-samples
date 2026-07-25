@@ -82,5 +82,4 @@ jobs:
           # `x86` (the default) is not available for API level 31
           arch: x86_64
           script: |
-            ./gradlew \
-            :app:build :app:connectedCheck
+            ./gradlew app:build :app:connectedCheck
