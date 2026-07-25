@@ -28,7 +28,7 @@
   <name>Apache Log4j Samples: JLink custom JRE</name>
 
   <properties>
-    <maven-jlink-plugin.version>3.2.0</maven-jlink-plugin.version>
+    <maven-jlink-plugin.version>3.3.0</maven-jlink-plugin.version>
     <!-- Base path for the launcher created by jlink -->
     <jlink.launcher.path>${project.build.directory}/maven-jlink/default/bin/log4j-samples-jlink</jlink.launcher.path>
     <!-- Defaults for Unix/macOS -->
