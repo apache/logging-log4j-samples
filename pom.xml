@@ -89,9 +89,11 @@
     <flume.version>1.11.0</flume.version>
     <jetty.version>11.0.26</jetty.version>
     <javax-jms.version>2.0.1</javax-jms.version>
+    <jspecify.version>1.0.0</jspecify.version>
+    <osgi-annotation-bundle.version>2.0.0</osgi-annotation-bundle.version>
     <spotbugs-annotations.version>4.10.3</spotbugs-annotations.version>
-    <spring-boot.version>4.1.0</spring-boot.version>
-    <spring-cloud.version>2025.1.2</spring-cloud.version>
+    <spring-boot.version>3.5.7</spring-boot.version>
+    <spring-cloud.version>2025.0.0</spring-cloud.version>
 
     <!-- Pinned transitive dependencies -->
     <!-- Try removing from time to time -->
@@ -108,7 +110,7 @@
   <dependencyManagement>
     <dependencies>
 
-      <!-- Internal dependencies -->
+      <!--region Internal dependencies-->
       <dependency>
         <groupId>org.apache.logging.log4j.samples</groupId>
         <artifactId>log4j-samples-configuration</artifactId>
@@ -120,8 +122,9 @@
         <artifactId>log4j-samples-flume-common</artifactId>
         <version>${project.version}</version>
       </dependency>
+      <!--endregion-->
 
-      <!-- External dependencies -->
+      <!--region External dependencies-->
       <dependency>
         <groupId>com.lmax</groupId>
         <artifactId>disruptor</artifactId>
@@ -176,44 +179,16 @@
         <version>${javax-jms.version}</version>
       </dependency>
 
-      <!-- Transitive dependency of multiple dependencies -->
-      <!-- We fix a common version -->
       <dependency>
-        <groupId>com.google.errorprone</groupId>
-        <artifactId>error_prone_annotations</artifactId>
-        <version>${error_prone.version}</version>
+        <groupId>org.jspecify</groupId>
+        <artifactId>jspecify</artifactId>
+        <version>${jspecify.version}</version>
       </dependency>
 
-      <!-- Transitive dependency of multiple dependencies -->
-      <!-- We fix a common version -->
       <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
-        <version>${guava.version}</version>
-      </dependency>
-
-      <!-- Transitive dependency of multiple dependencies -->
-      <!-- We fix a common version -->
-      <dependency>
-        <groupId>org.apache.httpcomponents</groupId>
-        <artifactId>httpclient</artifactId>
-        <version>${httpclient.version}</version>
-      </dependency>
-
-      <!-- Transitive dependency of multiple dependencies -->
-      <!-- We fix a common version -->
-      <dependency>
-        <groupId>joda-time</groupId>
-        <artifactId>joda-time</artifactId>
-        <version>${joda-time.version}</version>
-      </dependency>
-
-      <!-- Transitive dependency of multiple dependencies -->
-      <!-- We fix a common version -->
-      <dependency>
-        <groupId>org.yaml</groupId>
-        <artifactId>snakeyaml</artifactId>
-        <version>${snakeyaml.version}</version>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.annotation.bundle</artifactId>
+        <version>${osgi-annotation-bundle.version}</version>
       </dependency>
 
       <dependency>
@@ -221,11 +196,45 @@
         <artifactId>spotbugs-annotations</artifactId>
         <version>${spotbugs-annotations.version}</version>
       </dependency>
+      <!--endregion-->
 
+      <!--region Pinned transitive dependencies-->
+      <!-- Transitive dependencies of multiple dependencies: we fix a common version. -->
+      <!-- Try removing from time to time. -->
+      <dependency>
+        <groupId>com.google.errorprone</groupId>
+        <artifactId>error_prone_annotations</artifactId>
+        <version>${error_prone.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>${httpclient.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>joda-time</groupId>
+        <artifactId>joda-time</artifactId>
+        <version>${joda-time.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.yaml</groupId>
+        <artifactId>snakeyaml</artifactId>
+        <version>${snakeyaml.version}</version>
+      </dependency>
+      <!--endregion-->
+
+      <!--region BOMs-->
       <!--
-        ~ BOMs
-        ~
-        ~ BOMs are placed at the end, to they don't override the versions above.
+        ~ BOMs are placed at the end, so they don't override the versions above.
         ~ This is especially important for the very opinionated `spring-boot-dependencies`.
         -->
       <!-- Transitive dependency of multiple dependencies -->
@@ -281,6 +290,7 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <!--endregion-->
 
     </dependencies>
   </dependencyManagement>
