@@ -92,8 +92,8 @@
     <jspecify.version>1.0.0</jspecify.version>
     <osgi-annotation-bundle.version>2.0.0</osgi-annotation-bundle.version>
     <spotbugs-annotations.version>4.10.3</spotbugs-annotations.version>
-    <spring-boot.version>3.5.7</spring-boot.version>
-    <spring-cloud.version>2025.0.0</spring-cloud.version>
+    <spring-boot.version>4.1.0</spring-boot.version>
+    <spring-cloud.version>2025.1.2</spring-cloud.version>
 
     <!-- Pinned transitive dependencies -->
     <!-- Try removing from time to time -->
@@ -101,7 +101,7 @@
     <guava.version>33.6.0-jre</guava.version>
     <httpclient.version>4.5.14</httpclient.version>
     <jackson.version>2.22.1</jackson.version>
-    <joda-time.version>2.14.2</joda-time.version>
+    <joda-time.version>2.14.3</joda-time.version>
     <kotlin.version>2.4.10</kotlin.version>
     <snakeyaml.version>2.6</snakeyaml.version>
     <slf4j.version>2.0.18</slf4j.version>

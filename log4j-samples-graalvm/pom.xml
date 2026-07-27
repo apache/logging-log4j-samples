@@ -74,7 +74,7 @@
       ~
       ~ See: https://github.com/graalvm/native-build-tools/issues/1000
       -->
-    <native-maven-plugin.version>1.1.5</native-maven-plugin.version>
+    <native-maven-plugin.version>1.1.6</native-maven-plugin.version>
 
     <!-- IT to run for each profile -->
     <integration-tests-include>none</integration-tests-include>
