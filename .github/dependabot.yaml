@@ -31,10 +31,13 @@ updates:
       - "log4j-samples-graalvm"
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 7
     groups:
-      all:
-        patterns:
-          - "*"
+      maven-minor-updates:
+        update-types:
+          - "minor"
+          - "patch"
     registries:
       - maven-central
     ignore:
@@ -46,10 +49,13 @@ updates:
       - "/"
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 7
     groups:
-      all:
-        patterns:
-          - "*"
+      gradle-minor-updates:
+        update-types:
+          - "minor"
+          - "patch"
     registries:
       - maven-central
     ignore:
