@@ -89,19 +89,19 @@
     <flume.version>1.11.0</flume.version>
     <jetty.version>11.0.26</jetty.version>
     <javax-jms.version>2.0.1</javax-jms.version>
-    <jspecify.version>1.0.0</jspecify.version>
+    <jspecify.version>1.0.1</jspecify.version>
     <osgi-annotation-bundle.version>2.0.0</osgi-annotation-bundle.version>
     <spotbugs-annotations.version>4.10.3</spotbugs-annotations.version>
     <spring-boot.version>3.5.7</spring-boot.version>
-    <spring-cloud.version>2025.0.0</spring-cloud.version>
+    <spring-cloud.version>2025.1.2</spring-cloud.version>
 
     <!-- Pinned transitive dependencies -->
     <!-- Try removing from time to time -->
     <error_prone.version>2.50.0</error_prone.version>
-    <guava.version>33.6.0-jre</guava.version>
+    <guava.version>33.7.1-jre</guava.version>
     <httpclient.version>4.5.14</httpclient.version>
-    <jackson.version>2.22.1</jackson.version>
-    <joda-time.version>2.14.2</joda-time.version>
+    <jackson.version>2.22.2</jackson.version>
+    <joda-time.version>2.14.3</joda-time.version>
     <kotlin.version>2.4.10</kotlin.version>
     <snakeyaml.version>2.6</snakeyaml.version>
     <slf4j.version>2.0.18</slf4j.version>
