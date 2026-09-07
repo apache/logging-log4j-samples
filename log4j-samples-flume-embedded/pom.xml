@@ -25,6 +25,17 @@
   <artifactId>log4j-samples-flume-embedded</artifactId>
   <packaging>war</packaging>
   <name>Apache Log4j Samples: Flume - Embedded</name>
+  <dependencyManagement>
+    <dependencies>
+      <!-- Flume 1.11.0 resolves commons-io 2.11.0, below the 2.17.0 that
+           spring-cloud-dependencies pulls in via curator/zookeeper -->
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.17.0</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>org.jspecify</groupId>
