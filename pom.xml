@@ -100,7 +100,7 @@
     <error_prone.version>2.50.0</error_prone.version>
     <guava.version>33.6.0-jre</guava.version>
     <httpclient.version>4.5.14</httpclient.version>
-    <jackson.version>2.22.1</jackson.version>
+    <jackson.version>2.22.2</jackson.version>
     <joda-time.version>2.14.2</joda-time.version>
     <kotlin.version>2.4.10</kotlin.version>
     <snakeyaml.version>2.6</snakeyaml.version>
