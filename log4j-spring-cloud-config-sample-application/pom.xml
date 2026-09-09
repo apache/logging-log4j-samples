@@ -39,7 +39,7 @@
 
     <!-- Dependency versions -->
     <kubernetes-client.version>7.8.0</kubernetes-client.version>
-    <netty.version>4.1.135.Final</netty.version>
+    <netty.version>4.2.17.Final</netty.version>
   </properties>
 
   <dependencyManagement>
