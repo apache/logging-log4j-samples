@@ -25,10 +25,14 @@ registries:
     url: https://repo.maven.apache.org/maven2
 
 updates:
+  # `org.apache.logging.log4j.samples:log4j-samples` (the `/` reactor) and
+  # `org.apache.logging.log4j.samples:log4j-samples-graalvm` are separate Maven projects that each
+  # declare `<version>${revision}</version>` against their own `<revision>0.0.0-SNAPSHOT</revision>`.
+  # Under a single `directories:` Dependabot resolves `${revision}` across both and rewrites the
+  # wrong `<version>` element: #426 replaced the reactor's own version with `2.26.1` and broke all
+  # 12 modules. Keep one entry per project.
   - package-ecosystem: maven
-    directories:
-      - "/"
-      - "log4j-samples-graalvm"
+    directory: "/"
     schedule:
       interval: weekly
     cooldown:
@@ -56,6 +60,23 @@ updates:
       # manages that down to `3.2.8`, so `enforce-upper-bound-deps` fails.
       - dependency-name: "org.springframework.cloud:spring-cloud-dependencies"
         versions: ["[2025.1,)"]
+
+  - package-ecosystem: maven
+    directory: "log4j-samples-graalvm"
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      maven-minor-updates-graalvm:
+        update-types:
+          - "minor"
+          - "patch"
+    registries:
+      - maven-central
+    ignore:
+      - dependency-name: "org.apache.logging.log4j:*"
+        versions: ["[3.0.0-alpha1,)"]
 
   - package-ecosystem: gradle
     directories:
