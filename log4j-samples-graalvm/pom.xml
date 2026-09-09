@@ -60,7 +60,7 @@
 
     <!-- Dependencies (alphabetical) -->
     <assertj.version>3.27.7</assertj.version>
-    <json-org.version>20260719</json-org.version>
+    <json-org.version>20260814</json-org.version>
     <json-unit.version>6.0.1</json-unit.version>
     <junit.version>6.1.2</junit.version>
     <logback.version>1.6.0</logback.version>
