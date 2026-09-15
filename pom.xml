@@ -102,9 +102,9 @@
     <httpclient.version>4.5.14</httpclient.version>
     <jackson.version>2.22.2</jackson.version>
     <joda-time.version>2.14.3</joda-time.version>
-    <kotlin.version>2.4.10</kotlin.version>
+    <kotlin.version>2.4.20</kotlin.version>
     <snakeyaml.version>2.7</snakeyaml.version>
-    <slf4j.version>2.0.18</slf4j.version>
+    <slf4j.version>2.0.19</slf4j.version>
   </properties>
 
   <dependencyManagement>
