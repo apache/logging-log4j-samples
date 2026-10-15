@@ -101,7 +101,7 @@
     <guava.version>33.7.2-jre</guava.version>
     <httpclient.version>4.5.14</httpclient.version>
     <jackson.version>2.22.3</jackson.version>
-    <joda-time.version>2.14.4</joda-time.version>
+    <joda-time.version>2.15.0</joda-time.version>
     <kotlin.version>2.4.20</kotlin.version>
     <snakeyaml.version>2.7</snakeyaml.version>
     <slf4j.version>2.0.20</slf4j.version>
