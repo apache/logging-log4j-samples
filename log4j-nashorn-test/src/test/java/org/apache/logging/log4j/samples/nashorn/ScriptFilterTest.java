@@ -35,19 +35,29 @@ class ScriptFilterTest {
     @Test
     @Timeout(value = 10, threadMode = ThreadMode.SEPARATE_THREAD)
     void workingScriptFilter() throws Exception {
-        URI configLocation = Objects.requireNonNull(ScriptFilterTest.class.getResource("/ScriptFilterTest.xml"))
+        assertScriptFilter("/ScriptFilterTest.xml");
+    }
+
+    @Test
+    @Timeout(value = 10, threadMode = ThreadMode.SEPARATE_THREAD)
+    void globalScriptFilter() throws Exception {
+        assertScriptFilter("/GlobalScriptFilterTest.xml");
+    }
+
+    private void assertScriptFilter(String resource) throws Exception {
+        URI configLocation = Objects.requireNonNull(ScriptFilterTest.class.getResource(resource))
                 .toURI();
-        LoggerContext context =
-                (LoggerContext) LogManager.getContext(ScriptFilterTest.class.getClassLoader(), false, configLocation);
-        // Get logger and appender
-        ListAppender appender = context.getConfiguration().getAppender("LIST");
-        assertNotNull(appender);
-        appender.clear();
-        Logger logger = context.getLogger(ScriptFilterTest.class);
-        // Log some events
-        logger.info("No marker");
-        logger.info(MarkerManager.getMarker("AUDIT"), "AUDIT");
-        logger.info(MarkerManager.getMarker("DENY"), "DENY");
-        assertThat(appender.getMessages()).containsExactly("No marker", "AUDIT");
+        try (LoggerContext context =
+                (LoggerContext) LogManager.getContext(ScriptFilterTest.class.getClassLoader(), false, configLocation)) {
+            ListAppender appender = context.getConfiguration().getAppender("LIST");
+            assertNotNull(appender);
+            appender.clear();
+            Logger logger = context.getLogger(ScriptFilterTest.class);
+            assertThat(logger.isInfoEnabled()).isTrue();
+            logger.info("No marker");
+            logger.info(MarkerManager.getMarker("AUDIT"), "AUDIT");
+            logger.info(MarkerManager.getMarker("DENY"), "DENY");
+            assertThat(appender.getMessages()).containsExactly("No marker", "AUDIT");
+        }
     }
 }
