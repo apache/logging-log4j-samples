@@ -61,7 +61,7 @@
     <!-- Dependencies (alphabetical) -->
     <assertj.version>3.27.7</assertj.version>
     <json-org.version>20260814</json-org.version>
-    <json-unit.version>6.2.0</json-unit.version>
+    <json-unit.version>6.3.0</json-unit.version>
     <junit.version>6.1.3</junit.version>
     <logback.version>1.6.5</logback.version>
     <slf4j.version>2.0.20</slf4j.version>
@@ -74,7 +74,7 @@
       ~
       ~ See: https://github.com/graalvm/native-build-tools/issues/1000
       -->
-    <native-maven-plugin.version>1.1.14</native-maven-plugin.version>
+    <native-maven-plugin.version>1.1.16</native-maven-plugin.version>
 
     <!-- IT to run for each profile -->
     <integration-tests-include>none</integration-tests-include>
