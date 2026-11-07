@@ -170,6 +170,7 @@
             <id>default-test</id>
             <configuration>
               <argLine>--add-opens org.apache.logging.log4j.core.test/org.apache.logging.log4j.core.test.appender=org.apache.logging.log4j.core</argLine>
+              <forkedProcessTimeoutInSeconds>30</forkedProcessTimeoutInSeconds>
               <systemPropertyVariables>
                 <java.util.logging.manager>org.apache.logging.log4j.jul.LogManager</java.util.logging.manager>
                 <log4j2.scriptEnableLanguages>javascript</log4j2.scriptEnableLanguages>
