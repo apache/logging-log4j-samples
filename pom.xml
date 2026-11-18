@@ -355,6 +355,41 @@
         </configuration>
       </plugin>
 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>enforce-upper-bound-deps</id>
+            <configuration>
+              <rules>
+                <requireUpperBoundDeps>
+                  <!--
+                    ~ The integration tests force `log4j.version` to the release under test,
+                    ~ which can be lower than the one required by third-party dependencies.
+                    ~ Wildcards are not supported, so all the Log4j artifacts used are listed.
+                    -->
+                  <excludes>
+                    <exclude>org.apache.logging.log4j:log4j-api</exclude>
+                    <exclude>org.apache.logging.log4j:log4j-api-test</exclude>
+                    <exclude>org.apache.logging.log4j:log4j-core</exclude>
+                    <exclude>org.apache.logging.log4j:log4j-core-test</exclude>
+                    <exclude>org.apache.logging.log4j:log4j-docker</exclude>
+                    <exclude>org.apache.logging.log4j:log4j-flume-ng</exclude>
+                    <exclude>org.apache.logging.log4j:log4j-jcl</exclude>
+                    <exclude>org.apache.logging.log4j:log4j-jul</exclude>
+                    <exclude>org.apache.logging.log4j:log4j-slf4j-impl</exclude>
+                    <exclude>org.apache.logging.log4j:log4j-slf4j2-impl</exclude>
+                    <exclude>org.apache.logging.log4j:log4j-spring-cloud-config-client</exclude>
+                    <exclude>org.apache.logging.log4j:log4j-web</exclude>
+                  </excludes>
+                </requireUpperBoundDeps>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
     </plugins>
 
   </build>
