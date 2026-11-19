@@ -32,7 +32,7 @@
     <log4j2.version>${log4j.version}</log4j2.version>
 
     <!-- Dependency versions -->
-    <aspectj.version>1.9.26</aspectj.version>
+    <aspectj.version>1.9.27</aspectj.version>
   </properties>
 
   <dependencies>
@@ -113,7 +113,7 @@
           <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>aspectj-maven-plugin</artifactId>
-            <version>1.16.1</version>
+            <version>1.17.0</version>
             <dependencies>
               <dependency>
                 <groupId>org.aspectj</groupId>
