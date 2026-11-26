@@ -97,7 +97,7 @@
 
     <!-- Pinned transitive dependencies -->
     <!-- Try removing from time to time -->
-    <error_prone.version>2.52.0</error_prone.version>
+    <error_prone.version>2.53.0</error_prone.version>
     <guava.version>33.8.0-jre</guava.version>
     <httpclient.version>4.5.14</httpclient.version>
     <jackson.version>2.23.0</jackson.version>
